@@ -1,27 +1,27 @@
-# Foodcare
+# FoodCare WebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.
+[Link](https://github.com/fga-eps-mds/2019.2-FoodCare) do repositório contendo o backend.
 
-## Development server
+## Configuração do ambiente
+### Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+É utilizado o docker como forma de configuração de ambiente. Para utilizar o docker basta executar a seguinte linha de código:
 
-## Code scaffolding
+Faça o download do Docker CE no [site oficial](https://docs.docker.com/engine/installation/).
+Faça o download do Docker Compose no [site oficial](https://docs.docker.com/compose/install/).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para construir novamente o container caso tenha feito alguma alteração no código utilize o seguinte comando
 
-## Build
+```
+$ [sudo] docker-compose build
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Subindo o servidor
 
-## Running unit tests
+Para subir a aplicação no endereço `0.0.0.0` e na porta 4200 utilize o seguinte comando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+$ [sudo] docker-compose up
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+A aplicação estará disponível em `http://localhost:8000`.
