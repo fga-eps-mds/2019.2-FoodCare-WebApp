@@ -1,5 +1,7 @@
 # FoodCare WebApp
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b9c5cafaeb50c06656d7/maintainability)](https://codeclimate.com/github/fga-eps-mds/2019.2-FoodCare-WebApp/maintainability)
+
 [Link](https://github.com/fga-eps-mds/2019.2-FoodCare) do repositório contendo o backend.
 
 ## Configuração do ambiente
@@ -24,4 +26,4 @@ Para subir a aplicação no endereço `0.0.0.0` e na porta 4200 utilize o seguin
 $ [sudo] docker-compose up
 ```
 
-A aplicação estará disponível em `http://localhost:8000`.
+A aplicação estará disponível em `http://localhost:4200`.
