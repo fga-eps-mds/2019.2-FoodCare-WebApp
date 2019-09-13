@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b9c5cafaeb50c06656d7/maintainability)](https://codeclimate.com/github/fga-eps-mds/2019.2-FoodCare-WebApp/maintainability)
 
+[![Build Status](https://travis-ci.org/fga-eps-mds/2019.2-FoodCare-WebApp.svg?branch=master)](https://travis-ci.org/fga-eps-mds/2019.2-FoodCare-WebApp)
+
 [Link](https://github.com/fga-eps-mds/2019.2-FoodCare) do repositório contendo o backend.
 
 ## Configuração do ambiente
