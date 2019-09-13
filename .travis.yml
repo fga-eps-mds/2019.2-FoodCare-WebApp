@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker-compose up --build -d
+
+script:
+  - docker exec -it foodcare-web ng build
+
+after_script:
+  - docker-compose down

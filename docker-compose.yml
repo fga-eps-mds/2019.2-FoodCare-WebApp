@@ -1,6 +1,7 @@
 version: "0.1"
 services:
   foodcare-web:
+    container_name: foodcare-web
     build: ./
     volumes:
       - ./:/app/foodcare-web
