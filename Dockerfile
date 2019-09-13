@@ -7,11 +7,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y google-chrome-s
 
 WORKDIR /app/foodcare-web
 
+ENV PATH /app/foodcare-web/node_modules/.bin:$PATH
+
 # Install dependencies
+COPY package.json /app/foodcare-web/package.json
 RUN npm install -g @angular/cli
+RUN npm install
+
 
 COPY . /app/foodcare-web
-RUN npm install
 
 EXPOSE 4200
 
