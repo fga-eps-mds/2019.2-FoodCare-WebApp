@@ -1,76 +1,79 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'over'"
-      >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Acabe com a fome</a> 
-      <a mat-list-item href="#">O que fazemos</a>
-      <a mat-list-item href="#">Como funciona</a>
-      <a mat-list-item href="#">Sobre</a>
-      <a mat-list-item href="#">Contato</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        
-        >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-        <button
-          type="button"
-          mat-icon-button
-        >FoodCare</button>
-      
-    </mat-toolbar>
-    <div class="Teste">
-        <h1>Ajude a acabar com a fome do Brasil</h1>
-        <span>Conectamos empresas que têm sobra de alimentos com pessoas e ONGs que distribuem alimentos para pessoas
-          carentes</span>
-      </div>
-  <div class="teste2">
-    <h1>O que fazemos?</h1>
-    <span>Conectamos empresas que têm sobra de alimentos com aqueles que precisam de alimento. Os receptores podem ONGs
-      ou pessoa física.</span>
-    <span>icon</span>
-  </div>
-  <div class="teste3">
-    <h1>Doadores doam</h1>
-    <span>Empresas com Sobra de alimentos criam evento informando que têm comida sobrando.</span>
-    <span>icon</span>
-  </div>
-  <div class="teste4">
-    <h1>Eventos de doação</h1>
-    <span>Os eventos de doação são mostrados através da lista ou do mapa</span>
-    <span>icon</span>
-  </div>
-  <div class="teste5"> 
-    <h1>Receptores recebem</h1>
-    <span>Àqueles que precisam do alimento se dirigem ao local do evento informado pelas empresas, e recebem o
-      alimento.</span>
-  </div>
-  <div class="teste6">
-    <h1>Sobre nós</h1>
-    <span>Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis! Si u mundo tá muito paradis?
-    </span>
-  </div> 
-  <div>
-    <h1>Entre em contato</h1>
-    <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato</span>
+	<mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+		[mode]="(isHandset$ | async) ? 'over' : 'over'">
+		<mat-toolbar>Menu</mat-toolbar>
+		<mat-nav-list>
+			<a mat-list-item href="#">Acabe com a fome</a>
+			<a mat-list-item href="#">O que fazemos</a>
+			<a mat-list-item href="#">Como funciona</a>
+			<a mat-list-item href="#">Sobre</a>
+			<a mat-list-item href="#">Contato</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-toolbar color="primary">
+			<button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+				<mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+			</button>
+			<a href="/home" class="logo">FoodCare</a>
+		</mat-toolbar>
+		<div class="container">
+			<section class="item1">
+				<div class="title-item1">
+					<h1>Ajude a acabar com a fome do Brasil</h1>
+				</div>
+				<div class="text-item1">
+					<span>Conectamos empresas que têm sobra de alimentos
+						com pessoas e ONGs que distribuem alimentos para pessoas
+						carentes
+					</span>
+				</div>
+				<div class="button-item1">
+					<button mat-raised-button class="button-item1">Ver onde tem comida</button>
+					<button mat-raised-button class="button-item1">Doar alimentos</button>
+				</div>
+			</section>
 
-  </div>
-  <br> 
-  <footer>
-    &#9400; 2019 - Food Care
-  </footer>
+		</div>
+		<div class="teste2">
+			<h1>O que fazemos?</h1>
+			<span>Conectamos empresas que têm sobra de alimentos com aqueles que precisam de alimento. Os receptores
+				podem ONGs
+				ou pessoa física.</span>
+			<span>icon</span>
+		</div>
+		<div class="teste3">
+			<h1>Doadores doam</h1>
+			<span>Empresas com Sobra de alimentos criam evento informando que têm comida sobrando.</span>
+			<span>icon</span>
+		</div>
+		<div class="teste4">
+			<h1>Eventos de doação</h1>
+			<span>Os eventos de doação são mostrados através da lista ou do mapa</span>
+			<span>icon</span>
+		</div>
+		<div class="teste5">
+			<h1>Receptores recebem</h1>
+			<span>Àqueles que precisam do alimento se dirigem ao local do evento informado pelas empresas, e recebem o
+				alimento.</span>
+		</div>
+		<div class="teste6">
+			<h1>Sobre nós</h1>
+			<span>Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis! Si u mundo tá muito
+				paradis?
+			</span>
+		</div>
+		<div>
+			<h1>Entre em contato</h1>
+			<span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato</span>
+
+		</div>
+		<br>
+		<footer>
+			&#9400; 2019 - Food Care
+		</footer>
 
 
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
+		<!-- Add Content Here -->
+	</mat-sidenav-content>
 </mat-sidenav-container>
