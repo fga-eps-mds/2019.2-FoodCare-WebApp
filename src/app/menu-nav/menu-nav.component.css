@@ -38,16 +38,63 @@
 .text-item1{
   color: white;
 }
-.button-item1 {
+.button-item1{
+  margin: 5%;
+}
+.button1-item1 {
   flex: 1;
   margin: 3%;
+  width: 310px;
+  height: 50px;
 }
+
+.button2-item1 {
+  flex: 1;
+  margin: 3%;
+  width: 310px;
+  height: 50px;
+}
+
 .logo{
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   font-family: Montserrat;
   font-weight: 800;
   font-size: 1.6em;
   text-decoration: none;
   color: white;
+}
+
+
+.item2{
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.item3{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item4{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item5{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item6{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.item7{
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer{
+  text-align: center;
 }
