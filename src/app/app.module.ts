@@ -11,15 +11,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { routing } from './app.routing';
+import { ConteudoComponent } from './conteudo/conteudo.component';
+import { RodapeComponent } from './rodape/rodape.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavComponent,
-    CadastroComponent
+    CadastroComponent,
+    ConteudoComponent,
+    RodapeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    AppRoutingModule
+    routing,
   ],
   providers: [],
   bootstrap: [AppComponent]
