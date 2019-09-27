@@ -17,82 +17,85 @@
   top: 0;
   z-index: 1;
   background-color: #5b8f6f;
-
+  
 }
-.container{
-  display: flex;
-  margin: 0 auto;
-  /* padding: 0 15px; */
-  flex-direction: column;
-  justify-content: center;
+.menu{
+  color: white;
+}
+.menu-item{
+  color: white;
+}
+.logo{
+  margin: auto;
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 2em;
+  text-decoration: none;
+  color: white;
+}
+.button-login{
+  text-decoration: none;
+  color: white;
 }
 .item1{
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
   text-align: center;
   background-color: #5b8f6f;
 }
 .title-item1{
-  /* font-family: 'Roboto', sans-serif; */
   color: white;
+  font-size: 1.8em;
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 .text-item1{
   color: white;
+  padding: 5px 15px;
+  font-size: 1.4em;
+}
+.title-item{
+  font-size: 1.8em;
+  margin: auto;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.text-item{
+  padding: 5px 15px;
+  font-size: 1.4em;
+  text-align: center;
 }
 .button-item1{
   margin: 5%;
 }
-.button1-item1 {
-  flex: 1;
+.buttons-item1 {
   margin: 3%;
   width: 310px;
   height: 50px;
 }
-
-.button2-item1 {
-  flex: 1;
-  margin: 3%;
-  width: 310px;
-  height: 50px;
+.icon-item{
+  font-size: 4em;
 }
-
-.logo{
-  margin: auto;
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 1.6em;
-  text-decoration: none;
-  color: white;
-}
-
-
 .item2{
   flex-wrap: wrap;
   text-align: center;
 }
-
 .item3{
-  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   text-align: center;
+  margin-top: 5%;
 }
-
-.item4{
-  margin: 0 auto;
-  text-align: center;
-}
-
-.item5{
-  margin: 0 auto;
-  text-align: center;
-}
-
-.item6{
-  margin: 0 auto;
-  text-align: center;
-}
-
-.item7{
-  margin: 0 auto;
-  text-align: center;
+.item3-section{
+  margin: 3%;
+  width: 300px;
 }
 
 footer{
