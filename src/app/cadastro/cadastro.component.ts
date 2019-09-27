@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cadastro',
+  selector: 'cadastro-form',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.css']
 })
