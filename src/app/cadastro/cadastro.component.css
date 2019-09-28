@@ -7,24 +7,34 @@
     justify-content: center;
     align-items: center;
 }
-
 .box {
     text-align: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 550px;
     background: #fff;
     margin: 0 auto;
 }
-
 .button {
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    color: black;
+    text-decoration: none;
+    background: green;
+    padding: 0px;
+    width: 120px;
+    height: 30px;
+    color: #ccc;
+    font: bold;
 }
 .total
 {
     margin: 0 auto;;
 }
-
 .h2 {
     text-align: center;
 }
+/* .fundo{
+    position: absolute;
+    right: 50%;
+    left: 50%;
+} */
