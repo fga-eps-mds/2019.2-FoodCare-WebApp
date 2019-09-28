@@ -3,11 +3,11 @@
 		[mode]="(isHandset$ | async) ? 'over' : 'over'">
 		<mat-toolbar class="menu">Menu</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item href="#" class="menu-item">Acabe com a fome</a>
-			<a mat-list-item href="#" class="menu-item">O que fazemos</a>
-			<a mat-list-item href="#" class="menu-item">Como funciona?</a>
-			<a mat-list-item href="#" class="menu-item">Sobre</a>
-			<a mat-list-item href="#" class="menu-item">Contato</a>
+			<a mat-list-item href="/home#item1" class="menu-item" (click)="drawer.toggle()">Acabe com a fome</a>
+			<a mat-list-item href="/home#item2" class="menu-item" (click)="drawer.toggle()">O que fazemos</a>
+			<a mat-list-item href="/home#item3" class="menu-item" (click)="drawer.toggle()">Como funciona?</a>
+			<a mat-list-item href="/home#item4" class="menu-item" (click)="drawer.toggle()">Sobre</a>
+			<a mat-list-item href="/home#item5" class="menu-item" (click)="drawer.toggle()">Contato</a>
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content>
@@ -23,7 +23,7 @@
 		</mat-toolbar>
 
 
-		<section class="item1">
+		<section  id="item1" class="item1">
 			<div class="title-item1">
 				<h1>Ajude a acabar com a fome do Brasil!</h1>
 			</div>
@@ -41,7 +41,8 @@
 
 
 		<!-- TÓPICO 2 DA HOME -->
-		<section class="item2">
+		<section  id="item2" class="item2">
+			
 			<div class="title-item">
 				<h1>O que fazemos?</h1>
 			</div>
@@ -52,7 +53,7 @@
 			</div>
 		</section>
 		<!-- TÓPICO 3 DA HOME -->
-		<section class="item3">
+		<section  id="item3" class="item3">
 			<div class="item3-section">
 				<div class="icon-item3">
 					<i class="material-icons icon-item">local_dining</i>
@@ -97,7 +98,7 @@
 		</section>
 
 		<!-- TÓPICO 4 DA HOME -->
-		<section class="item4">
+		<section  id="item4" class="item4">
 
 			<div class="title-item">
 				<h1>Sobre nós</h1>
@@ -114,7 +115,7 @@
 
 		<!-- TÓPICO 5 DA HOME -->
 
-		<section class="item5">
+		<section  id="item5" class="item5">
 			<div class="title-item">
 				<h1>Entre em contato</h1>
 			</div>
