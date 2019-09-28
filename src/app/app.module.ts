@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MatInputModule} from '@angular/material';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MenuNavComponent,
     CadastroComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -31,10 +34,14 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-

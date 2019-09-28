@@ -101,3 +101,18 @@
 footer{
   text-align: center;
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.button-form {
+  display: flex;
+  color: white;
+  background-color: #456c45;
+  margin: auto;
+}
