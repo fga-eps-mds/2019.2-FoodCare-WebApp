@@ -1,0 +1,30 @@
+.cadastroDoador {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: #6C7A89;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    text-align: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.button {
+    margin: 0 auto;
+}
+.total
+{
+    margin: 0 auto;;
+}
+
+.h2 {
+    text-align: center;
+}
