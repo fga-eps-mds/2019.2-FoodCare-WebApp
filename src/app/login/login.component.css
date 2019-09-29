@@ -1,4 +1,4 @@
-.cadastroDoador {
+.login {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -11,7 +11,7 @@
     text-align: center;
     align-items: center;
     width: 400px;
-    height: 550px;
+    height: 350px;
     background: #fff;
     margin: 0 auto;
 }
@@ -23,12 +23,18 @@
     padding: 0px;
     width: 120px;
     height: 30px;
-    color: #ccc;
+    color:#fff;
     font: bold;
+    /* border-radius: 7%; */
+}
+
+.button > a:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+    color:white;
 }
 .total
 {
-    margin: 0 auto;
+    margin: 0 auto;;
 }
 .h2 {
     text-align: center;

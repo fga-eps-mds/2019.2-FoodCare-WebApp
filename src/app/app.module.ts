@@ -16,6 +16,7 @@ import { routing } from './app.routing';
 import { ConteudoComponent } from './conteudo/conteudo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     CadastroComponent,
     ConteudoComponent,
     RodapeComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
