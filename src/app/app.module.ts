@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service';
 
 
 @NgModule({
@@ -39,9 +41,13 @@ import { MatFormFieldModule, MatInputModule} from '@angular/material';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ],
 })
 export class AppModule { }
