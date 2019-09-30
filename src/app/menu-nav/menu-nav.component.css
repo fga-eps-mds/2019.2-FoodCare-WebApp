@@ -1,3 +1,11 @@
+#logo{
+  color:#fff;
+}
+#logo > a:visited,a:hover,a:active,a:link{
+  text-decoration: none;
+  color:white;
+}
+
 .sidenav-container {
   height: 100%;
 }
