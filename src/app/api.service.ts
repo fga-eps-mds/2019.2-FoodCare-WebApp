@@ -15,8 +15,9 @@ export class ApiService {
 
 
   createEvento(id_alimento: any, data_inicio: any, data_final: any) {
-    const myArray = ['1', '2'];
-    id_alimento = JSON.stringify(myArray);
+    const alimentos = [];
+    alimentos.push(id_alimento);
+    id_alimento = alimentos;
     return this.http.post(
       this.apiRoot.concat('evento/'),
       { id_alimento, data_inicio, data_final }
