@@ -18,5 +18,15 @@ export class ExibirDoadoresComponent implements OnInit {
       (error:any) => this.error = error
     );
   }
-
+  delete(id:number){
+    this.api.deleteDoador(id).subscribe(
+      (sucess:any) => this.items.splice(
+        this.items.findIndex(item => item.id === id)
+      )
+    );
+  }
+  add(nome: string, cnpj: string, email: string, password: string) {
+    this.api.createDoador(nome, cnpj,email,password).subscribe(
+      (item:Doador)=>this.items.push(item)    );
+  }
 }
