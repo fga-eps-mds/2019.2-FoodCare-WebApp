@@ -1,0 +1,21 @@
+<p>exibir-doadores works!</p>
+
+
+<div style="text-align:center">
+    <h1>
+      Lista de doadores
+    </h1>
+  </div>
+  <ul>
+    <li *ngFor="let item of items">
+        <span>
+
+            <h3>item.nome</h3>
+            <h3>item.email</h3>
+            <h3>item.password</h3>
+            <br>
+
+        </span>
+    </li>
+  </ul>
+  {{ error?.message }}
