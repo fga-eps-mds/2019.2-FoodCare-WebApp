@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  login(nome: string, password: string) {
-    this.authService.login(nome, password).subscribe(
+  login(username: string, password: string) {
+    this.authService.login(username, password).subscribe(
       success => this.router.navigate(['exibir-doadores']),
       error => this.error = error
     );
