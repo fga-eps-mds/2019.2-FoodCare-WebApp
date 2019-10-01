@@ -1,30 +1,23 @@
-// import { Component, OnInit } from '@angular/core';
-// import { ApiService } from './api.service';
-// import { Evento } from './evento.interface';
-
-
-// @Component({  
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class AppComponent implements OnInit {
-//   title = 'foodcare';
-//   items: Evento[];
-//   error: any;
-
-//   constructor(private api: ApiService) { }
-
-//   ngOnInit() {
-//     this.api.getEvento().subscribe(
-//       (items: Evento[]) => this.items = items,
-//       (error: any) => this.error = error
-//     );
-//   }
-// }
-
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
+
+
+@Component({  
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = 'foodcare';
+
+  ngOnInit() {
+    
+  }
+}
+
+
+
+/*import { Component, OnInit } from '@angular/core';
+import { ApiService } from './services/api.service';
 import { Evento } from './evento.interface';
 
 
@@ -76,3 +69,4 @@ export class AppComponent implements OnInit {
     );
   }
 }
+*/

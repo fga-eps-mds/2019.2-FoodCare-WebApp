@@ -14,13 +14,13 @@ export class ApiService {
   }
 
 
-  createEvento(id_alimento: any, data_inicio: any, data_final: any) {
-    const alimentos = [];
-    alimentos.push(id_alimento);
-    id_alimento = alimentos;
+  createEvento(data_inicio: any, data_final: any, local: any) {
+    //const alimentos = [];
+    //alimentos.push(id_alimento);
+    //id_alimento = alimentos;
     return this.http.post(
       this.apiRoot.concat('evento/'),
-      { id_alimento, data_inicio, data_final }
+      { data_inicio, data_final, local }
     );
   }
 

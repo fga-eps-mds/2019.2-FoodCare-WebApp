@@ -16,16 +16,17 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './services/api.service';
+import { EventosComponent } from './eventos/eventos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavComponent,
-    CadastroComponent
+    CadastroComponent,
+    EventosComponent,
   ],
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

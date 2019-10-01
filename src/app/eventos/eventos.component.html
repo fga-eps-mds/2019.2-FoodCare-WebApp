@@ -1,0 +1,16 @@
+<div style="text-align:center">
+    <h1>
+      Lista de Eventos
+    </h1>
+  </div>
+  <ul>
+    <li *ngFor="let item of items">
+    <h2><button (click)="delete(item.id)">x</button></h2>    
+      <h2>{{ item.local }}  <br> {{ item.data_inicio }} <br> {{ item.data_final }} <br> {{ item.id_alimento}}</h2>
+    </li>
+  </ul>
+  <input #itemLocal type="text" placeholder="local">
+  <input #itemData_inicial type='datetime-local' placeholder='Data inicial'>
+  <input #itemData_final type='datetime-local' placeholder='Data final'>
+  <button (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value)">Add</button>
+  {{ error?.message }}

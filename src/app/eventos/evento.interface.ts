@@ -1,6 +1,6 @@
 export interface Evento {
     id: number;
-    id_alimento: Array<number>;
+    local : string;
     data_inicio: Date; 
     data_final: Date;
     //#id_doador:
