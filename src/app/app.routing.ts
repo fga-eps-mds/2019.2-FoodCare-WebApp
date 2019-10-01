@@ -5,6 +5,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component'
+import { AuthGuard } from './auth.service';
 
 const APP_ROUTER: Routes = [
     {
@@ -25,10 +26,9 @@ const APP_ROUTER: Routes = [
     },
     {
         path: 'exibir-doadores',
-        component: ExibirDoadoresComponent
-
+        component: ExibirDoadoresComponent,
+        canActivate:[AuthGuard]
     }
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTER);

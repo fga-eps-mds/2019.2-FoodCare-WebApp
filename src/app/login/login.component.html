@@ -5,16 +5,17 @@
             <br>
             <label for="usuario">Usuário </label>
             <br>
-            <input id="usuario" class="form-control">
+            <input #usuario id="usuario" class="form-control">
             <br><br>
             <label for="senha">Senha </label>
             <br>
-            <input id="senha" class="form-control" type="password">
+            <input #senha id="senha" class="form-control" type="password">
             <br><br>
-            <button class="button">Login</button>
+            <button  (click)='login(usuario.value, senha.value)'class="button">Login</button>
             &nbsp;
             <button class="button"><a href="/cadastro">Registar</a></button>
-            
+            <p>{{ error?.message }}</p>
+            <p *ngIf='error'>{{ error?.error | json }}</p>
         </div>
     </div>
     <Rodape></Rodape>

@@ -1,6 +1,3 @@
-
-
-
 <div style="text-align:center">
   <h1>
     Lista de doadores
@@ -16,6 +13,16 @@
     </span>
   </li>
 </ul>
+<div class="adiciona">
+  <h2>Adiciona</h2>
+  <input #itNome type='text' placeholder='Nome'>
+  <input #itCNPJ type='text' placeholder='CPNJ'>
+  <input #itEmail type='email' placeholder='Email'>
+  <input #itPassword type='password' placeholder='Senha'>
+  <button (click)='add(itNome.value, itCNPJ.value,itEmail.valuem, itPassword.value)'>Adionar</button>
+</div>
 
- 
-{{ error?.message }}
+<p>{{ error?.message }}</p>
+<p *ngIf="error">{{ error?.error | json }}</p>
+
+<button (click)="logout()">deslogar</button>

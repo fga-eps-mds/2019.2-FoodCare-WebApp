@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'Login',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  error: any;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router, 
+    ) {}
+
 
   ngOnInit() {
   }
-
+  login(nome: string, password: string) {
+    this.authService.login(nome, password).subscribe(
+      success => this.router.navigate(['exibir-doadores']),
+      error => this.error = error
+    );
+  }
 }
