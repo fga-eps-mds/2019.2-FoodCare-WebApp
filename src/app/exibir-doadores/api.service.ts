@@ -9,6 +9,6 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   getDoadores(){
-    return this.http.get(this.apiRoot.concat('doadores'));
+    return this.http.get(this.apiRoot.concat('doadores/'));
   }
 }
