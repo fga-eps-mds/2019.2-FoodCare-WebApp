@@ -6,3 +6,12 @@
 .title-toolbar{
     color: white;
 }
+.mat-card{
+    margin: 15px;
+    /* min-width: 200px; */
+}
+.mat-card-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

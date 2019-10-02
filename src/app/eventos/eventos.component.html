@@ -3,20 +3,24 @@
     class="material-icons">keyboard_arrow_left</i></a></button> -->
   <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
+<mat-card *ngFor="let item of items">
+  <mat-card-title>{{ item.local }}</mat-card-title>
+  <div class="card-items">
+    <mat-card-content>
+      <div class="date">
+        <span>{{ item.data_inicio }}</span>
+        <span>{{ item.data_final }}</span>
+        
+      </div>
+      <button mat-button>
+        <i class="material-icons">edit</i>
+      </button>
+    </mat-card-content>
+    
+  </div>
+</mat-card>
 <input #itemLocal type="text" placeholder="local">
 <input #itemData_inicial type='datetime-local' placeholder='Data inicial'>
 <input #itemData_final type='datetime-local' placeholder='Data final'>
 <button (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value)">Add</button>
 {{ error?.message }}
-<div class="card-items">
-  <div class="card"></div>
-  <mat-card *ngFor="let item of items">
-    <mat-card-title>{{ item.local }}</mat-card-title>
-    <span>{{ item.data_inicio }}</span>
-    <span>{{ item.data_final }}</span>
-    <button mat-button (click)="delete(item.id)">
-      <i class="material-icons">edit</i>
-    </button>
-  </mat-card>
-
-</div>
