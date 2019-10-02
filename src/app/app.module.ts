@@ -18,6 +18,7 @@ import { MatFormFieldModule, MatInputModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { EventosComponent } from './eventos/eventos.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { EventosComponent } from './eventos/eventos.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCardModule,
   ],
   providers: [
     ApiService,
