@@ -10,13 +10,13 @@
       <div class="date">
         <span>{{ item.data_inicio }}</span>
         <span>{{ item.data_final }}</span>
-        
+
       </div>
-      <button mat-button>
+      <button mat-button = "edit(item.id, itemData_inicial.value, itemData_final.value, itemLocal.value)">
         <i class="material-icons">edit</i>
       </button>
     </mat-card-content>
-    
+
   </div>
 </mat-card>
 <input #itemLocal type="text" placeholder="local">

@@ -27,4 +27,11 @@ export class ApiService {
   deleteEvento(id: number) {
     return this.http.delete(this.apiRoot.concat(`evento/${id}/`));
   }
+
+  editEvento(id: number, data_inicio: any, data_final: any, local: any){
+    return this.http.put(
+      this.apiRoot.concat(`evento/${id}/`),
+      { data_inicio, data_final, local }
+    );
+  }
 } //Fim exportclass

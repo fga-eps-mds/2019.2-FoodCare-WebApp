@@ -32,4 +32,12 @@ export class EventosComponent implements OnInit {
       (item: Evento) => this.items.push(item)
     );
   }
+
+  edit(id: number, itemData_inicial: any, itemData_final: any, itemLocal: any){
+    this.api.editEvento(id, itemData_inicial, itemData_final, itemLocal).subscribe(
+      (item: Evento) => this.items.forEach(item => item)
+
+    );
+
+  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-@Component({  
+@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'foodcare';
 
   ngOnInit() {
-    
+
   }
 }
 
@@ -31,11 +31,11 @@ import { Evento } from './evento.interface';
   </div>
   <ul>
     <li *ngFor="let item of items">
-    <h2><button (click)="delete(item.id)">x</button></h2>    
+    <h2><button (click)="delete(item.id)">x</button></h2>
       <h2>{{ item.id }} <br> {{ item.id_alimento }} <br> {{ item.data_inicio }} <br> {{ item.data_final }} <br> {{ item.id_alimento}}</h2>
     </li>
   </ul>
-  
+
   <input #itemId_alimento type='number' placeholder='Id_Alimento'>
   <input #itemData_inicial type='datetime-local' placeholder='Data inicial'>
   <input #itemData_final type='datetime-local' placeholder='Data final'>
