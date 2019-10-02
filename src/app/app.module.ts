@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component';
 import { ApiService } from './exibir-doadores/api.service';
 import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -45,6 +47,10 @@ import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
     MatListModule,
     HttpClientModule,
     routing,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ApiService,

@@ -1,35 +1,24 @@
 <MenuNav>
-    <div class="cadastroDoador">
-        <!-- <img src="/src/img_frutas.png" id = "fundo"> -->
+    <div class="background">
         <div class="box">
-            <h2> Cadastrar </h2>
-            <br>
-            <label for="usuario">Usuário </label>
-            <br>
-            <input #user id="usuario" class="form-control">
-            <br><br>
-
-            <label for="cnpj">CNPJ </label>
-            <br>
-            <input #cnpj id="cnpj" class="form-control">
-            <br><br>
-
-            <label for="email">Email </label>
-            <br>
-            <input #email id="email" class="form-control" type="email">
-            <br><br>
-
-            <label for="senha">Senha </label>
-            <br>
-            <input #password id="senha" class="form-control" type="password">
-            <br><br>
-
-            <label for="confirmSenha">Confirmar senha </label>
-            <br>    
-            <input id="confirmSenha" class="form-control" type="password">
-            <br><br>
-          
-            <button (click)='cadastrar(email.value,user.value,cnpj.value,email.value,password.value,password.value)'class="button">Cadastrar</button>
+            <!-- <img src="/src/img_frutas.png" id = "fundo"> -->
+                <h2 class="title"> Cadastrar </h2>
+                <mat-form-field>
+                <input matInput placeholder="Usuário" #user id="usuario" class="form-control">
+                </mat-form-field>
+                <mat-form-field>
+                <input matInput placeholder="CNPJ" #cnpj id="cnpj" class="form-control">
+                </mat-form-field>
+                <mat-form-field>
+                <input matInput placeholder="Email" #email id="email" class="form-control" type="email">
+                </mat-form-field>
+                <mat-form-field>
+                <input matInput placeholder="Senha" #password id="senha" class="form-control" type="password">
+                </mat-form-field>
+                <mat-form-field>
+                <input matInput placeholder="Conirmar Senha" id="confirmSenha" class="form-control" type="password">
+                </mat-form-field>
+                <button mat-raised-button class="buttonCadastro" (click)='cadastrar(email.value,user.value,cnpj.value,email.value,password.value,password.value)'>Cadastrar</button>            
         </div>
     </div>
     <Rodape></Rodape>

@@ -1,40 +1,26 @@
-.cadastroDoador {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: limegreen;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.background{
+    background-color: grey;   
+    padding: 50px;
 }
 .box {
-    text-align: center;
-    align-items: center;
-    width: 400px;
-    height: 550px;
+    width: 600px;
+    border-radius: 10px;
+    height: 700px;
     background: #fff;
-    margin: 0 auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
-.button {
-    /* margin: 0 auto; */
-    color: black;
-    text-decoration: none;
-    background: green;
-    padding: 0px;
-    width: 120px;
-    height: 30px;
-    color: #ccc;
-    font: bold;
-}
-.total
-{
-    margin: 0 auto;
-}
-.h2 {
+.title{
     text-align: center;
 }
-/* .fundo{
-    position: absolute;
-    right: 50%;
-    left: 50%;
-} */
+.mat-form-field{
+    margin: 25px;
+}
+.buttonCadastro{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #456c45;
+}
