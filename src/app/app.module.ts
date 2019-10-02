@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { EventosComponent } from './eventos/eventos.component';
 import {MatCardModule} from '@angular/material/card';
+import { AdicionaAlimentoComponent } from './adiciona-alimento/adiciona-alimento.component';
+import { EditaEventoComponent } from './edita-evento/edita-evento.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import {MatCardModule} from '@angular/material/card';
     MenuNavComponent,
     CadastroComponent,
     EventosComponent,
+    AdicionaAlimentoComponent,
+    EditaEventoComponent,
   ],
   imports: [
     BrowserModule,
