@@ -15,21 +15,13 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.painel-1{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    margin: 15px;
-}
-.painel-2{
-    margin: 15px;
-}
-.painel-3{
-    margin: 15px;
-}
 .button-end{
     display: flex;
     justify-content: center;
+}
+.link-add-alimento{
+    text-decoration: none;
+    color: black;
 }
 .button-end button{
     font-size: 8px;
@@ -80,4 +72,11 @@
 }
 ::ng-deep .mat-step-header .mat-step-icon-selected {
     background-color: #5b8f6f; 
+}
+.mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #5b8f6f;
+    
 }

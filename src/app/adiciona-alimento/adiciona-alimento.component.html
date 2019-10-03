@@ -1,1 +1,44 @@
-<p>adiciona-alimento works!</p>
+Adicione alimentos
+<mat-horizontal-stepper #stepper>
+  <mat-step>
+    <div class="event-form">
+      <ng-template matStepLabel>Selecione a categoria e nome do alimento</ng-template>
+      <mat-form-field class="form">
+        <mat-label>Categoria</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">
+            {{categoria.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form">
+        <input matInput type="text" placeholder="Nome do alimento">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button matStepperNext class="next-button">Next</button>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Selecione a unidade</ng-template>
+    <mat-radio-group aria-label="Select an option" color="primary" class="event-form">
+      <mat-radio-button value="1">Unidades</mat-radio-button>
+      <mat-radio-button value="2">Kg</mat-radio-button>
+      <mat-radio-button value="3">Litro</mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button matStepperNext class="next-button">Next</button>
+  </mat-step>
+  
+  <mat-step>
+    <div class="event-form">
+      <ng-template matStepLabel>Digite a quantidade</ng-template>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Quantidade">
+      </mat-form-field>
+
+      
+    </div>
+      <button mat-raised-button (click)="stepper.reset()" class="next-button">Adicionar mais</button>
+      <button mat-raised-button matStepperNext (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value) " class="next-button">Concluir</button>
+  </mat-step>
+
+</mat-horizontal-stepper>
