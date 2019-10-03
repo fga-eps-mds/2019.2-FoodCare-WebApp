@@ -3,66 +3,91 @@
     class="material-icons">keyboard_arrow_left</i></a></button> -->
   <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
-<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="painel-1">
   <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{panelOpenState ? 'Adicione a data do evento e local' : 'Criar doação'}}
+    <mat-panel-title class="title-add-evento">
+      Criar evento de doação
     </mat-panel-title>
-    <!-- <mat-panel-description>
-      </mat-panel-description> -->
   </mat-expansion-panel-header>
-  <div class="event-form">
-    <mat-form-field>
-      <input matInput #itemLocal placeholder="Local">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data de início" #itemData_inicial>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data de términio" #itemData_final>
-    </mat-form-field>
-    {{ error?.message }}
-  </div>
-  <button mat-raised-button (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value)" class="button-end">Adicionar</button>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="painel-2"> 
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title-add-alimento">
+        Adicione data e local
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="event-form">
+      <mat-form-field>
+        <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #itemLocal placeholder="Local">
+      </mat-form-field>
+      {{ error?.message }}
+    </div>
+    <div class="button-end">
+      <button mat-raised-button 
+        (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value) ">Adicionar</button>
+    </div>
+  </mat-expansion-panel>
 
-  <mat-vertical-stepper>
-    <mat-step>
-      <div class="event-form">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="painel-3"> 
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title-add-alimento">
+        Adicione alimentos
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-vertical-stepper #stepper>
+      <mat-step>
+        <div class="event-form">
           <ng-template matStepLabel>Selecione a categoria e nome do alimento</ng-template>
           <mat-form-field>
-              <mat-label>Categoria</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">
-                  {{categoria.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">
+                {{categoria.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
           <mat-form-field>
             <input matInput type="text" placeholder="Nome do alimento">
           </mat-form-field>
         </div>
-        <button mat-button matStepperNext>Next</button>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Selecione a unidade</ng-template>
-      <mat-radio-group aria-label="Select an option" color="primary" class="event-form">
-          <mat-radio-button value="1">Kg</mat-radio-button>
-          <mat-radio-button value="2">Litro</mat-radio-button>
-          <mat-radio-button value="3">Unidades</mat-radio-button>
-        </mat-radio-group>
-      <button mat-button matStepperNext>Next</button>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Digite a quantidade</ng-template>
-      <mat-form-field>
-          <input matInput type="number" placeholder="Quantidade">
-        </mat-form-field>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperNext class="next-button">Next</button>
       </mat-step>
-  </mat-vertical-stepper>
 
+      <mat-step>
+        <ng-template matStepLabel>Selecione a unidade</ng-template>
+        <mat-radio-group aria-label="Select an option" color="primary" class="event-form">
+          <mat-radio-button value="1">Unidades</mat-radio-button>
+          <mat-radio-button value="2">Kg</mat-radio-button>
+          <mat-radio-button value="3">Litro</mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button matStepperNext class="next-button">Next</button>
+      </mat-step>
+      
+      <mat-step>
+        <div class="event-form">
+          <ng-template matStepLabel>Digite a quantidade</ng-template>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Quantidade">
+          </mat-form-field>
+  
+          
+        </div>
+          <button mat-raised-button (click)="stepper.reset()" class="next-button">Adicionar mais</button>
+          <button mat-raised-button matStepperNext class="next-button">Concluir</button>
+      </mat-step>
+
+    </mat-vertical-stepper>
+
+
+  </mat-expansion-panel>
 
 </mat-expansion-panel>
+
 <mat-card *ngFor="let item of items">
   <mat-card-title>{{ item.local }}</mat-card-title>
   <div class="card-items">

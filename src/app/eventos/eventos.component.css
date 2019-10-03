@@ -15,15 +15,69 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.painel-1{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 15px;
+}
+.painel-2{
+    margin: 15px;
+}
+.painel-3{
+    margin: 15px;
+}
 .button-end{
+    display: flex;
+    justify-content: center;
+}
+.button-end button{
     font-size: 8px;
-    width: 100px;
-    height: 40px;
-    
+    margin: 10px;
 }
 .event-form{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: start;
+}
+.title-add-alimento{
+    display: flex;
+    justify-content: center;
+}
+.title-add-evento{
+    display: flex;
+    justify-content: center;
+}
+.mat-radio-button{
+    margin: 10px;
+}
+.mat-radio-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.next-button{
+    font-size: 8px;
+    margin: 10px;
+    max-width: 130px;
+}
+/* .more-button{
+    font-size: 6px;
+    margin: 10px;
+    width: 100px;
+
+} */
+.button-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #5b8f6f; 
+}
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: #5b8f6f; 
 }
