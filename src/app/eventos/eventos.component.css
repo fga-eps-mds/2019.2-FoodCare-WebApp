@@ -15,3 +15,15 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.button-end{
+    font-size: 8px;
+    width: 100px;
+    height: 40px;
+    
+}
+.event-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

@@ -21,6 +21,10 @@ import { EventosComponent } from './eventos/eventos.component';
 import {MatCardModule} from '@angular/material/card';
 import { AdicionaAlimentoComponent } from './adiciona-alimento/adiciona-alimento.component';
 import { EditaEventoComponent } from './edita-evento/edita-evento.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -49,6 +53,10 @@ import { EditaEventoComponent } from './edita-evento/edita-evento.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatRadioModule,
   ],
   providers: [
     ApiService,
