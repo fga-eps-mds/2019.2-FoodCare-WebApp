@@ -6,3 +6,7 @@ export interface Alimento {
     un_medida: string;
     quantidade: number;
   }
+  export interface Categoria {
+      id: number;
+      nome: string;
+  }

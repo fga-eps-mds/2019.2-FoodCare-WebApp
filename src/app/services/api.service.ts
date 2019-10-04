@@ -38,10 +38,10 @@ export class ApiService {
     return this.http.get(this.apiRoot.concat('alimento/'));
   }
 
-  adicionaAlimento(nome: any, quantidade: any, id_categoria: any, un_medida:any, id_evento: any) {
+  adicionaAlimento( id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
     return this.http.post(
       this.apiRoot.concat('alimento/'),
-      { nome, quantidade, id_categoria, un_medida, id_evento }
+      { id_evento, id_categoria, nome, un_medida, quantidade }
     );
   }
 
@@ -49,13 +49,12 @@ export class ApiService {
     return this.http.delete(this.apiRoot.concat(`alimento/${id}/`));
   }
 
-  editaAlimento(id: number, nome: any, quantidade: any, id_categoria: any, un_medida:any, id_evento: any){
+  editaAlimento(id:any, id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any){
     return this.http.put(
       this.apiRoot.concat(`alimento/${id}/`),
-      { nome, quantidade, id_categoria, un_medida, id_evento}
+      { id_evento, id_categoria, nome, un_medida, quantidade}
     );
   }
-
 
   getCategoria() {
     return this.http.get(this.apiRoot.concat('categoria/'));
