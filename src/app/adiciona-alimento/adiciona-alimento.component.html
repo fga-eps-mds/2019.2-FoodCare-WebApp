@@ -6,7 +6,7 @@
 </mat-toolbar>
 
 <!-- Lista de alimento -->
-<mat-card *ngFor="let item of items">
+<mat-card *ngFor="let item of alimento">
   <mat-card-title>{{ item.nome }}</mat-card-title>
   <div class="card-items">
     <mat-card-content>
@@ -45,10 +45,8 @@
 
   <mat-step>
     <ng-template matStepLabel>Selecione a unidade</ng-template>
-    <mat-radio-group aria-label="Select an option" color="primary" class="event-form" #itemUnMedida>
-      <mat-radio-button value="1"  >Unidades</mat-radio-button>
-      <mat-radio-button value="2">Kg</mat-radio-button>
-      <mat-radio-button value="3" >Litro</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" color="primary" class="event-form" [(ngModel)]="itemUnMedida">
+        <mat-radio-button class="example-radio-button" *ngFor="let un of UnMedida" [value]="un">{{un}}</mat-radio-button>
     </mat-radio-group>
     <button mat-raised-button matStepperNext class="next-button">Next</button>
   </mat-step>
@@ -61,8 +59,8 @@
       </mat-form-field>
 
     </div>
-      <button mat-raised-button (click)="stepper.reset();adAlimento(itemNome.value, itemQuantidade.value,[1], JSON.stringify(itemUnMedida.value), 1)">Adicionar mais</button>
-      <button mat-raised-button matStepperNext (click)="adAlimento(itemNome.value, itemQuantidade.value, [1], JSON.stringify(itemUnMedida.value), 1)"  href="eventos/" class="next-button">Concluir</button>
+      <button mat-raised-button (click)="stepper.reset();adAlimento(itemNome.value, itemQuantidade.value,[1], itemUnMedida.viewValue, 1)">Adicionar mais</button>
+      <button mat-raised-button matStepperNext (click)="adAlimento(itemNome.value, itemQuantidade.value, [1], itemUnMedida.viewValue, 1)"  href="eventos/" class="next-button">Concluir</button>
   </mat-step>
 
 </mat-horizontal-stepper>
