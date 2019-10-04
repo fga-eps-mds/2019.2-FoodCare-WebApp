@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'home', component: MenuNavComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'eventos', component: EventosComponent },
-  { path: 'adiciona-alimento', component: AdicionaAlimentoComponent},
-//   Sempre que criar um componente, adicioná-lo aqui
+  { path: 'eventos/adiciona-alimento', component: AdicionaAlimentoComponent},
+//   Sempre que criar um componente, adicioná-lo aqui 
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
