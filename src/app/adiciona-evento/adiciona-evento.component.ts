@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Alimento } from './adiciona-alimento.interface';
-import { Categoria } from './adiciona-alimento.interface';
+import { Alimento } from './adiciona-evento.interface';
+import { Categoria } from './adiciona-evento.interface';
 
 @Component({
-  selector: 'app-adiciona-alimento',
-  templateUrl: './adiciona-alimento.component.html',
-  styleUrls: ['./adiciona-alimento.component.css']
+  selector: 'app-adiciona-evento',
+  templateUrl: './adiciona-evento.component.html',
+  styleUrls: ['./adiciona-evento.component.css']
 })
 
-export class AdicionaAlimentoComponent implements OnInit {
+export class AdicionaEventoComponent implements OnInit {
 
   alimento: Alimento[];
   id_evento: number;

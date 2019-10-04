@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { EventosComponent } from './eventos/eventos.component';
-import { AdicionaAlimentoComponent } from './adiciona-alimento/adiciona-alimento.component';
+import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
 
 const routes: Routes = [
   { path: 'home', component: MenuNavComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'eventos', component: EventosComponent },
-  { path: 'eventos/adiciona-alimento', component: AdicionaAlimentoComponent},
+  { path: 'eventos/adiciona-evento', component: AdicionaEventoComponent},
 //   Sempre que criar um componente, adicioná-lo aqui 
   { path: '',
     redirectTo: '/home',

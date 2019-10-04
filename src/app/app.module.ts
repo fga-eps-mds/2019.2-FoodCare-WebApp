@@ -25,7 +25,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 // declarations
-import { AdicionaAlimentoComponent } from './adiciona-alimento/adiciona-alimento.component';
+import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { AdicionaAlimentoComponent } from './adiciona-alimento/adiciona-alimento
     MenuNavComponent,
     CadastroComponent,
     EventosComponent,
-    AdicionaAlimentoComponent,
+    AdicionaEventoComponent,
     EditaEventoComponent,
   ],
   imports: [
