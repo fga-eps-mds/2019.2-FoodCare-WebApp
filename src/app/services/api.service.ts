@@ -34,4 +34,31 @@ export class ApiService {
       { data_inicio, data_final, local }
     );
   }
+  getAlimento() {
+    return this.http.get(this.apiRoot.concat('alimento/'));
+  }
+
+  adicionaAlimento(nome: any, quantidade: any, id_categoria: any, un_medida:any, id_evento: any) {
+    return this.http.post(
+      this.apiRoot.concat('alimento/'),
+      { nome, quantidade, id_categoria, un_medida, id_evento }
+    );
+  }
+
+  deletaAlimento(id: number) {
+    return this.http.delete(this.apiRoot.concat(`alimento/${id}/`));
+  }
+
+  editaAlimento(id: number, nome: any, quantidade: any, id_categoria: any, un_medida:any, id_evento: any){
+    return this.http.put(
+      this.apiRoot.concat(`alimento/${id}/`),
+      { nome, quantidade, id_categoria, un_medida, id_evento}
+    );
+  }
+
+
+  getCategoria() {
+    return this.http.get(this.apiRoot.concat('categoria/'));
+  }
+
 } //Fim exportclass
