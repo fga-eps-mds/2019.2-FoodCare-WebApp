@@ -1,4 +1,29 @@
-Adicione alimentos
+<!-- head -->
+<mat-toolbar class="toolbar-alimento">
+   <button mat-icon-button class="button-back"><a href="/eventos"><i
+    class="material-icons">keyboard_arrow_left</i></a></button>
+  <h1 class="title-toolbar">Adicione Alimentos</h1>
+</mat-toolbar>
+
+<!-- Lista de alimento -->
+<mat-card *ngFor="let item of items">
+  <mat-card-title>{{ item.nome }}</mat-card-title>
+  <div class="card-items">
+    <mat-card-content>
+      <div class="info">
+        <span>{{ item.categoria }}</span>
+        <span>{{ item.quantidade }}</span>
+        <span>{{ item.un_medida }}</span>
+
+      </div>
+      <button mat-button>
+        <i class="material-icons">edit</i>
+      </button>
+    </mat-card-content>
+
+  </div>
+</mat-card>
+
 <mat-horizontal-stepper #stepper>
   <mat-step>
     <div class="event-form">
@@ -12,7 +37,7 @@ Adicione alimentos
         </mat-select>
       </mat-form-field>
       <mat-form-field class="form">
-        <input matInput type="text" placeholder="Nome do alimento">
+        <input matInput type="text" placeholder="Nome do alimento" #itemNome>
       </mat-form-field>
     </div>
     <button mat-raised-button matStepperNext class="next-button">Next</button>
@@ -20,25 +45,24 @@ Adicione alimentos
 
   <mat-step>
     <ng-template matStepLabel>Selecione a unidade</ng-template>
-    <mat-radio-group aria-label="Select an option" color="primary" class="event-form">
-      <mat-radio-button value="1">Unidades</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" color="primary" class="event-form" #itemUnMedida>
+      <mat-radio-button value="1"  >Unidades</mat-radio-button>
       <mat-radio-button value="2">Kg</mat-radio-button>
-      <mat-radio-button value="3">Litro</mat-radio-button>
+      <mat-radio-button value="3" >Litro</mat-radio-button>
     </mat-radio-group>
     <button mat-raised-button matStepperNext class="next-button">Next</button>
   </mat-step>
-  
+
   <mat-step>
     <div class="event-form">
       <ng-template matStepLabel>Digite a quantidade</ng-template>
       <mat-form-field>
-        <input matInput type="number" placeholder="Quantidade">
+        <input matInput type="number" placeholder="Quantidade" #itemQuantidade>
       </mat-form-field>
 
-      
     </div>
-      <button mat-raised-button (click)="stepper.reset()" class="next-button">Adicionar mais</button>
-      <button mat-raised-button matStepperNext (click)="add(itemData_inicial.value, itemData_final.value, itemLocal.value) " class="next-button">Concluir</button>
+      <button mat-raised-button (click)="stepper.reset();adAlimento(itemNome.value, itemQuantidade.value,[1], JSON.stringify(itemUnMedida.value), 1)">Adicionar mais</button>
+      <button mat-raised-button matStepperNext (click)="adAlimento(itemNome.value, itemQuantidade.value, [1], JSON.stringify(itemUnMedida.value), 1)"  href="eventos/" class="next-button">Concluir</button>
   </mat-step>
 
 </mat-horizontal-stepper>
