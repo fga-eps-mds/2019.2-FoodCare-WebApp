@@ -17,28 +17,8 @@
   {{ error?.message }}
 </div>
 <div class="button-end">
-  <button mat-raised-button ><a class="link-add-evento" href="eventos/adiciona-alimento">Salvar endereço</a></button>
+  <button mat-raised-button (click)="adEvento(itemData_inicial.value, itemData_final.value, itemLocal.value)" ><a class="link-add-evento" >Salvar endereço</a></button>
 </div>
-
-
-<!-- Lista de alimento -->
-<mat-card *ngFor="let item of alimento">
-  <mat-card-title>{{ item.nome }}</mat-card-title>
-  <div class="card-items">
-    <mat-card-content>
-      <div class="info">
-        <span>{{ item.categoria }}</span>
-        <span>{{ item.quantidade }}</span>
-        <span>{{ item.un_medida }}</span>
-
-      </div>
-      <button mat-button>
-        <i class="material-icons">edit</i>
-      </button>
-    </mat-card-content>
-
-  </div>
-</mat-card>
 
 <mat-horizontal-stepper #stepper>
   <mat-step>
@@ -79,3 +59,22 @@
   </mat-step>
 
 </mat-horizontal-stepper>
+
+<!-- Lista de alimento -->
+<mat-card *ngFor="let item of alimento">
+  <mat-card-title>{{ item.nome }}</mat-card-title>
+  <div class="card-items">
+    <mat-card-content>
+      <div class="info">
+        <span>{{ item.categoria }}</span>
+        <span>{{ item.quantidade }}</span>
+        <span>{{ item.un_medida }}</span>
+
+      </div>
+      <button mat-button>
+        <i class="material-icons">edit</i>
+      </button>
+    </mat-card-content>
+
+  </div>
+</mat-card>

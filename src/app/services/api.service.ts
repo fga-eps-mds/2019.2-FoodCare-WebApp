@@ -38,10 +38,13 @@ export class ApiService {
     return this.http.get(this.apiRoot.concat('alimento/'));
   }
 
-  adicionaAlimento( id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
+  adicionaAlimento( id_evento:number, id_categoria:number, nome:string, un_medida:number, quantidade:number) {
+    const categoria = [];
+    categoria.push(id_categoria);
+    id_categoria = categoria;
     return this.http.post(
       this.apiRoot.concat('alimento/'),
-      { id_evento, id_categoria, nome, un_medida, quantidade }
+      { nome,  un_medida, quantidade, id_evento, id_categoria}
     );
   }
 
