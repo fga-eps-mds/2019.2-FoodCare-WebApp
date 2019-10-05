@@ -1,10 +1,27 @@
-.event-form{
+.end-form{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+.button-end{
+    display: flex;
+    justify-content: center;
+}
+.button-end button{
+    font-size: 8px;
+    margin-bottom: 15px;
+    max-width: 130px;
+}
+.link-add-evento{
+    text-decoration: none;
+    color: black;
+}
+.alimento-form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: start;
-}
-.form{
     margin: 15px;
 }
 .mat-radio-button{
@@ -21,11 +38,14 @@
     margin: 10px;
     max-width: 130px;
 }
-.button-group{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
+.form{
+    margin-right: 5px ;
+    margin-left: 5px ;
+}
+.button-final{
+    font-size: 8px;
+    margin: 10px;
+    max-width: 130px;
 }
 ::ng-deep .mat-step-header .mat-step-icon-state-edit {
     background-color: #5b8f6f; 

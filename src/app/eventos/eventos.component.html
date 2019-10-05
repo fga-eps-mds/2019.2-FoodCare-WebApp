@@ -1,30 +1,8 @@
-<mat-toolbar class="toolbar-events">
+<mat-toolbar class="toolbar-events" >
   <!-- <button mat-icon-button class="button-back"><a href="/home"><i
     class="material-icons">keyboard_arrow_left</i></a></button> -->
   <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
-<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-  <mat-expansion-panel-header>
-    <mat-panel-title class="title-add-evento">
-        {{panelOpenState ? 'Adicione a data, local e alimentos' : 'Criar evento de doação'}}
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-    <div class="event-form">
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #itemLocal placeholder="Local">
-      </mat-form-field>
-      {{ error?.message }}
-    </div>
-    <div class="button-end">
-      <button mat-raised-button><a class="link-add-alimento" href="eventos/adiciona-alimento">Adicionar alimentos</a></button>
-    </div>
-</mat-expansion-panel>
 
 <mat-card *ngFor="let item of items">
   <mat-card-title>{{ item.local }}</mat-card-title>
@@ -42,3 +20,10 @@
 
   </div>
 </mat-card>
+<button mat-icon-button class="button-add-evento">
+  <a style="color: white" href="eventos/adiciona-evento">
+    <i class="material-icons">
+      add
+    </i>
+  </a>
+</button>
