@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Alimento } from './adiciona-evento.interface';
 import { Categoria } from './adiciona-evento.interface';
-import { Evento } from './evento.interface';
+import { Evento } from './adiciona-evento.interface';
 
 @Component({
   selector: 'app-adiciona-evento',
@@ -14,9 +14,9 @@ export class AdicionaEventoComponent implements OnInit {
 
   evento: Evento[];
   alimento: Alimento[];
-  id_evento: number[];
+  id_evento: number;
   categoria: Categoria[];
-  id_categoria: number[];
+  id_categoria: number;
   error: any;
   un_medida: string = '';
   UnMedida: any=['Unidade', 'Kg', 'l'];
