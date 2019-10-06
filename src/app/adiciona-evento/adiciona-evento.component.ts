@@ -13,8 +13,8 @@ import { Evento } from './adiciona-evento.interface';
 export class AdicionaEventoComponent implements OnInit {
 
   evento: Evento[];
-  alimento: Alimento[];
   id_evento: number;
+  alimento: Alimento[];
   categoria: Categoria[];
   id_categoria: number;
   error: any;
@@ -38,9 +38,8 @@ export class AdicionaEventoComponent implements OnInit {
    );
  }
 
- adAlimento(itemNome: any, itemQuantidade: any) {
-   this.evento.push(this.evento[this.evento.length - 1].id);
-   this.api.adicionaAlimento( this.evento[this.evento.length - 1].id, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
+ adAlimento(itemNome: string, itemQuantidade: number) {
+   this.api.adicionaAlimento( this.id_evento, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
      (alimento: Alimento) => this.alimento.push(alimento)
    );
  }
@@ -63,5 +62,7 @@ export class AdicionaEventoComponent implements OnInit {
    this.api.createEvento(itemData_inicial, itemData_final, itemLocal).subscribe(
      (evento: Evento) => this.evento.push(evento)
    );
+   this.id_evento = this.evento[this.evento.length - 1].id;
  }
+
 }

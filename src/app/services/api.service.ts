@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Evento } from '../adiciona-evento/adiciona-evento.interface';
 
 @Injectable()
 export class ApiService {
@@ -38,7 +39,7 @@ export class ApiService {
     return this.http.get(this.apiRoot.concat('alimento/'));
   }
 
-  adicionaAlimento( id_evento:number, id_categoria:number, nome:string, un_medida:number, quantidade:number) {
+  adicionaAlimento( id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
     const categoria = [];
     categoria.push(id_categoria);
     id_categoria = categoria;
