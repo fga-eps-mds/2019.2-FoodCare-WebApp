@@ -24,8 +24,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 // declarations
 import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
+import { DialogAlimentoComponent } from './dialog-alimento/dialog-alimento.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.compo
     EventosComponent,
     AdicionaEventoComponent,
     EditaEventoComponent,
+    DialogAlimentoComponent,
   ],
+  entryComponents: [DialogAlimentoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -58,6 +62,7 @@ import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.compo
     MatStepperModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
   ],
   providers: [
     ApiService,

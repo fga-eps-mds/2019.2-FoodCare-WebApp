@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Evento } from './evento.interface';
+import {MatDialog} from '@angular/material'
+import { DialogAlimentoComponent } from '../dialog-alimento/dialog-alimento.component';
 
 @Component({
   selector: 'app-eventos',
@@ -12,7 +14,7 @@ export class EventosComponent implements OnInit {
   items: Evento[];
   error: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, public dialog:MatDialog) { }
 
   ngOnInit() {
     this.api.getEvento().subscribe(
@@ -33,6 +35,10 @@ export class EventosComponent implements OnInit {
       (item: Evento) => this.items.forEach(item => item)
 
     );
-
   }
+  
+  openDialog(){
+    this.dialog.open(DialogAlimentoComponent);
+  }
+
 }

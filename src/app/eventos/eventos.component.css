@@ -6,19 +6,13 @@
 .title-toolbar{
     color: white;
 }
-.mat-card{
+.mat-expansion-panel{
     margin: 15px;
-     min-width: 200px; 
 }
-.mat-card-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.mat-expansion-panel-header{
+    padding: 15px;
 }
-.title-add-alimento{
-    display: flex;
-    justify-content: center;
-}
+
 .button-add-evento{
     position: fixed; 
     left: 50%; 
@@ -26,4 +20,31 @@
     transform: translateX(-50%);
     background-color: #5b8f6f;
    
+}
+.edit{
+    display: flex;
+    justify-content: space-around;
+}
+.mat-card{
+    margin: 15px;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+.mat-card-content{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.lista{
+    display: flex;
+    flex: 1;
+}
+.data-items{
+    margin-right: auto ;
+    margin-left: auto;
+}
+.edit{
+    padding: 15px;
 }

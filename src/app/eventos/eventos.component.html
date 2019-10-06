@@ -1,25 +1,53 @@
-<mat-toolbar class="toolbar-events" >
+<mat-toolbar class="toolbar-events">
   <!-- <button mat-icon-button class="button-back"><a href="/home"><i
     class="material-icons">keyboard_arrow_left</i></a></button> -->
   <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
 
-<mat-card *ngFor="let item of items">
-  <mat-card-title>{{ item.local }}</mat-card-title>
-  <div class="card-items">
-    <mat-card-content>
-      <div class="date">
-        <span>{{ item.data_inicio }}</span>
-        <span>{{ item.data_final }}</span>
-
+<!-- <mat-expansion-panel *ngFor="let item of items">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ item.local }}
+    </mat-panel-title>
+    <mat-panel-description>
+      <div>
+        {{ item.data_inicio }}
       </div>
-      <button mat-button="edit(item.id, itemData_inicial.value, itemData_final.value, itemLocal.value)">
-        <i class="material-icons">edit</i>
-      </button>
-    </mat-card-content>
+      <div>
+        {{ item.data_final }}
+      </div>
+    </mat-panel-description>
+
+
+  </mat-expansion-panel-header>
+  <div class="edit">
+    <button mat-icon-button>
+      <a href="eventos/edita-evento" style="color: black;">
+        <i class="material-icons" style="font-size: 18px;">edit</i>
+      </a>
+    </button>
 
   </div>
+
+</mat-expansion-panel> -->
+
+<mat-card *ngFor="let item of items">
+  <mat-card-content>
+    <a (click)="openDialog()" class="lista">
+      <h2>{{ item.local }}</h2>
+      <div class="data-items">
+        <p>{{ item.data_inicio }}</p>
+        <p>{{ item.data_final }}</p>
+      </div>
+    </a>
+    </mat-card-content>
+  <button mat-icon-button class="edit">
+    <a href="eventos/edita-evento" style="color: black;">
+      <i class="material-icons">edit</i>
+    </a>
+  </button>
 </mat-card>
+
 <button mat-icon-button class="button-add-evento">
   <a style="color: white" href="eventos/adiciona-evento">
     <i class="material-icons">
