@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/fga-eps-mds/2019.2-FoodCare/master/docs/images/logo-medium.png" alt="Logo">
+    <img src="https://imgur.com/bwJJC9F.png" alt="Logo">
 </p>
 
 <h1 align="center">FoodCare WebApp</h1>
