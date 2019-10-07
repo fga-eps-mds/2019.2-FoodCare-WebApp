@@ -1,46 +1,48 @@
-.login {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    background: limegreen;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.background{
+    background-color: #F1EBE4;   
+    padding: 50px;
 }
 .box {
-    text-align: center;
-    align-items: center;
-    width: 400px;
+    width: 450px;
     height: 350px;
+    border-radius: 10px;
     background: #fff;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px auto;
 }
-.button {
-    /* margin: 0 auto; */
+.title{
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+.button{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #456c45;
+    padding: 3px;
+}
+.link{
     color: black;
     text-decoration: none;
-    background: green;
-    padding: 0px;
-    width: 120px;
-    height: 30px;
-    color:#fff;
-    font: bold;
-    /* border-radius: 7%; */
+    font-weight: bold;
+}
+.textoCadastro{
+    margin: auto;
+    padding-top: 10px;
 }
 
-.button > a:link,a:visited,a:hover,a:active{
-    text-decoration: none;
-    color:white;
+.mat-form-field{
+    margin: 10px;
 }
-.total
-{
-    margin: 0 auto;;
+.rodape{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
 }
-.h2 {
+.h2{
     text-align: center;
 }
-/* .fundo{
-    position: absolute;
-    right: 50%;
-    left: 50%;
-} */

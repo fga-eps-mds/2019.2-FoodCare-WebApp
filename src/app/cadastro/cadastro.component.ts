@@ -16,8 +16,8 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit() {}
   cadastrar(username:string, nome:string, cnpj:string, email:string, password1: string,password2: string){
-    alert("Chegou cadastrar()");
-    this.authService.cadastrar(username, nome, cnpj, email, password1,password2).subscribe(
+    alert("Cadastro efetuado com sucesso");
+    this.authService.cadastrar(username, nome, cnpj, email, password1, password2).subscribe(
       success => this.router.navigate(['exibir-doadores']),
       error => this.error = error
     );

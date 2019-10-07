@@ -1,11 +1,11 @@
 .background{
-    background-color: grey;   
+    background-color: #F1EBE4;   
     padding: 50px;
 }
 .box {
-    width: 600px;
+    width: 400px;
+    height: 500px;
     border-radius: 10px;
-    height: 700px;
     background: #fff;
     margin: auto;
     display: flex;
@@ -13,9 +13,10 @@
 }
 .title{
     text-align: center;
+    font-family: 'Montserrat';
 }
 .mat-form-field{
-    margin: 25px;
+    margin: 5px;
 }
 .buttonCadastro{
     width: 150px;
