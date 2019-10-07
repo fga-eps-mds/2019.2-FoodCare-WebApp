@@ -36,8 +36,11 @@
     <a (click)="openDialog()" class="lista">
       <h2>{{ item.local }}</h2>
       <div class="data-items">
-        <p>{{ item.data_inicio }}</p>
-        <p>{{ item.data_final }}</p>
+        <p>{{ getFormateDate(item.data_inicio) }}</p>
+        <p>{{ getFormateDate(item.data_final) }}</p>
+        <i class="material-icons">
+          info_outlined
+          </i>
       </div>
     </a>
     </mat-card-content>
