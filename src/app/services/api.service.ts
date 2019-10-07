@@ -53,7 +53,10 @@ export class ApiService {
     return this.http.delete(this.apiRoot.concat(`alimento/${id}/`));
   }
 
-  editaAlimento(id:any, id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any){
+  editaAlimento(id:any, id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
+    const categoria = [];
+    categoria.push(id_categoria);
+    id_categoria = categoria;
     return this.http.put(
       this.apiRoot.concat(`alimento/${id}/`),
       { id_evento, id_categoria, nome, un_medida, quantidade}

@@ -15,6 +15,7 @@ export class AdicionaEventoComponent implements OnInit {
   evento: Evento[];
   id_evento: number;
   alimento: Alimento[];
+  alimentoEvento: Alimento[];
   categoria: Categoria[];
   id_categoria: number;
   error: any;
@@ -36,19 +37,31 @@ export class AdicionaEventoComponent implements OnInit {
      (evento: Evento[]) => this.evento = evento,
      (error: any) => this.error = error
    );
+   this.alimentoEvento=[];
  }
-
+ // Adciona um novo evento
+ adEvento(itemData_inicial: any, itemData_final: any, itemLocal: any) {
+   this.api.createEvento(itemData_inicial, itemData_final, itemLocal).subscribe(
+     (evento: Evento) => this.evento.push(evento)
+   );
+   this.id_evento = this.evento[this.evento.length - 1].id;
+ }
+ // adiciona um novo alimento
  adAlimento(itemNome: string, itemQuantidade: number) {
    this.api.adicionaAlimento( this.id_evento, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
      (alimento: Alimento) => this.alimento.push(alimento)
    );
+   this.api.adicionaAlimento( this.id_evento, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
+     (alimento: Alimento) => this.alimentoEvento.push(alimento)
+     );
  }
 
  editAlimento(id: number, itemNome: any, itemQuantidade: any){
-   this.api.editaAlimento(id, this.evento[this.evento.length - 1].id, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
-     (success: any) => this.alimento.splice(
-       this.alimento.findIndex(alimento => alimento.id === id)
-     )
+   this.api.editaAlimento(id, this.id_evento, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
+     (alimento: Alimento) => this.alimento[id] = alimento,
+   );
+   this.api.editaAlimento(id, this.id_evento, this.id_categoria, itemNome, this.un_medida, itemQuantidade ).subscribe(
+     (alimento: Alimento) => this.alimentoEvento[id] = alimento,
    );
  }
  delAlimento(id: number) {
@@ -57,12 +70,20 @@ export class AdicionaEventoComponent implements OnInit {
        this.alimento.findIndex(alimento => alimento.id === id)
      )
    );
- }
- adEvento(itemData_inicial: any, itemData_final: any, itemLocal: any) {
-   this.api.createEvento(itemData_inicial, itemData_final, itemLocal).subscribe(
-     (evento: Evento) => this.evento.push(evento)
+
+   this.api.deletaAlimento(id).subscribe(
+   (success: any) => this.alimentoEvento.splice(
+     this.alimentoEvento.findIndex(alimento => alimento.id === id)
+   )
    );
-   this.id_evento = this.evento[this.evento.length - 1].id;
+ }
+ mostraEditaAlimento(id: any){
+   if (document.getElementById(id).style.display == "none") {
+      document.getElementById(id).style.display = "block";
+    } else {
+      /* se conteúdo está a mostra, esconde o conteúdo  */
+      document.getElementById(id).style.display = "none";
+    }
  }
 
 }
