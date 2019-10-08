@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Barlow, Roboto, "Helvetica Neue", sans-serif; }
+.mat-button-wrapper{
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 1.6em;
+}
