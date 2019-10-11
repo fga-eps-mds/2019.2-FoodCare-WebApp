@@ -32,6 +32,7 @@ export class AuthService {
 
 
   login(username: string, password: string) {
+    this.logout();
     return this.http.post(
       this.apiRoot.concat('login/'),
       { username, password }
@@ -41,6 +42,7 @@ export class AuthService {
     );
   }
   cadastrar(username:string, nome:string, cnpj:string, email:string, password1: string,password2: string) {
+    this.logout();
     return this.http.post(
       this.apiRoot.concat('signup/'),
       { username,nome, cnpj, email, password1, password2 }

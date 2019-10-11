@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 import { Doador} from './doadores.interface';
+import { ApiService } from './api.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-exibir-doadores',
@@ -10,7 +12,11 @@ import { Doador} from './doadores.interface';
 export class ExibirDoadoresComponent implements OnInit {
   items : Doador[]
   error: any
-  constructor(private api:ApiService) { }
+  constructor(
+    private api: ApiService, 
+    private auth: AuthService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.api.getDoadores().subscribe(
@@ -28,5 +34,9 @@ export class ExibirDoadoresComponent implements OnInit {
   add(nome: string, cnpj: string, email: string, password: string) {
     this.api.createDoador(nome, cnpj,email,password).subscribe(
       (item:Doador)=>this.items.push(item)    );
+  }
+  logout(){
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 }
