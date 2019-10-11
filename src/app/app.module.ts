@@ -27,7 +27,6 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 // declarations
 import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
-import { DialogAlimentoComponent } from './dialog-alimento/dialog-alimento.component';
 
 
 @NgModule({
@@ -38,9 +37,7 @@ import { DialogAlimentoComponent } from './dialog-alimento/dialog-alimento.compo
     EventosComponent,
     AdicionaEventoComponent,
     EditaEventoComponent,
-    DialogAlimentoComponent,
   ],
-  entryComponents: [DialogAlimentoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

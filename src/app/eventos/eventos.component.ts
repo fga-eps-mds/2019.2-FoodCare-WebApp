@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Evento } from './evento.interface';
 import {MatDialog} from '@angular/material'
-import { DialogAlimentoComponent } from '../dialog-alimento/dialog-alimento.component';
 import * as moment from 'moment'
 import 'moment/locale/pt-br'
 
@@ -41,9 +40,6 @@ export class EventosComponent implements OnInit {
     );
   }
   
-  openDialog(){
-    this.dialog.open(DialogAlimentoComponent);
-  }
   getFormateDate(date){
     return moment(date).format('LLL');
   }

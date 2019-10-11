@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Alimento } from './adiciona-evento.interface';
-import { Categoria } from './adiciona-evento.interface';
 import { Evento } from './adiciona-evento.interface';
+import { Categoria } from './adiciona-evento.interface';
 
 @Component({
   selector: 'app-adiciona-evento',
@@ -71,11 +71,7 @@ export class AdicionaEventoComponent implements OnInit {
      )
    );
 
-   this.api.deletaAlimento(id).subscribe(
-   (success: any) => this.alimentoEvento.splice(
-     this.alimentoEvento.findIndex(alimento => alimento.id === id)
-   )
-   );
+    this.alimentoEvento.splice( this.alimentoEvento.findIndex(Alimento => Alimento.id === id));
  }
  mostraEditaAlimento(id: any){
    if (document.getElementById(id).style.display == "none") {

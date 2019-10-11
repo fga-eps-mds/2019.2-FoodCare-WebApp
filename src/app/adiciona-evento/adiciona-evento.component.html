@@ -1,133 +1,44 @@
 <!-- head -->
-<mat-toolbar class="toolbar-alimento">
+<!-- <mat-toolbar class="toolbar-alimento">
   <button mat-icon-button class="button-back"><a href="/eventos"><i
         class="material-icons">keyboard_arrow_left</i></a></button>
   <h1 class="title-toolbar">Adicione Eventos</h1>
-</mat-toolbar>
+</mat-toolbar> -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-toolbar>
+    <button mat-icon-button class="button-back"><a href="/eventos"><i
+          class="material-icons">keyboard_arrow_left</i></a></button>
+    Adicionar evento
+  </mat-toolbar>
+</mat-sidenav-container>
 <!-- Etapas de adicionar alimeto-->
-<mat-vertical-stepper>
-  <mat-step>
-    <ng-template matStepLabel>Adicione data e local do evento</ng-template>
-    <div class="end-form">
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput #itemLocal placeholder="Local">
-      </mat-form-field>
-      {{ error?.message }}
-    </div>
-    <div class="button-end">
-      <button mat-raised-button matStepperNext (click)="adEvento(itemData_inicial.value, itemData_final.value, itemLocal.value)" ><a class="link-add-evento" >Salvar endereço</a></button>
-    </div>
-
-
-  </mat-step>
-  <mat-step>
-
-    <ng-template matStepLabel>Adicione alimento</ng-template>
-    <mat-vertical-stepper #stepper>
-      <mat-step>
-        <div class="alimento-form">
-          <ng-template matStepLabel>Categoria e nome</ng-template>
-          <mat-form-field class="form">
-            <mat-label>Categoria</mat-label>
-            <mat-select [(value)]=id_categoria>
-              <mat-option *ngFor="let item of categoria" value={{item.id}}>{{item.nome}} </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="form">
-            <input matInput type="text" placeholder="Nome do alimento" #itemNome>
-          </mat-form-field>
-        </div>
-        <button mat-raised-button matStepperNext class="next-button">Próximo</button>
-      </mat-step>
-
-      <mat-step>
-        <ng-template matStepLabel>Unidade</ng-template>
-        <mat-radio-group aria-label="Select an option" color="primary" class="event-form" [(ngModel)]=un_medida>
-          <mat-radio-button class="example-radio-button" *ngFor="let un of UnMedida" [value]="un">{{un}}</mat-radio-button>
-        </mat-radio-group>
-        <button mat-raised-button matStepperNext class="next-button">Próximo</button>
-      </mat-step>
-
-      <mat-step>
-        <div class="alimento-form">
-          <ng-template matStepLabel>Quantidade</ng-template>
-          <mat-form-field>
-            <input matInput type="number" placeholder="Quantidade" #itemQuantidade>
-          </mat-form-field>
-
-        </div>
-        <button mat-raised-button class="button-final" (click)="stepper.reset();adAlimento(itemNome.value, itemQuantidade.value)">Adicionar
-          mais</button>
-        <button mat-raised-button class="button-final" href="eventos/" (click)="adAlimento(itemNome.value, itemQuantidade.value)">Concluir</button>
-      </mat-step>
-
-    </mat-vertical-stepper>
-  </mat-step>
-
-</mat-vertical-stepper>
-<!-- Lista de alimento -->
-<mat-card *ngFor="let item of alimentoEvento">
-  <div class="alimento" id="info">
-    <mat-card-content>
-      <div class="info-alimento">
-      <mat-card-title>{{ item.nome }}</mat-card-title>
-        <span>{{ item.categoria }}</span>
-        <span>{{ item.quantidade }}</span>
-        <span>{{ item.un_medida }}</span>
-        </div>
-      <button mat-button>
-        <i class="material-icons" (click) = "mostraEditaAlimento( item.id)">edit</i>
-      </button>
-      <button mat-button>
-        <i class="material-icons" (click) = "delAlimento(item.id)">deletar</i>
-      </button>
-    </mat-card-content>
-    <div class="edit-info" style="display: none;"  id = {{item.id}}>
-            <ng-template matStepLabel>Adicione alimento</ng-template>
-            <mat-horizontal-stepper #stepper>
-              <mat-step>
-                <div class="alimento-form">
-                  <ng-template matStepLabel>Categoria e nome</ng-template>
-                  <mat-form-field class="form">
-                    <mat-label>Categoria</mat-label>
-                    <mat-select [(value)]=id_categoria >
-                      <mat-option *ngFor="let i of categoria" value={{i.id}}>{{i.nome}} </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                  <mat-form-field class="form">
-                    <input matInput type="text" placeholder="Nome do alimento" #itemNome>
-                  </mat-form-field>
-                </div>
-                <button mat-raised-button matStepperNext class="next-button">Próximo</button>
-              </mat-step>
-
-              <mat-step>
-                <ng-template matStepLabel>Unidade</ng-template>
-                <mat-radio-group aria-label="Select an option" color="primary" class="event-form" [(ngModel)]=un_medida>
-                  <mat-radio-button class="example-radio-button" *ngFor="let un of UnMedida" [value]="un">{{un}}</mat-radio-button>
-                </mat-radio-group>
-                <button mat-raised-button matStepperNext class="next-button">Próximo</button>
-              </mat-step>
-
-              <mat-step>
-                <div class="alimento-form">
-                  <ng-template matStepLabel>Quantidade</ng-template>
-                  <mat-form-field>
-                    <input matInput type="number" placeholder=Quantidade #itemQuantidade>
-                  </mat-form-field>
-
-                </div>
-                <button mat-raised-button class="button-final" (click)="editAlimento(item.id, itemNome.value, itemQuantidade.value);mostraEditaAlimento(item.id)">Salvar</button>
-              </mat-step>
-
-            </mat-horizontal-stepper>
-    </div>
+<div class="end-form">
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
+    </mat-form-field>
+  </div>
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
+    </mat-form-field>
 
   </div>
-</mat-card>
+  <div class="local">
+    <mat-form-field>
+      <input matInput #itemLocal placeholder="Local">
+    </mat-form-field>
+
+  </div>
+  <div class="desc">
+    <mat-form-field>
+      <textarea matInput placeholder="Descrição">Adicione descrição</textarea>
+    </mat-form-field>
+
+  </div>
+  <div class="button-concluir">
+    <button mat-raised-button
+      (click)="adEvento(itemData_inicial.value, itemData_final.value, itemLocal.value)"><a>Concluir</a></button>
+    {{ error?.message }}
+  </div>
+</div>
