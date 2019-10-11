@@ -10,8 +10,6 @@
             </mat-form-field>
             <button mat-raised-button (click)='login(usuario.value, senha.value)'class="button">Login</button> 
             <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
-            <p>{{ error?.message }}</p>
-            <p *ngIf='error'>{{ error?.error | json }}</p>
         </div>
     </div>
     <Rodape class="rodape"></Rodape>
