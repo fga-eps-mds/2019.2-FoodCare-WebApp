@@ -15,13 +15,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule} from '@angular/material';
+import { ContatoComponent } from './contato/contato.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavComponent,
-    CadastroComponent
+    CadastroComponent,
+    ContatoComponent
   ],
 
   imports: [
@@ -39,6 +42,7 @@ import { MatFormFieldModule, MatInputModule} from '@angular/material';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
 
   providers: [],
