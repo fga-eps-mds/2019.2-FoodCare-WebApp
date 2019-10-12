@@ -33,21 +33,16 @@
 
 <mat-card *ngFor="let item of items">
   <mat-card-content>
-    <a (click)="openDialog()" class="lista">
-      <h2>{{ item.local }}</h2>
+
+      <h2>{{ item.nome }}</h2>
       <div class="data-items">
         <p>{{ getFormateDate(item.data_inicio) }}</p>
         <p>{{ getFormateDate(item.data_final) }}</p>
-        <i class="material-icons">
-          info_outlined
-          </i>
       </div>
-    </a>
+
     </mat-card-content>
-  <button mat-icon-button class="edit">
-    <a href="eventos/edita-evento" style="color: black;">
+  <button mat-icon-button class="edit" click()>
       <i class="material-icons">edit</i>
-    </a>
   </button>
 </mat-card>
 

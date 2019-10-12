@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Evento } from './evento.interface';
-import {MatDialog} from '@angular/material'
-import * as moment from 'moment'
-import 'moment/locale/pt-br'
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventos',
@@ -15,7 +15,10 @@ export class EventosComponent implements OnInit {
   items: Evento[];
   error: any;
 
-  constructor(private api: ApiService, public dialog:MatDialog) { 
+  constructor(
+    private api: ApiService,
+    private router: Router 
+  ){
     moment.locale('pt-BR');
   }
 
@@ -33,14 +36,12 @@ export class EventosComponent implements OnInit {
     );
   }
 
-  edit(id: number, itemData_inicial: any, itemData_final: any, itemLocal: any){
-    this.api.editEvento(id, itemData_inicial, itemData_final, itemLocal).subscribe(
-      (item: Evento) => this.items.forEach(item => item)
+  // edit(id:number){
+  //   this.api.
+  // }
 
-    );
-  }
-  
-  getFormateDate(date){
+  getFormateDate(date) {
     return moment(date).format('LLL');
   }
+
 }

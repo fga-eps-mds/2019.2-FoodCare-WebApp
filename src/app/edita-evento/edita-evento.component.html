@@ -13,6 +13,12 @@
 </mat-sidenav-container>
 <!-- Etapas de adicionar alimeto-->
 <div class="end-form">
+    <div class="nome">
+        <mat-form-field>
+            <input matInput #itemNome placeholder="Nome">
+        </mat-form-field>
+
+    </div>
     <div class="date">
         <mat-form-field>
             <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
@@ -24,12 +30,12 @@
         </mat-form-field>
 
     </div>
-    <div class="local">
+    <!-- <div class="local">
         <mat-form-field>
             <input matInput #itemLocal placeholder="Local">
         </mat-form-field>
 
-    </div>
+    </div> -->
     <div class="desc">
         <mat-form-field>
             <textarea matInput placeholder="Descrição">Adicione descrição</textarea>

@@ -15,13 +15,13 @@ export class ApiService {
   }
 
 
-  createEvento(data_inicio: any, data_final: any, local: any) {
+  createEvento(nome: string, data_inicio: any, data_final: any, desc: string) {
     //const alimentos = [];
     //alimentos.push(id_alimento);
     //id_alimento = alimentos;
     return this.http.post(
       this.apiRoot.concat('evento/'),
-      { data_inicio, data_final, local }
+      { nome, data_inicio, data_final, desc }
     );
   }
 
@@ -29,42 +29,12 @@ export class ApiService {
     return this.http.delete(this.apiRoot.concat(`evento/${id}/`));
   }
 
-  editEvento(id: number, data_inicio: any, data_final: any, local: any){
+  editEvento(id: number, nome: string, data_inicio: any, data_final: any, desc: any){
     return this.http.put(
       this.apiRoot.concat(`evento/${id}/`),
-      { data_inicio, data_final, local }
-    );
-  }
-  getAlimento() {
-    return this.http.get(this.apiRoot.concat('alimento/'));
-  }
-
-  adicionaAlimento( id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
-    const categoria = [];
-    categoria.push(id_categoria);
-    id_categoria = categoria;
-    return this.http.post(
-      this.apiRoot.concat('alimento/'),
-      { nome,  un_medida, quantidade, id_evento, id_categoria}
+      {id, nome, data_inicio, data_final, desc }
     );
   }
 
-  deletaAlimento(id: number) {
-    return this.http.delete(this.apiRoot.concat(`alimento/${id}/`));
-  }
-
-  editaAlimento(id:any, id_evento:any, id_categoria:any, nome:any, un_medida:any, quantidade:any) {
-    const categoria = [];
-    categoria.push(id_categoria);
-    id_categoria = categoria;
-    return this.http.put(
-      this.apiRoot.concat(`alimento/${id}/`),
-      { id_evento, id_categoria, nome, un_medida, quantidade}
-    );
-  }
-
-  getCategoria() {
-    return this.http.get(this.apiRoot.concat('categoria/'));
-  }
 
 } //Fim exportclass

@@ -13,32 +13,38 @@
 </mat-sidenav-container>
 <!-- Etapas de adicionar alimeto-->
 <div class="end-form">
-  <div class="date">
+  <div class="nome">
     <mat-form-field>
-      <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
-    </mat-form-field>
-  </div>
-  <div class="date">
-    <mat-form-field>
-      <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
+      <input matInput #nome placeholder="Nome">
     </mat-form-field>
 
   </div>
-  <div class="local">
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de início" #data_inicial>
+    </mat-form-field>
+  </div>
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de términio" #data_final>
+    </mat-form-field>
+
+  </div>
+  <!-- <div class="local">
     <mat-form-field>
       <input matInput #itemLocal placeholder="Local">
     </mat-form-field>
 
-  </div>
+  </div> -->
   <div class="desc">
     <mat-form-field>
-      <textarea matInput placeholder="Descrição">Adicione descrição</textarea>
+      <textarea #desc matInput placeholder="Descrição">Adicione descrição</textarea>
     </mat-form-field>
 
   </div>
   <div class="button-concluir">
     <button mat-raised-button
-      (click)="adEvento(itemData_inicial.value, itemData_final.value, itemLocal.value)"><a>Concluir</a></button>
+      (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value)"><a>Concluir</a></button>
     {{ error?.message }}
   </div>
 </div>
