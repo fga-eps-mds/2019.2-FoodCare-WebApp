@@ -36,7 +36,7 @@
     </div>
     <div class="button-concluir">
       <button mat-raised-button
-        (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value);mostraSalvaAlimento()"><a>Concluir</a></button>
+        (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value);mostraSalvaAlimento();refresh()"><a>Concluir</a></button>
       {{ error?.message }}
     </div>
   </div>
@@ -50,11 +50,49 @@
         <p>{{ getFormateDate(item.data_inicio) }}</p>
         <p>{{ getFormateDate(item.data_final) }}</p>
       </div>
+      <div class="edit-info" style="display: none;"  id = {{item.id}}>
+        <!-- Etapas de adicionar alimeto-->
+        <div class="end-form">
+            <div class="nome_edit">
+                <mat-form-field>
+                    <input matInput #itemNome placeholder="Nome">
+                </mat-form-field>
+
+            </div>
+            <div class="date_edit">
+                <mat-form-field>
+                    <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
+                </mat-form-field>
+            </div>
+            <div class="date_edit">
+                <mat-form-field>
+                    <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
+                </mat-form-field>
+
+            </div>
+            <!-- <div class="local">
+                <mat-form-field>
+                    <input matInput #itemLocal placeholder="Local">
+                </mat-form-field>
+
+            </div> -->
+            <div class="desc_edit">
+                <mat-form-field>
+                    <textarea matInput placeholder="Descrição" #itemDescricao>Adicione descrição</textarea>
+                </mat-form-field>
+
+            </div>
+            <div class="button-concluir">
+                <button mat-raised-button (click)="mostraEditaAlimento(item.id); editEvento(item.id,itemNome.value,itemData_inicial.value, itemData_final.value, itemDescricao.value); refresh()"><a>Concluir</a></button>
+                {{ error?.message }}
+            </div>
+        </div>
+      </div>
 
     </mat-card-content>
-  <!-- <button mat-icon-button class="edit" click()>
+   <button mat-icon-button class="edit" (click)="mostraEditaAlimento(item.id)">
       <i class="material-icons">edit</i>
-  </button -->
+  </button>
 </mat-card>
 
 <button mat-icon-button class="button-add-evento" (click)="mostraSalvaAlimento()">

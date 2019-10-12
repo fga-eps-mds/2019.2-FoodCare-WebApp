@@ -65,7 +65,25 @@ export class EventosComponent implements OnInit {
         console.log(error)
       }
     );
-
   }
 
+  // Adciona um novo evento
+  editEvento(id: number, nome: string, data_inicial: any, data_final: any, desc: string) {
+    this.api.editEvento(id, nome, data_inicial, data_final, desc).subscribe(
+      (items: Evento[]) => this.items[id] = items,
+    );
+  }
+
+  mostraEditaAlimento(id: any){
+    if (document.getElementById(id).style.display == "none") {
+       document.getElementById(id).style.display = "block";
+     } else {
+       /* se conteúdo está a mostra, esconde o conteúdo  */
+       document.getElementById(id).style.display = "none";
+     }
+  }
+
+  refresh(){
+      window.location.reload();
+  }
 }
