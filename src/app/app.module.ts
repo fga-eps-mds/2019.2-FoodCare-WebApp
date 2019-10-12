@@ -15,15 +15,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api.service';
+import { EventosComponent } from './eventos/eventos.component';
+import {MatCardModule} from '@angular/material/card';
+import { EditaEventoComponent } from './edita-evento/edita-evento.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
+// declarations
+import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavComponent,
-    CadastroComponent
+    CadastroComponent,
+    EventosComponent,
+    AdicionaEventoComponent,
+    EditaEventoComponent,
   ],
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,9 +53,19 @@ import { MatFormFieldModule, MatInputModule} from '@angular/material';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDialogModule,
   ],
-
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ],
 })
 export class AppModule { }

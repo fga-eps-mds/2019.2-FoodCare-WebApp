@@ -1,0 +1,19 @@
+.end-form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+}
+.date{
+    display: flex;
+    margin: auto;
+}
+.nome{
+    margin: auto;
+}
+.desc{
+    margin: auto;
+}
+.button-concluir{
+    margin: auto;
+}

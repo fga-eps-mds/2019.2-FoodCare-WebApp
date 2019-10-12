@@ -1,0 +1,50 @@
+<!-- head -->
+<!-- <mat-toolbar class="toolbar-alimento">
+  <button mat-icon-button class="button-back"><a href="/eventos"><i
+        class="material-icons">keyboard_arrow_left</i></a></button>
+  <h1 class="title-toolbar">Adicione Eventos</h1>
+</mat-toolbar> -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-toolbar>
+    <button mat-icon-button class="button-back"><a href="/eventos"><i
+          class="material-icons">keyboard_arrow_left</i></a></button>
+    Adicionar evento
+  </mat-toolbar>
+</mat-sidenav-container>
+<!-- Etapas de adicionar alimeto-->
+<div class="end-form">
+  <div class="nome">
+    <mat-form-field>
+      <input matInput #nome placeholder="Nome">
+    </mat-form-field>
+
+  </div>
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de início" #data_inicial>
+    </mat-form-field>
+  </div>
+  <div class="date">
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="Data e hora de términio" #data_final>
+    </mat-form-field>
+
+  </div>
+  <!-- <div class="local">
+    <mat-form-field>
+      <input matInput #itemLocal placeholder="Local">
+    </mat-form-field>
+
+  </div> -->
+  <div class="desc">
+    <mat-form-field>
+      <textarea #desc matInput placeholder="Descrição">Adicione descrição</textarea>
+    </mat-form-field>
+
+  </div>
+  <div class="button-concluir">
+    <button mat-raised-button
+      (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value)"><a>Concluir</a></button>
+    {{ error?.message }}
+  </div>
+</div>
