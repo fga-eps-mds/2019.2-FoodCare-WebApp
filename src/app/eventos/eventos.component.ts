@@ -17,7 +17,7 @@ export class EventosComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private router: Router 
+    private router: Router
   ){
     moment.locale('pt-BR');
   }
@@ -42,6 +42,30 @@ export class EventosComponent implements OnInit {
 
   getFormateDate(date) {
     return moment(date).format('LLL');
+  }
+
+  mostraSalvaAlimento(){
+    if (document.getElementById("save-info").style.display == "none") {
+       document.getElementById("save-info").style.display = "block";
+     } else {
+       /* se conteúdo está a mostra, esconde o conteúdo  */
+       document.getElementById("save-info").style.display = "none";
+     }
+  }
+
+  // Adciona um novo evento
+  adEvento(nome: string, data_inicial: any, data_final: any, desc: string) {
+    this.api.createEvento(nome, data_inicial, data_final, desc).subscribe(
+      success => {
+        (evento: Evento) => this.evento.push(evento);
+        this.router.navigate(['eventos'])
+      },
+      error => {
+        this.error = error;
+        console.log(error)
+      }
+    );
+
   }
 
 }
