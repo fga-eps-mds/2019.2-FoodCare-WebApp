@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule} from '@angular/material';
-import { ContatoComponent } from './contato/contato.component';
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -23,8 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
   declarations: [
     AppComponent,
     MenuNavComponent,
-    CadastroComponent,
-    ContatoComponent
+    CadastroComponent
   ],
 
   imports: [

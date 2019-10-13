@@ -23,7 +23,7 @@
 		</mat-toolbar>
 
 
-		<section  id="item1" class="item1">
+		<section id="item1" class="item1">
 			<div class="title-item1">
 				<h1>Ajude a acabar com a fome do Brasil!</h1>
 			</div>
@@ -41,8 +41,8 @@
 
 
 		<!-- TÓPICO 2 DA HOME -->
-		<section  id="item2" class="item2">
-			
+		<section id="item2" class="item2">
+
 			<div class="title-item">
 				<h1>O que fazemos?</h1>
 			</div>
@@ -53,7 +53,7 @@
 			</div>
 		</section>
 		<!-- TÓPICO 3 DA HOME -->
-		<section  id="item3" class="item3">
+		<section id="item3" class="item3">
 			<div class="item3-section">
 				<div class="icon-item3">
 					<i class="material-icons icon-item">local_dining</i>
@@ -98,7 +98,7 @@
 		</section>
 
 		<!-- TÓPICO 4 DA HOME -->
-		<section  id="item4" class="item4">
+		<section id="item4" class="item4">
 
 			<div class="title-item">
 				<h1>Sobre nós</h1>
@@ -115,7 +115,7 @@
 
 		<!-- TÓPICO 5 DA HOME -->
 
-		<section  id="item5" class="item5">
+		<section id="item5" class="item5">
 			<div class="title-item">
 				<h1>Entre em contato</h1>
 			</div>
@@ -125,20 +125,23 @@
 			</div>
 
 			<!-- FORMULÁRIO DE CONTATO-->
-			<div class="form">
+			<form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)">
 				<mat-form-field>
-				  <input matInput placeholder="Seu nome">
+					<input placeholder="Seu nome" name="nome" matInput type="text" ngModel > 
 				</mat-form-field>
+				<br>
 
 				<mat-form-field>
-					<input matInput placeholder="Seu email">
-				  </mat-form-field>
-			  
-				<mat-form-field>
-				  <textarea matInput placeholder="Mensagem"></textarea>
+					<input placeholder="Seu email" name='email' matInput type="text" ngModel>
 				</mat-form-field>
-	     		<button mat-raised-button class="button-form" type="submit">Enviar</button>
-			</div>
+				<br>
+				<mat-form-field>
+					<textarea placeholder="Sua Mensagem" name="msg" matInput type="text" ngModel></textarea>
+				</mat-form-field>
+				<br>
+				<button class="button-form" type="submit">Enviar</button>
+
+			</form>
 		</section>
 		<br>
 		<footer>
