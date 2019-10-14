@@ -13,7 +13,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { routing } from './app.routing';
 import { ConteudoComponent } from './conteudo/conteudo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +22,7 @@ import { ApiService } from './exibir-doadores/api.service';
 import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     MatIconModule,
     MatListModule,
     HttpClientModule,
-    routing,
+    AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
