@@ -12,12 +12,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router, 
-    ) {}
+    private router: Router,
+  ) { }
 
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe(
       success => this.router.navigate(['exibir-doadores']),
