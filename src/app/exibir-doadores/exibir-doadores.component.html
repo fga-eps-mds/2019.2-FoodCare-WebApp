@@ -1,0 +1,28 @@
+<div style="text-align:center">
+  <h1>
+    Lista de doadores
+  </h1>
+</div>
+<ul>
+  <li *ngFor="let item of items">
+    <span>
+
+      <span>{{item.id}} : {{item.nome}}</span>&nbsp;<button (click)='delete(item.id)'>Deletar</button>
+      <hr>
+      <br>
+    </span>
+  </li>
+</ul>
+<div class="adiciona">
+  <h2>Adiciona</h2>
+  <input #itNome type='text' placeholder='Nome'>
+  <input #itCNPJ type='text' placeholder='CPNJ'>
+  <input #itEmail type='email' placeholder='Email'>
+  <input #itPassword type='password' placeholder='Senha'>
+  <button (click)='add(itNome.value, itCNPJ.value,itEmail.valuem, itPassword.value)'>Adicionar</button>
+</div>
+
+<p>{{ error?.message }}</p>
+<p *ngIf="error">{{ error?.error | json }}</p>
+
+<button (click)="logout()">deslogar</button>

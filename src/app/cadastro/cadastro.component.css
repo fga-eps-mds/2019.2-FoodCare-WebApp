@@ -1,0 +1,27 @@
+.background{
+    background-color: #F1EBE4;   
+    padding: 50px;
+}
+.box {
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    background: #fff;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    text-align: center;
+    font-family: 'Montserrat';
+}
+.mat-form-field{
+    margin: 5px;
+}
+.buttonCadastro{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #456c45;
+}
