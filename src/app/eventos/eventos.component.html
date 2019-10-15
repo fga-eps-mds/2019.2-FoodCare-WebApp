@@ -36,13 +36,13 @@
     </div>
     <div class="button-concluir">
       <button mat-raised-button
-        (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value);mostraSalvaAlimento();refresh()"><a>Concluir</a></button>
+        (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value);mostraDiv('save-info')"><a>Concluir</a></button>
       {{ error?.message }}
     </div>
   </div>
 </div>
 
-<mat-card *ngFor="let item of items">
+<mat-card *ngFor="let item of evento">
   <mat-card-content>
 
       <h2>{{ item.nome }}</h2>
@@ -83,19 +83,19 @@
 
             </div>
             <div class="button-concluir">
-                <button mat-raised-button (click)="mostraEditaAlimento(item.id); editEvento(item.id,itemNome.value,itemData_inicial.value, itemData_final.value, itemDescricao.value); refresh()"><a>Concluir</a></button>
+                <button mat-raised-button (click)="mostraDiv(item.id); editEvento(item.id,itemNome.value,itemData_inicial.value, itemData_final.value, itemDescricao.value); refresh()"><a>Concluir</a></button>
                 {{ error?.message }}
             </div>
         </div>
       </div>
 
     </mat-card-content>
-   <button mat-icon-button class="edit" (click)="mostraEditaAlimento(item.id)">
+   <button mat-icon-button class="edit" (click)="mostraDiv(item.id)">
       <i class="material-icons">edit</i>
   </button>
 </mat-card>
 
-<button mat-icon-button class="button-add-evento" (click)="mostraSalvaAlimento()">
+<button mat-icon-button class="button-add-evento" (click)="mostraDiv('save-info')">
   <a style="color: white" >
     <i class="material-icons">
       add

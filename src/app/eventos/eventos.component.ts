@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EventosComponent implements OnInit {
 
-  items: Evento[];
+  evento: Evento[];
   error: any;
 
   constructor(
@@ -24,33 +24,16 @@ export class EventosComponent implements OnInit {
 
   ngOnInit() {
     this.api.getEvento().subscribe(
-      (items: Evento[]) => this.items = items,
+      (evento: Evento[]) => this.evento = evento,
       (error: any) => this.error = error
     );
   }
   delete(id: number) {
     this.api.deleteEvento(id).subscribe(
-      (success: any) => this.items.splice(
-        this.items.findIndex(item => item.id === id)
+      (success: any) => this.evento.splice(
+        this.evento.findIndex(item => item.id === id)
       )
     );
-  }
-
-  // edit(id:number){
-  //   this.api.
-  // }
-
-  getFormateDate(date) {
-    return moment(date).format('LLL');
-  }
-
-  mostraSalvaAlimento(){
-    if (document.getElementById("save-info").style.display == "none") {
-       document.getElementById("save-info").style.display = "block";
-     } else {
-       /* se conteúdo está a mostra, esconde o conteúdo  */
-       document.getElementById("save-info").style.display = "none";
-     }
   }
 
   // Adciona um novo evento
@@ -70,11 +53,17 @@ export class EventosComponent implements OnInit {
   // Adciona um novo evento
   editEvento(id: number, nome: string, data_inicial: any, data_final: any, desc: string) {
     this.api.editEvento(id, nome, data_inicial, data_final, desc).subscribe(
-      (items: Evento[]) => this.items[id] = items,
+      (evento: Evento[]) => this.evento[id] = evento,
     );
   }
 
-  mostraEditaAlimento(id: any){
+
+  getFormateDate(date) {
+    return moment(date).format('LLL');
+  }
+
+  mostraDiv(id: string){
+    console.log(id);
     if (document.getElementById(id).style.display == "none") {
        document.getElementById(id).style.display = "block";
      } else {
