@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 import { ConteudoComponent } from './conteudo.component';
 
@@ -8,7 +12,14 @@ describe('ConteudoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConteudoComponent ]
+      declarations: [ ConteudoComponent ],
+      imports: [
+        FormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        BrowserAnimationsModule,
+        HttpClientTestingModule
+      ],
     })
     .compileComponents();
   }));
