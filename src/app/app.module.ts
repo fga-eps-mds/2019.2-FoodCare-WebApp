@@ -24,6 +24,7 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     ExibirDoadoresComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -64,4 +66,3 @@ import { AppRoutingModule } from './app-routing.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
