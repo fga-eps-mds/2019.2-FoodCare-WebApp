@@ -19,14 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { EventosComponent } from './eventos/eventos.component';
 import {MatCardModule} from '@angular/material/card';
-import { EditaEventoComponent } from './edita-evento/edita-evento.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 // declarations
-import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.component';
+
 
 
 @NgModule({
@@ -35,8 +34,6 @@ import { AdicionaEventoComponent } from './adiciona-evento/adiciona-evento.compo
     MenuNavComponent,
     CadastroComponent,
     EventosComponent,
-    AdicionaEventoComponent,
-    EditaEventoComponent,
   ],
   imports: [
     BrowserModule,

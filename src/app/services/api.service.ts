@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Evento } from '../adiciona-evento/adiciona-evento.interface';
 
 @Injectable()
 export class ApiService {
