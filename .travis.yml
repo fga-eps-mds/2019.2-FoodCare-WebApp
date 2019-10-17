@@ -4,7 +4,8 @@ services:
   - docker
 
 install:
-  - docker-compose up --build -d
+  - docker-compose build --no-cache
+  - docker-compose up -d
 
 script:
   - docker exec -it foodcare-web ng test --watch=false
