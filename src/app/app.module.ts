@@ -20,7 +20,8 @@ import { LoginComponent } from './login/login.component';
 import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component';
 import { ApiService } from './exibir-doadores/api.service';
 import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 
