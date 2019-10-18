@@ -69,6 +69,8 @@ export class EventosComponent implements OnInit {
 
       data => {
         this.eventos.push(data);
+        console.log('teste');
+        this.toggleDisplay();
       },
       error => {
         console.log(error);

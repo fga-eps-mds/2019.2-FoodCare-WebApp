@@ -8,17 +8,17 @@
   <div class="end-form">
     <div class="nome">
       <mat-form-field>
-        <input matInput [(ngModel)]="eventos.nome" placeholder="Nome">
+        <input matInput [(ngModel)]="eventos.nome" placeholder="Nome" required>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="eventos.data_inicio">
+        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="eventos.data_inicio" required>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="eventos.data_final">
+        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="eventos.data_final" required>
       </mat-form-field>
     </div>
     <!-- <div class="local">
@@ -29,12 +29,12 @@
     </div> -->
     <div class="desc">
       <mat-form-field>
-        <textarea [(ngModel)]="eventos.desc" matInput placeholder="Descrição"></textarea>
+        <textarea [(ngModel)]="eventos.desc" matInput placeholder="Descrição" required></textarea>
       </mat-form-field>
 
     </div>
     <div class="button-concluir">
-      <button mat-raised-button (click)="createEvento();toggleDisplay()">Concluir</button>
+      <button mat-raised-button (click)="createEvento()">Concluir</button>
       {{ error?.message }}
     </div>
 
@@ -53,20 +53,20 @@
       <div class="end-form_edit">
         <div class="nome_edit">
           <mat-form-field>
-            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome">
+            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
           </mat-form-field>
 
         </div>
         <div class="date_edit">
           <mat-form-field>
             <input matInput type="datetime-local" placeholder="Data e hora de início"
-            [(ngModel)]="selectedEvento.data_inicio">
+              [(ngModel)]="selectedEvento.data_inicio" required>
           </mat-form-field>
         </div>
         <div class="date_edit">
           <mat-form-field>
             <input matInput type="datetime-local" placeholder="Data e hora de términio"
-            [(ngModel)]="selectedEvento.data_final">
+              [(ngModel)]="selectedEvento.data_final" required>
           </mat-form-field>
 
         </div>
@@ -78,7 +78,7 @@
             <!-- </div>  -->
         <div class="desc_edit">
           <mat-form-field>
-            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc"></textarea>
+            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc" required></textarea>
           </mat-form-field>
 
         </div>
