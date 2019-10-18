@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -17,7 +17,7 @@ describe('MenuNavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MenuNavComponent],
       imports: [
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         LayoutModule,
         MatButtonModule,
         MatIconModule,
