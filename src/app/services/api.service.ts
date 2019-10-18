@@ -1,39 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiService {
 
-  private apiRoot = 'http://0.0.0.0:8000/';
+  baseurl = "http://0.0.0.0:8000"
+  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient) { }
 
-
-  getEvento() {
-    return this.http.get(this.apiRoot.concat('evento/'));
+  getAllEventos(): Observable<any>{
+    return this.http.get(this.baseurl + '/evento/' ,
+     {headers: this.httpHeaders} )
   }
-
-
-  createEvento(nome: string, data_inicio: any, data_final: any, desc: string) {
-    //const alimentos = [];
-    //alimentos.push(id_alimento);
-    //id_alimento = alimentos;
-    return this.http.post(
-      this.apiRoot.concat('evento/'),
-      { nome, data_inicio, data_final, desc }
-    );
+  getOneEvento(id): Observable<any>{
+    return this.http.get(this.baseurl + '/evento/' + id + '/',
+     {headers: this.httpHeaders} )
   }
-
-  deleteEvento(id: number) {
-    return this.http.delete(this.apiRoot.concat(`evento/${id}/`));
+  updateEvento(evento): Observable<any>{
+    const body = {nome: evento.nome , desc: evento.desc , data_inicio: evento.data_inicio, data_final: evento.data_final};
+    return this.http.put(this.baseurl + '/evento/' + evento.id + '/', body,
+     {headers: this.httpHeaders} )
   }
-
-  editEvento(id: number, nome: string, data_inicio: any, data_final: any, desc: any){
-    return this.http.put(
-      this.apiRoot.concat(`evento/${id}/`),
-      {id, nome, data_inicio, data_final, desc }
-    );
+  createEvento(evento): Observable<any>{
+    const body = {nome: evento.nome , desc: evento.desc , data_inicio: evento.data_inicio, data_final: evento.data_final};
+    return this.http.post(this.baseurl + '/evento/', body,
+     {headers: this.httpHeaders} )
   }
-
-
-} //Fim exportclass
+  deleteEvento(id): Observable<any>{
+    return this.http.delete(this.baseurl + '/evento/'+ id + '/',
+     {headers: this.httpHeaders} )
+  }
+}

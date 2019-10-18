@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbar-events"  id = "inicio">
+<mat-toolbar class="toolbar-events" id="inicio">
   <!-- <button mat-icon-button class="button-back"><a href="/home"><i
     class="material-icons">keyboard_arrow_left</i></a></button> -->
   <h1 class="title-toolbar">Lista de Eventos</h1>
@@ -8,17 +8,17 @@
   <div class="end-form">
     <div class="nome">
       <mat-form-field>
-        <input matInput #nome placeholder="Nome">
+        <input matInput [(ngModel)]="eventos.nome" placeholder="Nome">
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" #data_inicial>
+        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="eventos.data_inicio">
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" #data_final>
+        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="eventos.data_final">
       </mat-form-field>
     </div>
     <!-- <div class="local">
@@ -29,19 +29,19 @@
     </div> -->
     <div class="desc">
       <mat-form-field>
-        <textarea #desc matInput placeholder="Descrição"></textarea>
+        <textarea [(ngModel)]="eventos.desc" matInput placeholder="Descrição"></textarea>
       </mat-form-field>
 
     </div>
     <div class="button-concluir">
-      <button mat-raised-button
-        (click)="adEvento(nome.value, data_inicial.value, data_final.value, desc.value);refresh();toggleDisplay()">Concluir</button>
+      <button mat-raised-button (click)="createEvento();toggleDisplay()">Concluir</button>
       {{ error?.message }}
     </div>
+
   </div>
 </div>
 
-<mat-card *ngFor="let item of evento">
+<mat-card *ngFor="let item of eventos">
   <mat-card-content>
 
     <h2>{{ item.nome }}</h2>
@@ -50,22 +50,23 @@
       <p>{{ getFormateDate(item.data_final) }}</p>
     </div>
     <div class="edit-info" style="display: none;" id={{item.id}}>
-      <!-- Etapas de adicionar alimeto-->
       <div class="end-form_edit">
         <div class="nome_edit">
           <mat-form-field>
-            <input matInput #itemNome placeholder="Nome">
+            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome">
           </mat-form-field>
 
         </div>
         <div class="date_edit">
           <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de início" #itemData_inicial>
+            <input matInput type="datetime-local" placeholder="Data e hora de início"
+            [(ngModel)]="selectedEvento.data_inicio">
           </mat-form-field>
         </div>
         <div class="date_edit">
           <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de términio" #itemData_final>
+            <input matInput type="datetime-local" placeholder="Data e hora de términio"
+            [(ngModel)]="selectedEvento.data_final">
           </mat-form-field>
 
         </div>
@@ -74,31 +75,32 @@
                     <input matInput #itemLocal placeholder="Local">
                 </mat-form-field>
 
-            </div> -->
+            <!-- </div>  -->
         <div class="desc_edit">
           <mat-form-field>
-            <textarea matInput placeholder="Descrição" #itemDescricao>Adicione descrição</textarea>
+            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc"></textarea>
           </mat-form-field>
 
         </div>
         <div class="button-concluir">
-          <button mat-raised-button
-            (click)="mostraDiv(item.id); editEvento(item.id,itemNome.value,itemData_inicial.value, itemData_final.value, itemDescricao.value); refresh()"><a>Concluir</a></button>
+          <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
+          {{ error?.message }}
+        </div>
+        <div class="button-excluir">
+          <button mat-raised-button (click)="deleteEvento()">Excluir</button>
           {{ error?.message }}
         </div>
       </div>
     </div>
 
   </mat-card-content>
-  <button mat-icon-button class="edit" (click)="mostraDiv(item.id)">
+  <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoClicked(item)">
     <i class="material-icons">edit</i>
   </button>
 </mat-card>
 
 <button mat-icon-button class="button-add-evento" (click)="toggleDisplay(); scrollToTop()">
-  <!-- <button mat-icon-button class="button-add-evento"> -->
-  <!-- href="eventos/adiciona-evento" -->
-  <a style="color: white" >
+  <a style="color: white">
     <i class="material-icons">
       add
     </i>

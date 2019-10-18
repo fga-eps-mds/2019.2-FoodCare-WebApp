@@ -1,87 +1,117 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Evento } from './evento.interface';
+// import { Evento } from './evento.interface';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
-  styleUrls: ['./eventos.component.css']
+  styleUrls: ['./eventos.component.css'],
+  providers: [ApiService],
 })
 
 export class EventosComponent implements OnInit {
-
-  evento: Evento[];
-  error: any;
+  eventos = [];
+  selectedEvento;
   isShow = false;
   
-  constructor(
-    private api: ApiService,
-    private router: Router
-  ){
+  constructor(private api: ApiService) {
+    this.getEventos();
     moment.locale('pt-BR');
+    this.selectedEvento = { id: -1, nome: '', desc: '', data_inicio: '', data_final: '' }
   }
-
   ngOnInit() {
-    this.api.getEvento().subscribe(
-      (evento: Evento[]) => this.evento = evento,
-      (error: any) => this.error = error
-    );
+
   }
-  delete(id: number) {
-    this.api.deleteEvento(id).subscribe(
-      (success: any) => this.evento.splice(
-        this.evento.findIndex(item => item.id === id)
-      )
-      );
-  }
-  
-  // Adciona um novo evento
-  adEvento(nome: string, data_inicial: any, data_final: any, desc: string) {
-    this.api.createEvento(nome, data_inicial, data_final, desc).subscribe(
-      success => {
-        (evento: Evento) => this.evento.push(evento);
+  getEventos = () => {
+    this.api.getAllEventos().subscribe(
+
+      data => {
+        this.eventos = data;
       },
       error => {
-        this.error = error;
-        console.log(error)
+        console.log(error);
       }
-    );
-    
+    )
   }
-  
-  // Adciona um novo evento
-  editEvento(id: number, nome: string, data_inicial: any, data_final: any, desc: string) {
-    this.api.editEvento(id, nome, data_inicial, data_final, desc).subscribe(
-      (evento: Evento) => this.evento[id] = evento,
-      );
+  eventoClicked = (evento) => {
+    // console.log(movie.id);
+
+    this.api.getOneEvento(evento.id).subscribe(
+
+      data => {
+        this.selectedEvento = data;
+        this.selectedEvento.data_inicio = this.getDateForEdit(this.selectedEvento.data_inicio);
+        this.selectedEvento.data_final = this.getDateForEdit(this.selectedEvento.data_final);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
   }
-  
+  updateEvento = () => {
+    this.api.updateEvento(this.selectedEvento).subscribe(
+
+      data => {
+        this.getEventos();
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+  }
+  createEvento = () => {
+    this.api.createEvento(this.eventos).subscribe(
+
+      data => {
+        this.eventos.push(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+  }
+  deleteEvento = () => {
+    this.api.deleteEvento(this.selectedEvento.id).subscribe(
+
+      data => {
+        this.getEventos();
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+  }
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
-  
+
   getFormateDate(date) {
     return moment(date).format('LLL');
   }
-
-  mostraDiv(id: string){
+  getDateForEdit(date){
+    return moment(date).format("YYYY-MM-DDTkk:mm");
+  }
+  mostraDiv(id: string) {
     console.log(id);
     if (document.getElementById(id).style.display == "none") {
       document.getElementById(id).style.display = "block";
-     } else {
-       /* se conteúdo está a mostra, esconde o conteúdo  */
-       document.getElementById(id).style.display = "none";
-      }
+    } else {
+      /* se conteúdo está a mostra, esconde o conteúdo  */
+      document.getElementById(id).style.display = "none";
+    }
   }
-
-  refresh(){
-      window.location.reload();
+  refresh() {
+    window.location.reload();
   }
   scrollToTop() {
     document.getElementById("inicio").scrollIntoView(true);
   }
-  
 }
+
