@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+env:
+  - DOCKER_COMPOSE_VERSION=1.24.1
+
 install:
   - docker-compose up --build -d
 
@@ -10,4 +13,4 @@ script:
   - docker exec -it foodcare-web ng test --watch=false
 
 after_script:
-  - docker-compose down
+  - docker-compose down --remove-orphans

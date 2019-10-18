@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+// import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component';
+import { AuthGuard } from './auth.service';
 
 const routes: Routes = [
-  { path: 'home', component: MenuNavComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'cadastro', component: CadastroComponent },
-//   Sempre que criar um componente, adicioná-lo aqui
-  { path: '',
+  { path: 'login', component: LoginComponent },
+  { path: 'exibir-doadores', component: ExibirDoadoresComponent, canActivate: [AuthGuard] },
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },

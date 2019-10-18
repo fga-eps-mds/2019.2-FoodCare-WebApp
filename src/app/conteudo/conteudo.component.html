@@ -1,0 +1,121 @@
+<section id="item1" class="item1">
+    <div class="title-item1">
+        <h1>Ajude a acabar com a fome do Brasil!</h1>
+    </div>
+    <div class="text-item1">
+        <span>Conectamos empresas que têm sobra de alimentos
+  com pessoas e ONGs que distribuem alimentos para pessoas
+  carentes.
+</span>
+    </div>
+    <div class="button-item1">
+        <button mat-raised-button class="buttons-item1">Ver onde tem comida</button>
+        <button mat-raised-button class="buttons-item1">Doar alimentos</button>
+    </div>
+</section>
+
+
+<!-- TÓPICO 2 DA HOME -->
+<section id="item2" class="item2">
+
+    <div class="title-item">
+        <h1>O que fazemos?</h1>
+    </div>
+    <div class="text-item">
+        <span>Conectamos empresas que têm sobra de alimentos com aqueles que precisam de alimento. Os
+  receptores podem ser ONGs ou pessoas físicas.</span>
+
+    </div>
+</section>
+<!-- TÓPICO 3 DA HOME -->
+<section id="item3" class="item3">
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">local_dining</i>
+        </div>
+        <div class="title-item">
+            <h1>Doadores doam</h1>
+
+        </div>
+        <div class="text-item">
+            <span>Empresas com sobras de alimentos criam um evento informando que têm comida sobrando.</span>
+
+        </div>
+    </div>
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">calendar_today</i>
+        </div>
+
+        <div class="title-item">
+            <h1>Eventos de doação</h1>
+        </div>
+
+        <div class="text-item">
+            <span>Os eventos de doação são mostrados através da lista ou do mapa.</span>
+        </div>
+    </div>
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">mobile_friendly</i>
+        </div>
+
+        <div class="title-item">
+            <h1>Receptores recebem</h1>
+        </div>
+
+        <div class="text-item">
+            <span>Aqueles que precisam do alimento se dirigem ao local do evento informado pelas empresas, e
+    recebem o
+    alimento.</span>
+        </div>
+    </div>
+</section>
+
+<!-- TÓPICO 4 DA HOME -->
+<section id="item4" class="item4">
+
+    <div class="title-item">
+        <h1>Sobre nós</h1>
+    </div>
+
+    <div class="text-item">
+        <span>Mussum Ipsum, cacilds vidis litro abertis. Quem manda na minha terra sou euzis! Si u mundo tá
+  muito
+  paradis?
+</span>
+    </div>
+
+</section>
+
+<!-- TÓPICO 5 DA HOME -->
+
+<section id="item5" class="item5">
+    <div class="title-item">
+        <h1>Entre em contato</h1>
+    </div>
+
+    <div class="text-item">
+        <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato.</span>
+    </div>
+
+    <!-- FORMULÁRIO DE CONTATO-->
+    <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)">
+        <mat-form-field>
+            <input placeholder="Seu nome" name="nome" matInput type="text" ngModel>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <input placeholder="Seu email" name='email' matInput type="text" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <textarea placeholder="Sua Mensagem" name="msg" matInput type="text" ngModel></textarea>
+        </mat-form-field>
+        <br>
+        <button class="button-form" type="submit">Enviar</button>
+
+    </form>
+</section>
+<br>

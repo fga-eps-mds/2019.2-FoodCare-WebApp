@@ -1,28 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { CadastroComponent } from './cadastro.component';
+import { ExibirDoadoresComponent } from './exibir-doadores.component';
 
-describe('CadastroComponent', () => {
-  let component: CadastroComponent;
-  let fixture: ComponentFixture<CadastroComponent>;
+describe('ExibirDoadoresComponent', () => {
+  let component: ExibirDoadoresComponent;
+  let fixture: ComponentFixture<ExibirDoadoresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CadastroComponent ],
+      declarations: [ ExibirDoadoresComponent ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule,
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CadastroComponent);
+    fixture = TestBed.createComponent(ExibirDoadoresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

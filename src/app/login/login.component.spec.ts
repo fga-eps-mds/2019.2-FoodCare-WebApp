@@ -3,18 +3,18 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { CadastroComponent } from './cadastro.component';
+import { LoginComponent } from './login.component';
 
-describe('CadastroComponent', () => {
-  let component: CadastroComponent;
-  let fixture: ComponentFixture<CadastroComponent>;
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CadastroComponent ],
+      declarations: [ LoginComponent ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule,
+        RouterTestingModule
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -22,7 +22,7 @@ describe('CadastroComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CadastroComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
