@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
 
-  private apiRoot = 'http://localhost:8000/auth/';
+  private apiRoot = environment.apiURL + 'auth/';
   constructor(private http : HttpClient) { }
 
   private setSession(authResult) {

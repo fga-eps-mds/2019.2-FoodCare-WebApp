@@ -1,4 +1,4 @@
 export const environment = {
-  apiURL: 'https://food-care.herokuapp.com/',
+  apiURL: 'https://foodcarehomol.herokuapp.com/',
   production: true
 };
