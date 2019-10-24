@@ -14,20 +14,25 @@ import 'moment/locale/pt-br';
 
 export class EventosComponent implements OnInit {
   eventos = [];
-  selectedEvento;
+  selectedEvento: any;
   isShow = false;
-  
+
   constructor(private api: ApiService) {
     this.getEventos();
     moment.locale('pt-BR');
-    this.selectedEvento = { id: -1, nome: '', desc: '', data_inicio: '', data_final: '' }
+    this.selectedEvento = {
+      id: -1,
+      nome: '',
+      desc: '',
+      data_inicio: '',
+      data_final: ''
+    }
   }
-  ngOnInit() {
 
-  }
+  ngOnInit() { }
+
   getEventos = () => {
     this.api.getAllEventos().subscribe(
-
       data => {
         this.eventos = data;
       },
@@ -36,25 +41,31 @@ export class EventosComponent implements OnInit {
       }
     )
   }
+
   eventoClicked = (evento) => {
-    // console.log(movie.id);
-
+    console.log('teste1');
     this.api.getOneEvento(evento.id).subscribe(
-
       data => {
-        this.selectedEvento = data;
-        this.selectedEvento.data_inicio = this.getDateForEdit(this.selectedEvento.data_inicio);
-        this.selectedEvento.data_final = this.getDateForEdit(this.selectedEvento.data_final);
+        console.log('teste2');
+        console.log(data);
+        this.selectedEvento = {
+          id: data.id,
+          nome: data.nome,
+          desc: data.desc,
+          data_inicio: this.getDateForEdit(data.data_inicio),
+          data_final: this.getDateForEdit(data.data_final)
+        };
+        console.log(this.selectedEvento);
+        console.log('teste3');
       },
       error => {
         console.log(error);
       }
     )
-
   }
+
   updateEvento = () => {
     this.api.updateEvento(this.selectedEvento).subscribe(
-
       data => {
         this.getEventos();
       },
@@ -62,25 +73,22 @@ export class EventosComponent implements OnInit {
         console.log(error);
       }
     )
-
   }
+
   createEvento = () => {
     this.api.createEvento(this.eventos).subscribe(
-
       data => {
         this.eventos.push(data);
-        console.log('teste');
         this.toggleDisplay();
       },
       error => {
         console.log(error);
       }
     )
-
   }
+
   deleteEvento = () => {
     this.api.deleteEvento(this.selectedEvento.id).subscribe(
-
       data => {
         this.getEventos();
       },
@@ -88,8 +96,8 @@ export class EventosComponent implements OnInit {
         console.log(error);
       }
     )
-
   }
+
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
@@ -97,9 +105,11 @@ export class EventosComponent implements OnInit {
   getFormateDate(date) {
     return moment(date).format('LLL');
   }
-  getDateForEdit(date){
+
+  getDateForEdit(date) {
     return moment(date).format("YYYY-MM-DDTkk:mm");
   }
+
   mostraDiv(id: string) {
     console.log(id);
     if (document.getElementById(id).style.display == "none") {
@@ -109,9 +119,11 @@ export class EventosComponent implements OnInit {
       document.getElementById(id).style.display = "none";
     }
   }
+
   refresh() {
     window.location.reload();
   }
+
   scrollToTop() {
     document.getElementById("inicio").scrollIntoView(true);
   }
