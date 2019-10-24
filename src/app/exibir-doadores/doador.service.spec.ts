@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { ApiService } from './api.service';
+import { DoadorService } from './doador.service';
 
-describe('ApiService', () => {
+describe('DoadorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -14,7 +14,7 @@ describe('ApiService', () => {
   });
 
   it('should be created', () => {
-    const service: ApiService = TestBed.get(ApiService);
+    const service: DoadorService = TestBed.get(DoadorService);
     expect(service).toBeTruthy();
   });
 });

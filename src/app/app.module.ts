@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -13,16 +12,24 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from './services/api.service';
+import { DoadorService } from './exibir-doadores/doador.service';
+import { EventosComponent } from './eventos/eventos.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 import { ConteudoComponent } from './conteudo/conteudo.component';
 import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component';
-import { ApiService } from './exibir-doadores/api.service';
 import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -31,13 +38,13 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     MenuNavComponent,
     CadastroComponent,
+    EventosComponent,
     ConteudoComponent,
     RodapeComponent,
     HomeComponent,
     LoginComponent,
     ExibirDoadoresComponent
   ],
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -54,9 +61,17 @@ import { AppRoutingModule } from './app-routing.module';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDialogModule,
   ],
   providers: [
     ApiService,
+    DoadorService,
     AuthService,
     AuthGuard, {
       provide: HTTP_INTERCEPTORS,
