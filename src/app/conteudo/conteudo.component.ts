@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'Conteudo',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConteudoComponent implements OnInit {
 
-  private apiRoot = 'http://localhost:8000/';
+  private apiRoot = environment.apiURL;
 
   constructor(
     private http: HttpClient

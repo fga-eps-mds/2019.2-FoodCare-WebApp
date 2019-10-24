@@ -1,5 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'over'">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'over'">
         <mat-toolbar class="menu">Menu</mat-toolbar>
         <mat-nav-list>
             <a mat-list-item href="/home#item1" class="menu-item" (click)="drawer.toggle()">Acabe com a fome</a>
@@ -12,14 +13,14 @@
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-				      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-			      </button>
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
             <a href="/home" class="logo">FoodCare</a>
             <button mat-icon-button>
-              <a href="/cadastro" class="button-login">
-                <i class="material-icons">person_outline</i>
-              </a>
-			      </button>
+                <a href="/cadastro" class="button-login">
+                    <i class="material-icons">person_outline</i>
+                </a>
+            </button>
         </mat-toolbar>
         <ng-content></ng-content>
     </mat-sidenav-content>

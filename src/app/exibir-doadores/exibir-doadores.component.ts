@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Doador} from './doadores.interface';
-import { ApiService } from './api.service';
+import { DoadorService } from './doador.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ExibirDoadoresComponent implements OnInit {
   items : Doador[]
   error: any
   constructor(
-    private api: ApiService, 
+    private api: DoadorService, 
     private auth: AuthService,
     private router: Router,
   ) { }
