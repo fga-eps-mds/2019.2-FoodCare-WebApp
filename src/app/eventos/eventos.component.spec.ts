@@ -1,4 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 import { EventosComponent } from './eventos.component';
 
@@ -8,6 +14,15 @@ describe('EventosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCardModule,
+      ],
       declarations: [ EventosComponent ]
     })
     .compileComponents();
