@@ -21,6 +21,7 @@
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "^8.2.10",
     "@angular/platform-browser-dynamic": "^8.2.10",
+    "@angular/pwa": "^0.803.14",
     "@angular/router": "^8.2.10",
     "@types/jwt-decode": "^2.2.1",
     "hammerjs": "^2.0.8",
