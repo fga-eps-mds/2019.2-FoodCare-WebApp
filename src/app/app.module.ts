@@ -32,6 +32,7 @@ import { AuthService, AuthInterceptor, AuthGuard } from './auth.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
+import { ListaComponent } from './lista/lista.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AppRoutingModule } from './app-routing.module';
     RodapeComponent,
     HomeComponent,
     LoginComponent,
-    ExibirDoadoresComponent
+    ExibirDoadoresComponent,
+    ListaComponent
   ],
   imports: [
     BrowserModule,

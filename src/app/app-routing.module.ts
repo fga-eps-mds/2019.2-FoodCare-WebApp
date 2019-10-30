@@ -8,8 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ExibirDoadoresComponent } from './exibir-doadores/exibir-doadores.component';
 import { AuthGuard } from './auth.service';
+import { ListaComponent } from './lista/lista.component';
 
 const routes: Routes = [
+  { path: 'lista', component: ListaComponent},
   { path: 'home', component: HomeComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'eventos', component: EventosComponent },
