@@ -1,19 +1,30 @@
-.container {
-  width: 50%; 
-  position: relative;
-}
-input {
-  width: 80%;
-  padding: 10px;
-  top: 65px;
-  right: 10px;
+*{
+  margin: 0;
+  padding: 0;
+  background-image: url('/src/img_frutas.gif');
 }
 
-button {
-  padding: 6px;
-  position: absolute;   
-  top: 65px;
-  right: 10px;
-  border: none;
-  background: none;
+.busca{
+  width: 400px;
+  height: 40px;
+  margin: 40px auto;
+}
+#buscador{
+  width: 300px;
+  height: 39px;
+  float: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  border: solid 0.5px #50a750;
+}
+#buscador:focus{
+  border: solid 2px #50a750;
+}
+#botao{
+  width: 30px;
+  height: 23px;
+  padding: 5px 5px;
+  cursor: pointer;
+  background-color: #50a750;
+  border: solid 1px #50a750;
 }
