@@ -33,6 +33,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { ListaComponent } from './lista/lista.component';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ListaComponent } from './lista/lista.component';
     HomeComponent,
     LoginComponent,
     ExibirDoadoresComponent,
-    ListaComponent
+    ListaComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

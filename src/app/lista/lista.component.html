@@ -1,11 +1,24 @@
 <MenuNav>
+    <!-- Essa parte abaixo é para mudar no menunav, para aparecer o voltar e não o de cadastro -->
     <!-- <button mat-icon-button>
         <a href="/home" class="button-voltar">
             <i class="material-icons">arrow_back</i>
         </a>
     </button> -->
-    <form class = "busca">
-        <input type = "search" id = "buscador" placeholder = "Pesquisar eventos">
-        <button type = "submit"><i class="material-icons" id = "botao">search</i></button>
-    </form>
-</MenuNav>
+
+
+    <!-- a pasta datamodel contém a lista criada para testar a pesquisa -->
+    <input class="busca" type="text" [(ngModel)]="nome" (input)="Search()" />
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nome do evento</th>
+            <th>Descrição</th>
+        </tr>
+        <tr *ngFor='let item of eventos'>
+            <td>{{item.ID}} </td>
+            <td>{{item.nome}} </td>
+            <td>{{item.descricao}} </td>
+        </tr>
+    </table>
+</MenuNav> -->

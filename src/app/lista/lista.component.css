@@ -1,7 +1,10 @@
 *{
   margin: 0;
   padding: 0;
-  background-image: url('/src/img_frutas.gif');
+  width: 400px;
+  height: 30px;
+  /* background-image: url('/src/img_frutas.gif'); */
+  border-radius: 15px;
 }
 
 .busca{
@@ -9,6 +12,7 @@
   height: 40px;
   margin: 40px auto;
 }
+
 #buscador{
   width: 300px;
   height: 39px;
@@ -19,12 +23,4 @@
 }
 #buscador:focus{
   border: solid 2px #50a750;
-}
-#botao{
-  width: 30px;
-  height: 23px;
-  padding: 5px 5px;
-  cursor: pointer;
-  background-color: #50a750;
-  border: solid 1px #50a750;
 }
