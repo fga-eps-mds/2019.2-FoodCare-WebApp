@@ -34,4 +34,5 @@ export class ApiService {
     return this.http.delete(this.baseurl + '/evento/'+ id + '/',
      {headers: this.httpHeaders} )
   }
+
 }

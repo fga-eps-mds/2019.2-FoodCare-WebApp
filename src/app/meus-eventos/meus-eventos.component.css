@@ -1,0 +1,69 @@
+.toolbar-events {
+    background-color: #5b8f6f;
+    display: flex;
+    justify-content: center;
+}
+.title-toolbar{
+    color: white;
+}
+.mat-expansion-panel{
+    margin: 15px;
+}
+.mat-expansion-panel-header{
+    padding: 15px;
+}
+
+.button-add-evento{
+    position: fixed; 
+    left: 50%; 
+    bottom: 15px;
+    transform: translateX(-50%);
+    background-color: #5b8f6f;
+   
+}
+.edit{
+    display: flex;
+    justify-content: space-around;
+}
+.mat-card{
+    margin: 15px;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+.mat-card-content{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.lista{
+    display: flex;
+    flex: 1;
+}
+.data-items{
+    margin-right: auto ;
+    margin-left: auto;
+}
+.edit{
+    padding: 15px;
+}
+.end-form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+}
+.date{
+    display: flex;
+    margin: auto;
+}
+.nome{
+    margin: auto;
+}
+.desc{
+    margin: auto;
+}
+.button-concluir{
+    margin: auto;
+}

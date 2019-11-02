@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './services/api.service';
 import { DoadorService } from './exibir-doadores/doador.service';
 import { EventosComponent } from './eventos/eventos.component';
+import { MeusEventosComponent } from './meus-eventos/meus-eventos.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -39,6 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
     MenuNavComponent,
     CadastroComponent,
     EventosComponent,
+    MeusEventosComponent,
     ConteudoComponent,
     RodapeComponent,
     HomeComponent,
