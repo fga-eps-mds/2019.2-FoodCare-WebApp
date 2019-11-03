@@ -26,7 +26,7 @@ export class ApiService {
      {headers: this.httpHeaders} )
   }
   createEvento(evento): Observable<any>{
-    const body = {nome: evento.nome , desc: evento.desc , data_inicio: evento.data_inicio, data_final: evento.data_final};
+    const body = {nome: evento.nome , desc: evento.desc , id_doador: evento.id_doador, data_inicio: evento.data_inicio, data_final: evento.data_final};
     return this.http.post(this.baseurl + '/evento/', body,
      {headers: this.httpHeaders} )
   }

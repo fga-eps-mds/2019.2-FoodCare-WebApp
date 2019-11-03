@@ -1,35 +1,30 @@
 <mat-toolbar class="toolbar-events" id="inicio">
-  <!-- <button mat-icon-button class="button-back"><a href="/home"><i
-    class="material-icons">keyboard_arrow_left</i></a></button> -->
+  <button mat-icon-button class="button-back"><a href="/home"><i
+    class="material-icons">keyboard_arrow_left</i></a></button>
   <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
+
+<!-- Criar evento-->
 <div *ngIf="isShow">
-  <!-- Etapas de adicionar alimeto -->
   <div class="end-form">
     <div class="nome">
       <mat-form-field>
-        <input matInput [(ngModel)]="eventos.nome" placeholder="Nome" required>
+        <input matInput [(ngModel)]="selectedEvento.nome" placeholder="Nome" required>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="eventos.data_inicio" required>
+        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="selectedEvento.data_inicio" required>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="eventos.data_final" required>
+        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="selectedEvento.data_final" required>
       </mat-form-field>
     </div>
-    <!-- <div class="local">
-      <mat-form-field>
-        <input matInput #itemLocal placeholder="Local">
-      </mat-form-field>
-
-    </div> -->
     <div class="desc">
       <mat-form-field>
-        <textarea [(ngModel)]="eventos.desc" matInput placeholder="Descrição" required></textarea>
+        <textarea [(ngModel)]="selectedEvento.desc" matInput placeholder="Descrição" required></textarea>
       </mat-form-field>
 
     </div>
@@ -41,14 +36,15 @@
   </div>
 </div>
 
+<!-- Card de eventos-->
 <mat-card *ngFor="let item of eventos">
   <mat-card-content>
-
     <h2>{{ item.nome }}</h2>
     <div class="data-items">
-      <p>{{ getFormateDate(item.data_inicio) }}</p>
+      <p>{{ getFormateDate(item.data_inicio) }} </p>
       <p>{{ getFormateDate(item.data_final) }}</p>
     </div>
+    <!-- Editar evento-->
     <div class="edit-info" style="display: none;" id={{item.id}}>
       <div class="end-form_edit">
         <div class="nome_edit">
@@ -70,12 +66,6 @@
           </mat-form-field>
 
         </div>
-        <!-- <div class="local">
-                <mat-form-field>
-                    <input matInput #itemLocal placeholder="Local">
-                </mat-form-field>
-
-            </div>  -->
         <div class="desc_edit">
           <mat-form-field>
             <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc" required></textarea>
@@ -99,6 +89,7 @@
   </button>
 </mat-card>
 
+<!-- Butoes ao final na pagina-->
 <button mat-icon-button class="button-add-evento" (click)="toggleDisplay(); scrollToTop()">
   <a style="color: white">
     <i class="material-icons">
@@ -106,3 +97,17 @@
     </i>
   </a>
 </button>
+<button mat-icon-button class="button-meus-eventos" >
+    <a href="/meus-eventos" style="color: white">
+      <i class="material-icons">
+        store
+      </i>
+    </a>
+  </button>
+  <button mat-icon-button class="button-eventos" >
+      <a href="/eventos" style="color: white">
+        <i class="material-icons">
+            storage
+        </i>
+      </a>
+    </button>

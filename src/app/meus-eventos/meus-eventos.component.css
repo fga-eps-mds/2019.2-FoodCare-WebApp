@@ -21,6 +21,22 @@
     background-color: #5b8f6f;
    
 }
+.button-meus-eventos{
+    position: fixed; 
+    left: 75%; 
+    bottom: 15px;
+    transform: translateX(-75%);
+    background-color: #5b8f6f;
+   
+}
+.button-eventos{
+    position: fixed; 
+    left: 25%; 
+    bottom: 15px;
+    transform: translateX(-25%);
+    background-color: #5b8f6f;
+   
+}
 .edit{
     display: flex;
     justify-content: space-around;
