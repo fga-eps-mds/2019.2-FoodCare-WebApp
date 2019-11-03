@@ -6,12 +6,6 @@
 .title-toolbar{
     color: white;
 }
-.mat-expansion-panel{
-    margin: 15px;
-}
-.mat-expansion-panel-header{
-    padding: 15px;
-}
 
 .mat-card{
     margin: 15px;
@@ -28,9 +22,20 @@
     margin-right: auto ;
     margin-left: auto;
 }
-.info-items{
-    display: flex;
-    flex: 1;
-    margin-right: auto ;
-    margin-left: auto;
+
+.button-meus-eventos{
+    position: fixed; 
+    left: 60%; 
+    bottom: 15px;
+    transform: translateX(-60%);
+    background-color: #5b8f6f;
+   
+}
+.button-eventos{
+    position: fixed; 
+    left: 30%; 
+    bottom: 15px;
+    transform: translateX(-30%);
+    background-color: #5b8f6f;
+   
 }

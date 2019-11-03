@@ -34,5 +34,12 @@ export class ApiService {
     return this.http.delete(this.baseurl + '/evento/'+ id + '/',
      {headers: this.httpHeaders} )
   }
-
+  usuarioLogado(): Observable<any>{
+    return this.http.get(this.baseurl + '/auth/user/',
+     {headers: this.httpHeaders} )
+  }
+  getResponsavel(id): Observable<any>{
+    return this.http.get(this.baseurl + '/user/' + id + '/',
+     {headers: this.httpHeaders} )
+  }
 }

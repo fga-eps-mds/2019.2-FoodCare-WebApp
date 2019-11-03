@@ -14,19 +14,11 @@ import 'moment/locale/pt-br';
 
 export class EventosComponent implements OnInit {
   eventos = [];
-  selectedEvento: any;
-  isShow = false;
 
   constructor(private api: ApiService) {
     this.getEventos();
     moment.locale('pt-BR');
-    this.selectedEvento = {
-      id: -1,
-      nome: '',
-      desc: '',
-      data_inicio: '',
-      data_final: ''
-    }
+    
   }
 
   ngOnInit() { }
@@ -46,5 +38,37 @@ export class EventosComponent implements OnInit {
     return moment(date).format('LLL');
   }
 
-}
+  getDiferencaData( data_final){
+    var date1 = Date.now();
+    var date2 = new Date(data_final);
+    var timeDiff = Math.abs(date2.getTime() - date1);
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600  ));
+    return diffDays;
+  }
 
+  mostraTempoRestante( data_final){
+    if (this.getDiferencaData( data_final) >= 168){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  mostraEvento( data_final){
+    if (this.getDiferencaData( data_final) == 0){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  getResponsavel(id){
+    this.api.getResponsavel(id).subscribe(
+      data => {
+        console.log(data.user)
+        return (data.user).toString();
+      }
+    )
+  }
+
+}
