@@ -3,39 +3,41 @@
     display: flex;
     justify-content: center;
 }
-.title-toolbar{
+
+.title-toolbar {
     color: white;
 }
 
-.mat-card{
+.mat-card {
     margin: 15px;
     display: flex;
     flex: 1;
     justify-content: space-between;
 }
-.mat-card-content{
+
+.mat-card-content {
     display: flex;
     justify-content: space-between;
     flex: 1;
 }
-.data-items{
-    margin-right: auto ;
+
+.data-items {
+    margin-right: auto;
     margin-left: auto;
 }
 
-.button-meus-eventos{
-    position: fixed; 
-    left: 60%; 
+.button-meus-eventos {
+    position: fixed;
+    left: 60%;
     bottom: 15px;
     transform: translateX(-60%);
     background-color: #5b8f6f;
-   
 }
-.button-eventos{
-    position: fixed; 
-    left: 30%; 
+
+.button-eventos {
+    position: fixed;
+    left: 30%;
     bottom: 15px;
     transform: translateX(-30%);
     background-color: #5b8f6f;
-   
 }

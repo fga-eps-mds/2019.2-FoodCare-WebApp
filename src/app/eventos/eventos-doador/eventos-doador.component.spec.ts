@@ -6,11 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 
-import { EventosComponent } from './eventos.component';
+import { EventosDoadorComponent } from './eventos-doador.component';
 
-describe('EventosComponent', () => {
-  let component: EventosComponent;
-  let fixture: ComponentFixture<EventosComponent>;
+describe('EventosDoadorComponent', () => {
+  let component: EventosDoadorComponent;
+  let fixture: ComponentFixture<EventosDoadorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,13 +23,13 @@ describe('EventosComponent', () => {
         MatFormFieldModule,
         MatCardModule,
       ],
-      declarations: [EventosComponent]
+      declarations: [EventosDoadorComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventosComponent);
+    fixture = TestBed.createComponent(EventosDoadorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

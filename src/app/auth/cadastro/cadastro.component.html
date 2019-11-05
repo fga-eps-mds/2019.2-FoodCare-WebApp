@@ -1,0 +1,25 @@
+<MenuNav>
+    <div class="background">
+        <div class="box">
+            <h2 class="title"> Cadastrar </h2>
+            <mat-form-field>
+                <input matInput placeholder="Usuário" #user id="usuario" class="form-control">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="CNPJ" #cnpj id="cnpj" class="form-control">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" #email id="email" class="form-control" type="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Senha" #password id="senha" class="form-control" type="password">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Conirmar Senha" id="confirmSenha" class="form-control" type="password">
+            </mat-form-field>
+            <button mat-raised-button class="buttonCadastro" (click)='cadastrar(email.value,user.value,cnpj.value,email.value,password.value,password.value)'>Cadastrar</button>
+            <p class="textoLogin">Já tem login? Clique <a class="link" href="/login">aqui.</a></p>
+        </div>
+    </div>
+    <Rodape></Rodape>
+</MenuNav>

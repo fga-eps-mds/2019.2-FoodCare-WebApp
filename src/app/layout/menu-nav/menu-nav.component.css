@@ -1,0 +1,143 @@
+#logo {
+    color: #fff;
+}
+
+#logo>a:visited,
+a:hover,
+a:active,
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+    background-color: #456c45;
+}
+
+.sidenav .mat-toolbar {
+    background: #5b8f6f;
+}
+
+.mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #5b8f6f;
+}
+
+.menu {
+    color: white;
+}
+
+.menu-item {
+    color: white;
+}
+
+.logo {
+    margin: auto;
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+}
+
+.button-login {
+    text-decoration: none;
+    color: white;
+}
+
+.item1 {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    background-color: #5b8f6f;
+}
+
+.title-item1 {
+    color: white;
+    font-size: 1.8em;
+    margin: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-item1 {
+    color: white;
+    padding: 5px 15px;
+    font-size: 1.4em;
+}
+
+.title-item {
+    font-size: 1.8em;
+    margin: auto;
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-item {
+    padding: 5px 15px;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.button-item1 {
+    margin: 5%;
+}
+
+.buttons-item1 {
+    margin: 3%;
+    width: 310px;
+    height: 50px;
+}
+
+.icon-item {
+    font-size: 4em;
+}
+
+.item2 {
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.item3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.item3-section {
+    margin: 3%;
+    width: 300px;
+}
+
+footer {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.button-form {
+    display: flex;
+    color: white;
+    background-color: #456c45;
+    margin: auto;
+}

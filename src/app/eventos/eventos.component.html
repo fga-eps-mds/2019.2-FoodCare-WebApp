@@ -1,38 +1,22 @@
 <mat-toolbar class="toolbar-events" id="inicio">
-  <button mat-icon-button class="button-back"><a href="/home"><i
-    class="material-icons">keyboard_arrow_left</i></a></button> 
-  <h1 class="title-toolbar">Lista de Eventos</h1>
+    <h1 class="title-toolbar">Lista de Eventos</h1>
 </mat-toolbar>
+
 <!-- Card do evento-->
 <div *ngFor="let item of eventos">
-  <div *ngIf= "mostraEvento( item.data_final)">
-      <mat-card>
-        <mat-card-content>
-          <h2>{{ item.nome }}</h2>
-          <div class="data-items">
-            <p>Descrição: {{ item.desc}}</p>
-            <div *ngIf= "mostraTempoRestante( item.data_final)">
-                <p> Expira em: {{getDiferencaData( item.data_final)}} horas</p>
-            </div>
-            <p>Inicio: {{ getFormateDate(item.data_inicio) }}</p>
-            <p>Fim: {{ getFormateDate(item.data_final) }}</p>
-          </div>
-        </mat-card-content>
-    </mat-card>
-  </div>
+    <div *ngIf="mostraEvento( item.data_final)">
+        <mat-card>
+            <mat-card-content>
+                <h2>{{ item.nome }}</h2>
+                <div class="data-items">
+                    <p>Descrição: {{ item.desc}}</p>
+                    <div *ngIf="mostraTempoRestante( item.data_final)">
+                        <p> Expira em: {{getDiferencaData( item.data_final)}} horas</p>
+                    </div>
+                    <p>Inicio: {{ getFormatedDate(item.data_inicio) }}</p>
+                    <p>Fim: {{ getFormatedDate(item.data_final) }}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
-<!-- Botao para ir aos meus eventos-->
-<button mat-icon-button class="button-meus-eventos" >
-  <a href="/meus-eventos" style="color: white">
-    <i class="material-icons">
-      store
-    </i>
-  </a>
-</button>
-<button mat-icon-button class="button-eventos" >
-    <a href="/eventos" style="color: white">
-      <i class="material-icons">
-          storage
-      </i>
-    </a>
-  </button>
