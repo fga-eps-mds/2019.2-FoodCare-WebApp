@@ -13,12 +13,14 @@
         <tr>
             <th>ID</th>
             <th>Nome do evento</th>
+            <th>Data final</th>
             <th>Descrição</th>
         </tr>
         <tr *ngFor='let item of eventos | orderBy : key'>
-            <td>{{item.ID}} </td>
+            <td>{{item.id}} </td>
             <td>{{item.nome}} </td>
-            <td>{{item.descricao}} </td>
+            <td>{{item.data_final}}</td>
+            <td>{{item.desc}} </td>
         </tr>
     </table>
-</MenuNav> -->
+</MenuNav>

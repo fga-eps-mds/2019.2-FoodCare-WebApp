@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {eventos } from 'src/datamodel/eventos.model';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-lista',
@@ -7,18 +8,16 @@ import {eventos } from 'src/datamodel/eventos.model';
   styleUrls: ['./lista.component.css'],
 })
 export class ListaComponent implements OnInit {
-  eventos: eventos[] = [];
-  key: string = 'nome';
+  eventos = [];
+  key: string = 'data_final';
+  nome: string;
 
-  constructor( ){}
+  constructor( private api: ApiService ){
+    this.getEventos();
+  }
 
   ngOnInit() {
-    this.eventos = [
-      { "ID":1, "nome":"Bruno", "descricao":"Primeiro evento"},
-      { "ID":2, "nome":"Segundo", "descricao":"Segundo evento"},
-      { "ID":3, "nome":"Zebra", "descricao":"Terceiro evento"},
-      { "ID":4, "nome":"Amanda", "descricao":"Quarto evento"},
-    ];
+    this.eventos = [];
   }
 
 // Função atribuída à caixa de busca (input)
@@ -30,5 +29,15 @@ export class ListaComponent implements OnInit {
     }
     else if(this.nome == ""){ this.ngOnInit();}
   }
-
+  getEventos = () => {
+    this.api.getAllEventos().subscribe(
+      data => {
+        this.eventos = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 }
+
