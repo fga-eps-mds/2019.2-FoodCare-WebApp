@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { ListaComponent } from './lista.component';
 
@@ -8,7 +10,9 @@ describe('ListaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListaComponent ]
+      declarations: [ ListaComponent ],
+      imports: [ OrderModule ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
