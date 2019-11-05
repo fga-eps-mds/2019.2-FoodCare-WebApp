@@ -34,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
 import { ListaComponent } from './lista/lista.component';
 import { FilterPipe } from './filter.pipe';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { FilterPipe } from './filter.pipe';
     LoginComponent,
     ExibirDoadoresComponent,
     ListaComponent,
-    FilterPipe
+    FilterPipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { FilterPipe } from './filter.pipe';
     MatSelectModule,
     MatRadioModule,
     MatDialogModule,
+    OrderModule,
   ],
   providers: [
     ApiService,

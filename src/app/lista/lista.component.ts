@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {eventos } from '../datamodel/eventos.model';
+import {eventos } from 'src/datamodel/eventos.model';
 
 @Component({
   selector: 'app-lista',
@@ -8,16 +8,16 @@ import {eventos } from '../datamodel/eventos.model';
 })
 export class ListaComponent implements OnInit {
   eventos: eventos[] = [];
-  nome: string;
+  key: string = 'nome';
 
   constructor( ){}
 
   ngOnInit() {
     this.eventos = [
-      { "ID":1, "nome":"Primeiro", "descricao":"Primeiro evento"},
+      { "ID":1, "nome":"Bruno", "descricao":"Primeiro evento"},
       { "ID":2, "nome":"Segundo", "descricao":"Segundo evento"},
-      { "ID":3, "nome":"Terceiro", "descricao":"Terceiro evento"},
-      { "ID":4, "nome":"Quarto", "descricao":"Quarto evento"},
+      { "ID":3, "nome":"Zebra", "descricao":"Terceiro evento"},
+      { "ID":4, "nome":"Amanda", "descricao":"Quarto evento"},
     ];
   }
 
