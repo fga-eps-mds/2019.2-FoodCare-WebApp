@@ -34,7 +34,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { CadastroComponent } from './auth/cadastro/cadastro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { EventosDoadorComponent } from './eventos/eventos-doador/eventos-doador.component';
-import { ListaComponent } from './eventos/lista/lista.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,6 @@ import { ListaComponent } from './eventos/lista/lista.component';
     CadastroComponent,
     EventosComponent,
     EventosDoadorComponent,
-    ListaComponent,
   ],
   imports: [
     BrowserModule,

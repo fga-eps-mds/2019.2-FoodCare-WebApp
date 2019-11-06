@@ -11,7 +11,9 @@ import { EventoService } from './evento.service';
 })
 
 export class EventosComponent implements OnInit {
-  eventos = [];
+  eventos: any = [];
+  eventosFilter: any = { nome: '' };
+  eventosOrder: string = 'data_final';
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
@@ -58,14 +60,4 @@ export class EventosComponent implements OnInit {
       return true;
     }
   }
-
-  getResponsavel(id) {
-    this.eventoService.getResponsavel(id).subscribe(
-      data => {
-        console.log(data.user)
-        return (data.user).toString();
-      }
-    )
-  }
-
 }

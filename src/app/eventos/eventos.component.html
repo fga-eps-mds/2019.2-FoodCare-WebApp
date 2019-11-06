@@ -1,20 +1,37 @@
 <mat-toolbar class="toolbar-events" id="inicio">
-    <h1 class="title-toolbar">Lista de Eventos</h1>
+    <a href="/" class="logo">FoodCare</a>
+    <h1 class="title-toolbar">Eventos</h1>
 </mat-toolbar>
 
-<!-- Card do evento-->
-<div *ngFor="let item of eventos">
-    <div *ngIf="mostraEvento( item.data_final)">
+<div>
+    <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
+    </mat-form-field>
+</div>
+
+<div>
+    <mat-form-field>
+        <mat-label>Ordenar por</mat-label>
+        <mat-select [(value)]="eventosOrder">
+          <mat-option value="data_final">Tempo restante</mat-option>
+          <mat-option value="nome">Nome</mat-option>
+          <!-- <mat-option value="distancia">Mais perto</mat-option> -->
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
+    <div *ngIf="mostraEvento(evento.data_final)">
         <mat-card>
             <mat-card-content>
-                <h2>{{ item.nome }}</h2>
+                <h2>{{ evento.nome }}</h2>
                 <div class="data-items">
-                    <p>Descrição: {{ item.desc}}</p>
-                    <div *ngIf="mostraTempoRestante( item.data_final)">
-                        <p> Expira em: {{getDiferencaData( item.data_final)}} horas</p>
+                    <p>Descrição: {{ evento.desc }}</p>
+                    <div *ngIf="mostraTempoRestante(evento.data_final)">
+                        <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
                     </div>
-                    <p>Inicio: {{ getFormatedDate(item.data_inicio) }}</p>
-                    <p>Fim: {{ getFormatedDate(item.data_final) }}</p>
+                    <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
+                    <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
                 </div>
             </mat-card-content>
         </mat-card>

@@ -4,6 +4,15 @@
     justify-content: center;
 }
 
+.logo {
+  margin: auto;
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 2em;
+  text-decoration: none;
+  color: white;
+}
+
 .title-toolbar {
     color: white;
 }

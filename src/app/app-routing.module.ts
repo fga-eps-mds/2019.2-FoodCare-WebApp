@@ -8,7 +8,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { CadastroComponent } from './auth/cadastro/cadastro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { EventosDoadorComponent } from './eventos/eventos-doador/eventos-doador.component';
-import { ListaComponent } from './eventos/lista/lista.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'eventos', component: EventosComponent },
   { path: 'eventos-doador', component: EventosDoadorComponent, canActivate: [AuthGuard] },
-  { path: 'lista', component: ListaComponent },
 ];
 
 @NgModule({
