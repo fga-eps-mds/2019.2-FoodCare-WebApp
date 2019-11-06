@@ -1,38 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-// import { Evento } from './evento.interface';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
-// import { Router } from '@angular/router';
+
+import { EventoService } from './evento.service';
 
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css'],
-  providers: [ApiService],
 })
 
 export class EventosComponent implements OnInit {
-  eventos = [];
-  selectedEvento: any;
-  isShow = false;
+  eventos: any = [];
+  eventosFilter: any = { nome: '' };
+  eventosOrder: string = 'data_final';
 
-  constructor(private api: ApiService) {
-    this.getEventos();
+  constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
-    this.selectedEvento = {
-      id: -1,
-      nome: '',
-      desc: '',
-      data_inicio: '',
-      data_final: ''
-    }
+    this.getEventos();
   }
 
   ngOnInit() { }
 
   getEventos = () => {
-    this.api.getAllEventos().subscribe(
+    this.eventoService.getAllEventos().subscribe(
       data => {
         this.eventos = data;
       },
@@ -42,90 +33,31 @@ export class EventosComponent implements OnInit {
     )
   }
 
-  eventoClicked = (evento) => {
-    console.log('teste1');
-    this.api.getOneEvento(evento.id).subscribe(
-      data => {
-        console.log('teste2');
-        console.log(data);
-        this.selectedEvento = {
-          id: data.id,
-          nome: data.nome,
-          desc: data.desc,
-          data_inicio: this.getDateForEdit(data.data_inicio),
-          data_final: this.getDateForEdit(data.data_final)
-        };
-        console.log(this.selectedEvento);
-        console.log('teste3');
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  updateEvento = () => {
-    this.api.updateEvento(this.selectedEvento).subscribe(
-      data => {
-        this.getEventos();
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  createEvento = () => {
-    this.api.createEvento(this.eventos).subscribe(
-      data => {
-        this.eventos.push(data);
-        this.toggleDisplay();
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  deleteEvento = () => {
-    this.api.deleteEvento(this.selectedEvento.id).subscribe(
-      data => {
-        this.getEventos();
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-
-  getFormateDate(date) {
+  getFormatedDate(date) {
     return moment(date).format('LLL');
   }
 
-  getDateForEdit(date) {
-    return moment(date).format("YYYY-MM-DDTkk:mm");
+  getDiferencaData(data_final) {
+    var date1 = Date.now();
+    var date2 = new Date(data_final);
+    var timeDiff = Math.abs(date2.getTime() - date1);
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600));
+    return diffDays;
   }
 
-  mostraDiv(id: string) {
-    console.log(id);
-    if (document.getElementById(id).style.display == "none") {
-      document.getElementById(id).style.display = "block";
+  mostraTempoRestante(data_final) {
+    if (this.getDiferencaData(data_final) >= 168) {
+      return false;
     } else {
-      /* se conteúdo está a mostra, esconde o conteúdo  */
-      document.getElementById(id).style.display = "none";
+      return true;
     }
   }
 
-  refresh() {
-    window.location.reload();
-  }
-
-  scrollToTop() {
-    document.getElementById("inicio").scrollIntoView(true);
+  mostraEvento(data_final) {
+    if (this.getDiferencaData(data_final) == 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
-

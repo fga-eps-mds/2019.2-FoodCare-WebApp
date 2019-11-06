@@ -1,108 +1,39 @@
 <mat-toolbar class="toolbar-events" id="inicio">
-  <!-- <button mat-icon-button class="button-back"><a href="/home"><i
-    class="material-icons">keyboard_arrow_left</i></a></button> -->
-  <h1 class="title-toolbar">Lista de Eventos</h1>
+    <a href="/" class="logo">FoodCare</a>
+    <h1 class="title-toolbar">Eventos</h1>
 </mat-toolbar>
-<div *ngIf="isShow">
-  <!-- Etapas de adicionar alimeto -->
-  <div class="end-form">
-    <div class="nome">
-      <mat-form-field>
-        <input matInput [(ngModel)]="eventos.nome" placeholder="Nome" required>
-      </mat-form-field>
-    </div>
-    <div class="date">
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="eventos.data_inicio" required>
-      </mat-form-field>
-    </div>
-    <div class="date">
-      <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="eventos.data_final" required>
-      </mat-form-field>
-    </div>
-    <!-- <div class="local">
-      <mat-form-field>
-        <input matInput #itemLocal placeholder="Local">
-      </mat-form-field>
 
-    </div> -->
-    <div class="desc">
-      <mat-form-field>
-        <textarea [(ngModel)]="eventos.desc" matInput placeholder="Descrição" required></textarea>
-      </mat-form-field>
-
-    </div>
-    <div class="button-concluir">
-      <button mat-raised-button (click)="createEvento()">Concluir</button>
-      {{ error?.message }}
-    </div>
-
-  </div>
+<div>
+    <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
+    </mat-form-field>
 </div>
 
-<mat-card *ngFor="let item of eventos">
-  <mat-card-content>
+<div>
+    <mat-form-field>
+        <mat-label>Ordenar por</mat-label>
+        <mat-select [(value)]="eventosOrder">
+          <mat-option value="data_final">Tempo restante</mat-option>
+          <mat-option value="nome">Nome</mat-option>
+          <!-- <mat-option value="distancia">Mais perto</mat-option> -->
+        </mat-select>
+    </mat-form-field>
+</div>
 
-    <h2>{{ item.nome }}</h2>
-    <div class="data-items">
-      <p>{{ getFormateDate(item.data_inicio) }}</p>
-      <p>{{ getFormateDate(item.data_final) }}</p>
+<div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
+    <div *ngIf="mostraEvento(evento.data_final)">
+        <mat-card>
+            <mat-card-content>
+                <h2>{{ evento.nome }}</h2>
+                <div class="data-items">
+                    <p>Descrição: {{ evento.desc }}</p>
+                    <div *ngIf="mostraTempoRestante(evento.data_final)">
+                        <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
+                    </div>
+                    <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
+                    <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
-    <div class="edit-info" style="display: none;" id={{item.id}}>
-      <div class="end-form_edit">
-        <div class="nome_edit">
-          <mat-form-field>
-            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
-          </mat-form-field>
-
-        </div>
-        <div class="date_edit">
-          <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de início"
-              [(ngModel)]="selectedEvento.data_inicio" required>
-          </mat-form-field>
-        </div>
-        <div class="date_edit">
-          <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de términio"
-              [(ngModel)]="selectedEvento.data_final" required>
-          </mat-form-field>
-
-        </div>
-        <!-- <div class="local">
-                <mat-form-field>
-                    <input matInput #itemLocal placeholder="Local">
-                </mat-form-field>
-
-            </div>  -->
-        <div class="desc_edit">
-          <mat-form-field>
-            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc" required></textarea>
-          </mat-form-field>
-
-        </div>
-        <div class="button-concluir">
-          <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
-          {{ error?.message }}
-        </div>
-        <div class="button-excluir">
-          <button mat-raised-button (click)="deleteEvento()">Excluir</button>
-          {{ error?.message }}
-        </div>
-      </div>
-    </div>
-
-  </mat-card-content>
-  <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoClicked(item)">
-    <i class="material-icons">edit</i>
-  </button>
-</mat-card>
-
-<button mat-icon-button class="button-add-evento" (click)="toggleDisplay(); scrollToTop()">
-  <a style="color: white">
-    <i class="material-icons">
-      add
-    </i>
-  </a>
-</button>
+</div>
