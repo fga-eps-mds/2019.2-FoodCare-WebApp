@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { ListaComponent } from './lista.component';
@@ -14,6 +15,7 @@ describe('ListaComponent', () => {
       declarations: [ListaComponent],
       imports: [
         HttpClientTestingModule,
+        FilterPipeModule,
         OrderModule
       ],
       schemas: [NO_ERRORS_SCHEMA]

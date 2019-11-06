@@ -1,5 +1,5 @@
 <MenuNav>
-    <input class="busca" type="text" [(ngModel)]="nome" (input)="Search()" />
+    <input class="busca" type="text" [(ngModel)]="eventoFilter.nome" placeholder="Pesquise eventos" />
     <table class="table">
         <tr>
             <th>ID</th>
@@ -7,11 +7,11 @@
             <th>Data final</th>
             <th>Descrição</th>
         </tr>
-        <tr *ngFor='let item of eventos | orderBy : key'>
-            <td>{{item.id}} </td>
-            <td>{{item.nome}} </td>
-            <td>{{item.data_final}}</td>
-            <td>{{item.desc}} </td>
+        <tr *ngFor='let evento of eventos | orderBy: key | filterBy: eventoFilter'>
+            <td>{{evento.id}} </td>
+            <td>{{evento.nome}} </td>
+            <td>{{evento.data_final}}</td>
+            <td>{{evento.desc}} </td>
         </tr>
     </table>
 </MenuNav>

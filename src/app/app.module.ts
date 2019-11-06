@@ -19,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { AuthService, AuthInterceptor, AuthGuard } from './auth/auth.service';
@@ -35,9 +36,6 @@ import { EventosComponent } from './eventos/eventos.component';
 import { EventosDoadorComponent } from './eventos/eventos-doador/eventos-doador.component';
 import { ListaComponent } from './eventos/lista/lista.component';
 
-import { FilterPipe } from './shared/pipes/filter.pipe';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +48,6 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     EventosComponent,
     EventosDoadorComponent,
     ListaComponent,
-    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -73,8 +70,9 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     MatCheckboxModule,
     MatExpansionModule,
     MatFormFieldModule,
-    OrderModule,
     AppRoutingModule,
+    FilterPipeModule,
+    OrderModule,
   ],
   providers: [
     AuthService,

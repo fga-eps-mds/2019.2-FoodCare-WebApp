@@ -10,7 +10,7 @@ import { EventoService } from '../evento.service';
 export class ListaComponent implements OnInit {
   eventos = [];
   key: string = 'data_final';
-  nome: string;
+  eventoFilter: any = { nome: '' };
 
   constructor(private api: EventoService) {
     this.getEventos();
@@ -20,15 +20,6 @@ export class ListaComponent implements OnInit {
     this.eventos = [];
   }
 
-  // Função atribuída à caixa de busca (input)
-  Search() {
-    if (this.nome != "") {
-      this.eventos = this.eventos.filter(res => {
-        return res.nome.toLocaleLowerCase().match(this.nome.toLocaleLowerCase());
-      })
-    }
-    else if (this.nome == "") { this.ngOnInit(); }
-  }
   getEventos = () => {
     this.api.getAllEventos().subscribe(
       data => {
