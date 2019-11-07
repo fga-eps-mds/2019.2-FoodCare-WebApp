@@ -58,4 +58,10 @@ export class EventoService {
       { headers: this.httpHeaders }
     )
   }
+  getCategoria(): Observable<any> {
+    return this.http.get(
+      this.apiURL + 'categoria/',
+      { headers: this.httpHeaders }
+    )
+  }
 }
