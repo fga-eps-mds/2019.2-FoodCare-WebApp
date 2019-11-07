@@ -12,6 +12,7 @@ import { EventoService } from './evento.service';
 
 export class EventosComponent implements OnInit {
   eventos: any = [];
+  
   eventosFilter: any = { nome: '' };
   eventosOrder: string = 'data_final';
 
@@ -21,6 +22,7 @@ export class EventosComponent implements OnInit {
   }
 
   ngOnInit() { }
+
 
   getEventos = () => {
     this.eventoService.getAllEventos().subscribe(

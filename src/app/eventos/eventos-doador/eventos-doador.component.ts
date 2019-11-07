@@ -11,23 +11,27 @@ import { EventoService } from '../evento.service';
 })
 export class EventosDoadorComponent implements OnInit {
   doador: any;
-  todos_eventos = [];
   eventos = [];
+  categorias = [];
   selectedEvento: any;
   isShow = false;
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.setEventos();
+    this.setCategoria();
+    this.setUsuario();
     this.selectedEvento = {
       id: -1,
       nome: '',
       desc: '',
       data_inicio: '',
       data_final: '',
-      id_doador: this.doador,
+      id_doador: this.doador.pk,
+      local: '',
+      id_categoria: -1
     }
-  }
+}
 
   ngOnInit() { }
 
@@ -37,7 +41,6 @@ export class EventosDoadorComponent implements OnInit {
       data => {
         this.doador = data;
         console.log(data);
-        this.confereEvento(data);
       },
       error => {
         console.log(error);
@@ -45,22 +48,23 @@ export class EventosDoadorComponent implements OnInit {
     )
   }
 
-  // Funcao para filtrar os eventos criados pelo id_doador
-  confereEvento = (data) => {
-    for (var e in this.todos_eventos) {
-      console.log(data.pk)
-      if (this.todos_eventos[e].id_doador == data.pk) {
-        this.eventos = data[e];
+  // Funcao para coletar todos as categorias criados
+  setCategoria = () => {
+    this.eventoService.getCategoria().subscribe(
+      data => {
+        this.categorias = data;
+      },
+      error => {
+        console.log(error);
       }
-    }
+    )
   }
 
   // Funcao para coletar todos os eventos criados
   setEventos = () => {
     this.eventoService.getAllEventos().subscribe(
       data => {
-        this.todos_eventos = data;
-        this.setUsuario();
+        this.eventos = data;
       },
       error => {
         console.log(error);
@@ -77,7 +81,10 @@ export class EventosDoadorComponent implements OnInit {
           nome: data.nome,
           desc: data.desc,
           data_inicio: this.getDateForEdit(data.data_inicio),
-          data_final: this.getDateForEdit(data.data_final)
+          data_final: this.getDateForEdit(data.data_final),
+          local: data.local,
+          id_doador: this.doador.pk,
+          id_categoria: data.id_categoria
         };
         console.log(this.selectedEvento);
         console.log('teste3');
