@@ -8,7 +8,16 @@
         <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
     </mat-form-field>
 </div>
-
+<div>
+    <mat-form-field>
+	<mat-label>Filtrar por</mat-label>
+        <mat-select [(ngModel)]="eventosFilter.id_categoria">
+          <mat-card *ngFor="let item of categorias">
+            <mat-option value='{{item.id}}'>{{item.nome}}</mat-option>
+          </mat-card>
+        </mat-select>
+    </mat-form-field>
+<div>
 <div>
     <mat-form-field>
         <mat-label>Ordenar por</mat-label>
