@@ -29,6 +29,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getDoadorID() {
+    return localStorage.getItem('id_doador');
+  }
+
 
   login(username: string, password: string) {
     this.logout();
@@ -36,7 +40,11 @@ export class AuthService {
       this.authApi.concat('login/'),
       { username, password }
     ).pipe(
-      tap(response => this.setSession(response)),
+      tap(response => {
+        console.log(response.user.pk);
+        localStorage.setItem('id_doador', response.user.pk)
+        this.setSession(response);
+      }),
       shareReplay(),
     );
   }

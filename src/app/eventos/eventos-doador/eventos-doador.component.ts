@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import 'moment/locale/pt-br';
 
 import { EventoService } from '../evento.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-eventos-doador',
@@ -16,7 +17,10 @@ export class EventosDoadorComponent implements OnInit {
   selectedEvento: any;
   isShow = false;
 
-  constructor(private eventoService: EventoService) {
+  constructor(
+    private eventoService: EventoService,
+    private authService: AuthService
+  ) {
     moment.locale('pt-BR');
     this.setEventos();
     this.setCategoria();
