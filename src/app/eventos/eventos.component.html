@@ -12,9 +12,8 @@
     <mat-form-field>
 	<mat-label>Filtrar por</mat-label>
         <mat-select [(ngModel)]="eventosFilter.id_categoria">
-          <mat-card *ngFor="let item of categorias">
-            <mat-option value='{{item.id}}'>{{item.nome}}</mat-option>
-          </mat-card>
+            <mat-option value=''>Todas</mat-option>
+            <mat-option *ngFor="let item of categoria" value='{{item.id}}'>{{item.nome}}</mat-option>
         </mat-select>
     </mat-form-field>
 <div>

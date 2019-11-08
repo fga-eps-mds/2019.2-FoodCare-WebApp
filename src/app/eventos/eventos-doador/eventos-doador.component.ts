@@ -10,7 +10,7 @@ import { EventoService } from '../evento.service';
   styleUrls: ['./eventos-doador.component.css'],
 })
 export class EventosDoadorComponent implements OnInit {
-  doador: any;
+  doador: any = '';
   eventos = [];
   categorias = [];
   selectedEvento: any;
@@ -20,27 +20,30 @@ export class EventosDoadorComponent implements OnInit {
     moment.locale('pt-BR');
     this.setEventos();
     this.setCategoria();
-    this.setUsuario();
+    
     this.selectedEvento = {
       id: -1,
       nome: '',
       desc: '',
       data_inicio: '',
       data_final: '',
-      id_doador: this.doador.pk,
+      id_doador: 1,
       local: '',
       id_categoria: -1
     }
-}
-
-  ngOnInit() { }
+  }
+  
+  ngOnInit() {
+    this.setUsuario();
+    console.log(this.doador);
+  }
 
   // Funcao para coletar o id do usuario logado
   setUsuario = () => {
     this.eventoService.usuarioLogado().subscribe(
       data => {
         this.doador = data;
-        console.log(data);
+        console.log(data.pk);
       },
       error => {
         console.log(error);
@@ -83,7 +86,7 @@ export class EventosDoadorComponent implements OnInit {
           data_inicio: this.getDateForEdit(data.data_inicio),
           data_final: this.getDateForEdit(data.data_final),
           local: data.local,
-          id_doador: this.doador.pk,
+          id_doador: this.doador,
           id_categoria: data.id_categoria
         };
         console.log(this.selectedEvento);

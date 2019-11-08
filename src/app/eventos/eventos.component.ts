@@ -15,16 +15,13 @@ export class EventosComponent implements OnInit {
 
   categoria: any = [];
   
-  eventosFilter: any = { 
-                        nome: '',
-                        id_categoria: -1, 
-                       };
+  eventosFilter: any = {nome: ''};
   eventosOrder: string = 'data_final';
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.getEventos();
-    this.getCategoria();
+    this.setCategoria();
   }
 
   ngOnInit() { }
@@ -33,7 +30,7 @@ export class EventosComponent implements OnInit {
   setCategoria = () => {
     this.eventoService.getCategoria().subscribe(
       data => {
-        this.categorias = data;
+        this.categoria = data;
       },
       error => {
         console.log(error);

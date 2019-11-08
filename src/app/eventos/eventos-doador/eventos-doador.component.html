@@ -13,9 +13,7 @@
     <div class="categoria">
       <mat-form-field>
         <mat-select [(ngModel)]="selectedEvento.id_categoria" placeholder="Categoria">
-          <mat-card *ngFor="let item of categorias">
-            <mat-option value='{{item.id}}'>{{item.nome}}</mat-option>
-          </mat-card>
+            <mat-option  *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -71,9 +69,7 @@
         <div class="categoria">
           <mat-form-field>
             <mat-select [(ngModel)]="selectedEvento.id_categoria" placeholder="Categoria">
-              <mat-card *ngFor="let item of categorias">
-                <mat-option value='{{item.id}}'>{{item.nome}}</mat-option>
-              </mat-card>
+                <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
