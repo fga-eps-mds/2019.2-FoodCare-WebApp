@@ -35,6 +35,7 @@ import { CadastroComponent } from './auth/cadastro/cadastro.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { EventosDoadorComponent } from './eventos/eventos-doador/eventos-doador.component';
 import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
+import { LocalizacaoComponent } from './localizacao/localizacao.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
     EventosComponent,
     EventosDoadorComponent,
     PerfilDoadorComponent,
+    LocalizacaoComponent,
   ],
   imports: [
     BrowserModule,
