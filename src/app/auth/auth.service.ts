@@ -23,6 +23,8 @@ export class AuthService {
 
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('id_doador', authResult.user.pk)
+    localStorage.setItem('nome_doador', authResult.user.username)
   }
 
   get token(): string {
@@ -31,6 +33,9 @@ export class AuthService {
 
   getDoadorID() {
     return localStorage.getItem('id_doador');
+  }
+  getNomeDoador() {
+    return localStorage.getItem('nome_doador');
   }
 
 
@@ -41,8 +46,6 @@ export class AuthService {
       { username, password }
     ).pipe(
       tap(response => {
-        console.log(response.user.pk);
-        localStorage.setItem('id_doador', response.user.pk)
         this.setSession(response);
       }),
       shareReplay(),

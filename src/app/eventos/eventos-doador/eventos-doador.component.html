@@ -1,6 +1,12 @@
 <mat-toolbar class="toolbar-events" id="inicio">
   <h1 class="title-toolbar">Eventos do Doador</h1>
+    <button mat-button class="perfil">
+      <i class="material-icons">person_outline</i>
+      {{nome_doador}}
+    </button>
 </mat-toolbar>
+
+
 
 <!-- Criar evento-->
 <div *ngIf="isShow">
@@ -19,12 +25,14 @@
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="selectedEvento.data_inicio" required>
+        <input matInput type="datetime-local" placeholder="Data e hora de início"
+          [(ngModel)]="selectedEvento.data_inicio" required>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="selectedEvento.data_final" required>
+        <input matInput type="datetime-local" placeholder="Data e hora de términio"
+          [(ngModel)]="selectedEvento.data_final" required>
       </mat-form-field>
     </div>
 

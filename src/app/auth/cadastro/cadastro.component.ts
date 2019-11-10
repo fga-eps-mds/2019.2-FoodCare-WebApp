@@ -18,7 +18,10 @@ export class CadastroComponent implements OnInit {
   cadastrar(username: string, nome: string, cnpj: string, email: string, password1: string, password2: string) {
     alert("Cadastro efetuado com sucesso");
     this.authService.cadastrar(username, nome, cnpj, email, password1, password2).subscribe(
-      success => this.router.navigate(['eventos-doador']),
+      success => {
+        this.router.navigate(['eventos-doador']),
+        console.log('nome')
+      },
       error => this.error = error
     );
   }

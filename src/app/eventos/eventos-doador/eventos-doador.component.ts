@@ -16,6 +16,7 @@ export class EventosDoadorComponent implements OnInit {
   categorias = [];
   selectedEvento: any;
   isShow = false;
+  nome_doador: any = '';
 
   constructor(
     private eventoService: EventoService,
