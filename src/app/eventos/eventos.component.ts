@@ -22,6 +22,7 @@ export class EventosComponent implements OnInit {
     moment.locale('pt-BR');
     this.getEventos();
     this.getCategoria();
+    this.getLocallizacao();
   }
 
   ngOnInit() { }
@@ -74,6 +75,27 @@ export class EventosComponent implements OnInit {
       return false;
     } else {
       return true;
+    }
+  }
+  getLocallizacao() {
+    var output = document.getElementById("out");
+
+    navigator.geolocation.getCurrentPosition(success);
+
+    function success(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      alert('Localização ativada!')
+
+      // printar na tela as coordenadas
+      // output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p>';
+
+      // mostrar coordenadas dentro do alerta
+      alert('Latitude: ' + latitude + 'Longitude: ' + longitude);
+
+      // "Salvar" no console os dados obtidos
+      console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
     }
   }
 }
