@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 
@@ -17,6 +18,7 @@ export class EventosDoadorComponent implements OnInit {
   selectedEvento: any;
   isShow = false;
   nome_doador: any = '';
+  innerWidth: any = window.innerWidth;
 
   constructor(
     private eventoService: EventoService,
@@ -43,6 +45,10 @@ export class EventosDoadorComponent implements OnInit {
     console.log(this.doador);
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
   // Funcao para coletar o id do usuario logado
   setUsuario = () => {
     this.eventoService.usuarioLogado().subscribe(

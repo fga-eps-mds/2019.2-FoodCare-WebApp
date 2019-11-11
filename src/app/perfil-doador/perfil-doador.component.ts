@@ -9,21 +9,24 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class PerfilDoadorComponent implements OnInit {
 
-  IsShow : boolean = false;
-  nome_doador : any;
+  IsShow: boolean = false;
+  nome_doador: any;
   
   constructor(
     private router: Router,
     private authService: AuthService,
+    
   ) { }
 
   ngOnInit() {
     this.nome_doador = this.authService.getNomeDoador();
   }
+
+
   mostraDiv = () => {
-    if(this.IsShow==false){
+    if (this.IsShow == false) {
       this.IsShow = true;
-      
+
     }
     else {
       this.IsShow = false;
