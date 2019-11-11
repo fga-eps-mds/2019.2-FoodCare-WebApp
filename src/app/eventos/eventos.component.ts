@@ -17,12 +17,14 @@ export class EventosComponent implements OnInit {
 
   eventosFilter: any = {nome: ''};
   eventosOrder: string = 'data_final';
+  latitude: any;
+  longitude: any;
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.getEventos();
     this.getCategoria();
-    this.getLocallizacao();
+    this.getLocalizacao();
   }
 
   ngOnInit() { }
@@ -77,19 +79,16 @@ export class EventosComponent implements OnInit {
       return true;
     }
   }
-  getLocallizacao() {
-    var output = document.getElementById("out");
-
+  getLocalizacao() {
+    var latitude: any;
+    var longitude: any;
     navigator.geolocation.getCurrentPosition(success);
 
     function success(position) {
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
 
       alert('Localização ativada!')
-
-      // printar na tela as coordenadas
-      // output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p>';
 
       // mostrar coordenadas dentro do alerta
       alert('Latitude: ' + latitude + 'Longitude: ' + longitude);
@@ -97,5 +96,12 @@ export class EventosComponent implements OnInit {
       // "Salvar" no console os dados obtidos
       console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
     }
+    this.latitude = latitude;
+    this.longitude = longitude;
+  }
+
+  calculaDistancia(latitude: any, longitude: any){
+    var dist  = ( latitude - this.latitude)**2 + (longitude - this.longitude)**2
+    return Math.sqrt(dist)
   }
 }

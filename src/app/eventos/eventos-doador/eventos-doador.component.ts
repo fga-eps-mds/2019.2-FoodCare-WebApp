@@ -19,6 +19,8 @@ export class EventosDoadorComponent implements OnInit {
 
   isShow = false;
   innerWidth: any = window.innerWidth;
+  latitude: any;
+  longitude: any;
 
   constructor(
     private eventoService: EventoService,
@@ -30,7 +32,8 @@ export class EventosDoadorComponent implements OnInit {
     this.evento = {
       nome: "",
       desc: "",
-      local: "",
+      latitude: null,
+      longitude: null,
       data_inicio: null,
       data_final: null,
       id_doador: null,
@@ -39,7 +42,8 @@ export class EventosDoadorComponent implements OnInit {
     this.selectedEvento = {
       nome: "",
       desc: "",
-      local: "",
+      latitude: null,
+      longitude: null,
       data_inicio: null,
       data_final: null,
       id_doador: null,
@@ -102,7 +106,10 @@ export class EventosDoadorComponent implements OnInit {
 
   // Funcao para criar evento
   createEvento = () => {
+    this.getLocalizacao();
     this.evento.id_doador = this.doador.pk;
+    this.selectedEvento.latitude = this.latitude,
+    this.selectedEvento.longitude = this.longitude,
     this.eventoService.createEvento(this.evento)
     .subscribe(
       data => {
@@ -170,5 +177,28 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para rolar ate o topo
   scrollToTop() {
     document.getElementById("inicio").scrollIntoView(true);
+  }
+
+  // Função para pegar a localização atual
+  getLocalizacao() {
+    var latitude: any;
+    var longitude: any;
+    navigator.geolocation.getCurrentPosition(success);
+
+    function success(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+
+      alert('Localização ativada!')
+
+      // mostrar coordenadas dentro do alerta
+      alert('Latitude: ' + latitude + 'Longitude: ' + longitude);
+
+      // "Salvar" no console os dados obtidos
+      console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+    }
+
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
 }

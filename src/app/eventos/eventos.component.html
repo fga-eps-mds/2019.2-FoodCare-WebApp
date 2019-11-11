@@ -40,6 +40,7 @@
                     </div>
                     <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
                     <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
+                    <p>Distância: {{ calculaDistancia(evento.latitude, evento.longitude )}} </p>
                 </div>
             </mat-card-content>
         </mat-card>
