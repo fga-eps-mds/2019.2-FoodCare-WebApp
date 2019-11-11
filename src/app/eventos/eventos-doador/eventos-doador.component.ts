@@ -20,7 +20,7 @@ export class EventosDoadorComponent implements OnInit {
     moment.locale('pt-BR');
     this.setEventos();
     this.setCategoria();
-    
+
     this.selectedEvento = {
       id: -1,
       nome: '',
@@ -32,7 +32,7 @@ export class EventosDoadorComponent implements OnInit {
       id_categoria: -1
     }
   }
-  
+
   ngOnInit() {
     this.setUsuario();
     console.log(this.doador);
