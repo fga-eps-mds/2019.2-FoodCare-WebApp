@@ -2,7 +2,7 @@
   <h1 class="title-toolbar">Eventos do Doador</h1>
   <button mat-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth > 525">
     <i class="material-icons">person_outline</i>
-    {{nome_doador}}
+    {{ doador.email }}
   </button>
   <button mat-icon-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth <= 525">
     <i class="material-icons">person_outline</i>

@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   private authApi = environment.apiURL + 'auth/';
+  private userApi = environment.apiURL + 'usuario/';
   constructor(private http: HttpClient) { }
 
   private setSession(authResult) {
@@ -24,40 +25,46 @@ export class AuthService {
     localStorage.setItem('token', authResult.token);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('id_doador', authResult.user.pk)
-    localStorage.setItem('nome_doador', authResult.user.username)
   }
-
+  
   get token(): string {
     return localStorage.getItem('token');
   }
-
+  
   getDoadorID() {
     return localStorage.getItem('id_doador');
   }
-  getNomeDoador() {
-    return localStorage.getItem('nome_doador');
+  getDoador(id) {
+    return this.http.get(this.userApi.concat(id + '/'))
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      );
   }
-
-
+  
+  
   login(username: string, password: string) {
     this.logout();
     return this.http.post(
       this.authApi.concat('login/'),
       { username, password }
-    ).pipe(
-      tap(response => {
-        this.setSession(response);
+      ).pipe(
+        tap(response => {
+          this.setSession(response);
       }),
       shareReplay(),
     );
   }
-  cadastrar(username: string, nome: string, cnpj: string, email: string, password1: string, password2: string) {
+  cadastrar(username: string, first_name: string, last_name: string, cnpj: string, email: string, password1: string, password2: string) {
     this.logout();
     return this.http.post(
       this.authApi.concat('signup/'),
-      { username, nome, cnpj, email, password1, password2 }
+      { username, first_name, last_name, email, password1, password2 }
     ).pipe(
-      tap(response => this.setSession(response)),
+      tap(response => {
+        console.log(response),
+        this.setSession(response)
+      }),
       shareReplay(),
     );
   }
