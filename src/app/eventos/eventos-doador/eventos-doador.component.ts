@@ -1,4 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
@@ -20,9 +23,14 @@ export class EventosDoadorComponent implements OnInit {
   nome_doador: any = '';
   innerWidth: any = window.innerWidth;
 
+  private apiURL = environment.apiURL;
+  httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+
   constructor(
     private eventoService: EventoService,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient,
+
   ) {
     moment.locale('pt-BR');
     this.setEventos();
@@ -44,7 +52,6 @@ export class EventosDoadorComponent implements OnInit {
     this.setUsuario();
     console.log(this.doador);
   }
-
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;

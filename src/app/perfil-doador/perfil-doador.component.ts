@@ -19,7 +19,7 @@ export class PerfilDoadorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.nome_doador = this.authService.getNomeDoador();
+    
   }
 
 
