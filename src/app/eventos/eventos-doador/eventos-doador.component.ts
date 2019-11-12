@@ -22,6 +22,7 @@ export class EventosDoadorComponent implements OnInit {
   isShow = false;
   nome_doador: any = '';
   innerWidth: any = window.innerWidth;
+  id_perfil: any;
 
   private apiURL = environment.apiURL;
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
@@ -189,4 +190,3 @@ export class EventosDoadorComponent implements OnInit {
     document.getElementById("inicio").scrollIntoView(true);
   }
 }
-
