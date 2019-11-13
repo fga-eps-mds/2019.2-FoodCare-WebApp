@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 import { EventosDoadorComponent } from './eventos-doador.component';
 
@@ -22,6 +23,7 @@ describe('EventosDoadorComponent', () => {
         MatInputModule,
         MatFormFieldModule,
         MatCardModule,
+        MatSelectModule,
       ],
       declarations: [EventosDoadorComponent]
     })
