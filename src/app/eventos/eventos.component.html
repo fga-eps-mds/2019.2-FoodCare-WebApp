@@ -40,7 +40,8 @@
                     </div>
                     <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
                     <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
-                    <p>Distância: {{ evento.latitude +" "+ evento.longitude}} </p>
+                    <!-- <p>Distância: {{ evento.latitude +" "+ evento.longitude}} </p> -->
+                    <p>Distância: {{ distanciaEvento(evento.latitude, evento.longitude, -15.9982162, -48.1819337) + " km"}} </p>
                 </div>
             </mat-card-content>
         </mat-card>
