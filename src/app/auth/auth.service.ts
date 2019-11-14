@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpInterceptor, HttpHeaders, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, shareReplay } from 'rxjs/operators';
 import * as moment from 'moment';
@@ -14,7 +14,9 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   private authApi = environment.apiURL + 'auth/';
-  private userApi = environment.apiURL + 'usuario/';
+  // private userApi = environment.apiURL + 'usuario/';
+  httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
+
   constructor(private http: HttpClient) { }
 
   private setSession(authResult) {
@@ -31,16 +33,16 @@ export class AuthService {
     return localStorage.getItem('token');
   }
   
-  getDoadorID() {
-    return localStorage.getItem('id_doador');
-  }
-  getDoador(id) {
-    return this.http.get(this.userApi.concat(id + '/'))
-      .subscribe(
-        data => console.log(data),
-        err => console.log(err)
-      );
-  }
+  // getDoadorID() {
+  //   return localStorage.getItem('id_doador');
+  // }
+  // getDoador(id) {
+  //   return this.http.get(this.userApi.concat(id + '/'))
+  //     .subscribe(
+  //       data => console.log(data),
+  //       err => console.log(err)
+  //     );
+  // }
   
   
   login(username: string, password: string) {
@@ -55,11 +57,11 @@ export class AuthService {
       shareReplay(),
     );
   }
-  cadastrar(username: string, first_name: string, last_name: string, cnpj: string, email: string, password1: string, password2: string) {
+  cadastrar(username: string, email: string, password1: string, password2: string) {
     this.logout();
     return this.http.post(
       this.authApi.concat('signup/'),
-      { username, first_name, last_name, email, password1, password2 }
+      { username, email, password1, password2 }
     ).pipe(
       tap(response => {
         console.log(response),
@@ -68,7 +70,12 @@ export class AuthService {
       shareReplay(),
     );
   }
-
+  usuarioLogado(): Observable<any> {
+    return this.http.get(
+      this.authApi + 'user/',
+      { headers: this.httpHeaders }
+    )
+  }
 
   logout() {
     localStorage.removeItem('token');

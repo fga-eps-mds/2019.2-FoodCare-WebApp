@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class PerfilDoadorComponent implements OnInit {
 
   IsShow: boolean = false;
-  nome_doador: any;
+  doador: any = this.authService.usuarioLogado();
   
   constructor(
     private router: Router,
@@ -19,7 +19,14 @@ export class PerfilDoadorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+    this.authService.usuarioLogado().subscribe(
+      data=> {
+        this.doador = data;
+      },
+      error => {
+        console.log(error)
+      }
+    );
   }
 
 

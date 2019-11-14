@@ -5,12 +5,12 @@
             <mat-form-field>
                 <input matInput placeholder="Usuário" #username id="username" class="form-control">
             </mat-form-field>
-            <mat-form-field>
+            <!-- <mat-form-field>
                 <input matInput placeholder="Nome" #name id="name" class="form-control">
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="CNPJ" #cnpj id="cnpj" class="form-control">
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-form-field>
                 <input matInput placeholder="Email" #email id="email" class="form-control" type="email">
             </mat-form-field>
@@ -20,7 +20,7 @@
             <mat-form-field>
                 <input matInput placeholder="Confirmar Senha" #passwordConfirm id="passwordConfirm" class="form-control" type="password">
             </mat-form-field>
-            <button mat-raised-button class="buttonCadastro" (click)='cadastrar(username.value, name.value, name.value, cnpj.value, email.value, password.value, passwordConfirm.value)'>Cadastrar</button>
+            <button mat-raised-button class="buttonCadastro" (click)='cadastrar(username.value, email.value, password.value, passwordConfirm.value)'>Cadastrar</button>
             <p class="textoLogin">Já tem login? Clique <a class="link" href="/login">aqui.</a></p>
         </div>
     </div>
