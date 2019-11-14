@@ -59,7 +59,7 @@ export class EventosDoadorComponent implements OnInit {
   }
   // Funcao para coletar o id do usuario logado
   setUsuario = () => {
-    this.eventoService.usuarioLogado().subscribe(
+    return this.authService.usuarioLogado().subscribe(
       data => {
         this.doador = data;
         console.log(data.pk);

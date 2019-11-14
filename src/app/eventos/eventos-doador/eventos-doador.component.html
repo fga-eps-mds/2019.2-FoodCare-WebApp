@@ -1,12 +1,21 @@
 <mat-toolbar class="toolbar-events" id="inicio">
   <h1 class="title-toolbar">Eventos do Doador</h1>
-  <button mat-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth > 525">
-    <i class="material-icons">person_outline</i>
-    {{ doador.username }}
-  </button>
-  <button mat-icon-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth <= 525">
-    <i class="material-icons">person_outline</i>
-  </button>
+  
+    <button mat-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth > 670">
+      {{ doador.username }}
+      <i class="material-icons">person_outline</i>
+      
+    </button>
+    <button mat-icon-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth <= 670">
+      <i class="material-icons">person_outline</i>
+    </button>
+    <button mat-button class="logout" (click)="this.authService.logout()" routerLink="">
+        <i class="material-icons">
+            exit_to_app
+        </i>
+      </button>
+
+  
 </mat-toolbar>
 
 

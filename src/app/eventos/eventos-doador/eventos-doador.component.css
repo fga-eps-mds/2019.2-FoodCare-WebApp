@@ -41,8 +41,13 @@
 }
 .perfil{
     position: absolute;
+    right: 60px;
+    color: white;
+}
+.logout{
+    position: absolute;
     right: 5px;
-    font-size: 8px;
+    font-size: 6px;
     color: white;
 }
 .edit {

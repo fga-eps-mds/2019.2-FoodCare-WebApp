@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class PerfilDoadorComponent implements OnInit {
 
   IsShow: boolean = false;
-  doador: any = this.authService.usuarioLogado();
+  doador: any ;
   
   constructor(
     private router: Router,
@@ -19,7 +19,11 @@ export class PerfilDoadorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.usuarioLogado().subscribe(
+    this.doador = this.setUsuario();
+  }
+  
+  setUsuario = () => {
+    return this.authService.usuarioLogado().subscribe(
       data=> {
         this.doador = data;
       },
@@ -27,8 +31,8 @@ export class PerfilDoadorComponent implements OnInit {
         console.log(error)
       }
     );
-  }
 
+  }
 
   mostraDiv = () => {
     if (this.IsShow == false) {
