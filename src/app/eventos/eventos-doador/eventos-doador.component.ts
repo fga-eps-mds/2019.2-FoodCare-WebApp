@@ -67,7 +67,7 @@ export class EventosDoadorComponent implements OnInit {
         this.doador = data;
         console.log(data);
         console.log('doador', this.doador);
-        this.confereEvento(data);
+        // this.confereEvento(data);
       },
       error => {
         console.log(error);

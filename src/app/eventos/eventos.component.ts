@@ -25,7 +25,6 @@ export class EventosComponent implements OnInit {
     this.getEventos();
     this.getCategoria();
     this.getLocalizacao();
-    this.calculaDistancia(this.latitude, this.longitude);
   }
 
   ngOnInit() { }
@@ -81,18 +80,17 @@ export class EventosComponent implements OnInit {
     }
   }
   getLocalizacao() {
-    var latitude: any;
-    var longitude: any;
+
     navigator.geolocation.getCurrentPosition(success, error);
 
     function success(position) {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
 
       alert('Localização ativada!')
 
       // mostrar coordenadas dentro do alerta
-      alert('Latitude: ' + latitude + 'Longitude: ' + longitude);
+      alert('Latitude: ' + this.latitude + 'Longitude: ' + this.longitude);
 
       // "Salvar" no console os dados obtidos
       console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
@@ -100,12 +98,29 @@ export class EventosComponent implements OnInit {
     function error(){
       alert('Localização não autorizada')
     }
-    this.latitude = latitude;
-    this.longitude = longitude;
+    // this.latitude = latitude;
+    // this.longitude = longitude;
   }
 
   calculaDistancia(latitude: any, longitude: any){
     var dist  = ( latitude - this.latitude)**2 + (longitude - this.longitude)**2
     return Math.sqrt(dist)
+  }
+
+
+  measure(lat1:number, lon1:number, lat2:number, lon2:number){  // generally used geo measurement function
+      // console.log(lat1)
+      // console.log(lat2)
+      // console.log(lon1)
+      // console.log(lon2)
+    var R = 6378.137; // Radius of earth in KM
+    var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+    var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c;
+    return d * 1000; // meters
   }
 }
