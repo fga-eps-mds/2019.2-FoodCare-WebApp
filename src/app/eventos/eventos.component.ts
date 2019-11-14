@@ -25,6 +25,7 @@ export class EventosComponent implements OnInit {
     this.getEventos();
     this.getCategoria();
     this.getLocalizacao();
+    this.calculaDistancia(this.latitude, this.longitude);
   }
 
   ngOnInit() { }
@@ -82,7 +83,7 @@ export class EventosComponent implements OnInit {
   getLocalizacao() {
     var latitude: any;
     var longitude: any;
-    navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(success, error);
 
     function success(position) {
       latitude = position.coords.latitude;
@@ -95,6 +96,9 @@ export class EventosComponent implements OnInit {
 
       // "Salvar" no console os dados obtidos
       console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+    }
+    function error(){
+      alert('Localização não autorizada')
     }
     this.latitude = latitude;
     this.longitude = longitude;
