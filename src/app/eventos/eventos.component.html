@@ -1,0 +1,47 @@
+<mat-toolbar class="toolbar-events" id="inicio">
+    <a href="/" class="logo">FoodCare</a>
+    <h1 class="title-toolbar">Eventos</h1>
+</mat-toolbar>
+
+<div>
+    <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+	<mat-label>Filtrar por</mat-label>
+        <mat-select [(ngModel)]="eventosFilter.id_categoria">
+            <mat-option value=''>Todas</mat-option>
+            <mat-option *ngFor="let item of categoria" value='{{item.id}}'>{{item.nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+<div>
+<div>
+    <mat-form-field>
+        <mat-label>Ordenar por</mat-label>
+        <mat-select [(value)]="eventosOrder">
+          <mat-option value="data_final">Tempo restante</mat-option>
+          <mat-option value="nome">Nome</mat-option>
+          <!-- <mat-option value="distancia">Mais perto</mat-option> -->
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
+    <div *ngIf="mostraEvento(evento.data_final)">
+        <mat-card>
+            <mat-card-content>
+                <h2>{{ evento.nome }}</h2>
+                <div class="data-items">
+                    <p>Descrição: {{ evento.desc }}</p>
+                    <div *ngIf="mostraTempoRestante(evento.data_final)">
+                        <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
+                    </div>
+                    <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
+                    <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

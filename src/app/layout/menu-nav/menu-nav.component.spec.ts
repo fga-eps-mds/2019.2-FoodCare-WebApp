@@ -1,9 +1,9 @@
-import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -17,7 +17,7 @@ describe('MenuNavComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MenuNavComponent],
       imports: [
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         LayoutModule,
         MatButtonModule,
         MatIconModule,
@@ -34,7 +34,7 @@ describe('MenuNavComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should compile', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

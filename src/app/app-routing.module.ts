@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CadastroComponent } from './cadastro/cadastro.component';
-import { MenuNavComponent } from './menu-nav/menu-nav.component';
+
+import { AuthGuard } from './auth/auth.service';
+
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
+import { CadastroComponent } from './auth/cadastro/cadastro.component';
+import { EventosComponent } from './eventos/eventos.component';
+import { EventosDoadorComponent } from './eventos/eventos-doador/eventos-doador.component';
 
 const routes: Routes = [
-  { path: 'home', component: MenuNavComponent },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-//   Sempre que criar um componente, adicioná-lo aqui
-  { path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
+  { path: 'eventos', component: EventosComponent },
+  { path: 'eventos-doador', component: EventosDoadorComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

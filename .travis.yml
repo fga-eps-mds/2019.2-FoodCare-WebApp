@@ -3,11 +3,21 @@ sudo: required
 services:
   - docker
 
+env:
+  - DOCKER_COMPOSE_VERSION=1.24.1
+
 install:
+  - echo "RUN npm install coveralls" >> Dockerfile
+  - echo "ENV REPO_TOKEN ${COVERALLS_REPO_TOKEN}" >> Dockerfile
+  - echo "ENV TRAVIS_BRANCH ${TRAVIS_BRANCH}" >> Dockerfile
+  - echo "ENV TRAVIS_JOB_ID ${TRAVIS_JOB_ID}" >> Dockerfile
+  - echo "ENV CI ${CI}" >> Dockerfile
+  - echo "ENV TRAVIS ${TRAVIS}" >> Dockerfile
   - docker-compose up --build -d
 
 script:
-  - docker exec -it foodcare-web ng test --watch=false
+  - docker exec -it foodcare-web ng test --watch=false --code-coverage
 
 after_script:
-  - docker-compose down
+  - docker exec -it foodcare-web sh -c "cat ./coverage/foodcare/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  - docker-compose down --remove-orphans

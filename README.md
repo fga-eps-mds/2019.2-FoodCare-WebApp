@@ -20,6 +20,7 @@
     <a href="https://www.gnu.org/licenses/gpl-3.0" alt="Licença: GPL v3" >
         <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
     </a>
+    <a href='https://coveralls.io/github/fga-eps-mds/2019.2-FoodCare-WebApp?branch=master'><img src='https://coveralls.io/repos/github/fga-eps-mds/2019.2-FoodCare-WebApp/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
 <p align="center">
@@ -69,6 +70,15 @@ Para subir a aplicação no endereço `0.0.0.0` e na porta 4200 utilize o seguin
 
 A aplicação estará disponível em `http://localhost:4200`.
 
+## Ambientes
+
+### Homologação
+
+`https://foodcarehomol.netlify.com/`
+
+### Produção
+
+`https://foodcare.netlify.com/`
 <!-- ## Testes
 
 Descreva e mostre como rodar testes. -->
