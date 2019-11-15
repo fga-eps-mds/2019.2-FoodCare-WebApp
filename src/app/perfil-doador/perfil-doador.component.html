@@ -16,18 +16,27 @@
 
 <div class="background" *ngIf="IsShow">
     <div class="box">
+        <h1>Editar nome de usuário</h1>
         <mat-form-field>
-            <input matInput placeholder="Usuário" #user id="usuario" class="form-control">
+            <input matInput placeholder="Username" [(ngModel)]="doador.username" id="email" class="form-control" type="email">
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Email" #email id="email" class="form-control" type="email">
-        </mat-form-field>
-        <button mat-raised-button class="buttonAtualiza" (click)="mostraDiv()">
-            cancelar
-        </button>
         <button mat-raised-button class="buttonAtualiza" (click)="atualiza()">
             Atualizar
         </button>
-
     </div>
+    <div class="box">
+      <h1>Editar senha</h1>
+      <mat-form-field>
+          <input matInput placeholder="Senha" [(ngModel)]="senha1" id="senha1" class="form-control" type="password">
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="Confirmar senha" [(ngModel)]="senha2" id="senha2" class="form-control" type="password">
+      </mat-form-field>
+      <button mat-raised-button class="buttonAtualiza" (click)="atualizaSenha()">
+          Atualizar
+      </button>
+  </div>
+  <button mat-raised-button class="buttonAtualiza" (click)="mostraDiv()">
+      cancelar
+  </button>
 </div>

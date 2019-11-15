@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import * as jwtDecode from 'jwt-decode';
 
 import { environment } from 'src/environments/environment';
+import { Doador } from './doador';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,11 @@ export class AuthService {
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('id_doador', authResult.user.pk)
   }
-  
+
   get token(): string {
     return localStorage.getItem('token');
   }
-  
+
   // getDoadorID() {
   //   return localStorage.getItem('id_doador');
   // }
@@ -43,8 +44,7 @@ export class AuthService {
   //       err => console.log(err)
   //     );
   // }
-  
-  
+
   login(username: string, password: string) {
     this.logout();
     return this.http.post(
@@ -76,6 +76,29 @@ export class AuthService {
       { headers: this.httpHeaders }
     )
   }
+
+
+  atualizaDoador(doador: Doador) {
+    return this.http.put<any>(`${this.authApi}user/`, doador)
+    .pipe(
+      tap(response => {
+        console.log(response)
+      }),
+      shareReplay(),
+    );
+  }
+
+  atualizaSenhaDoador(new_password1: String, new_password2: String) {
+    return this.http.post<any>(`${this.authApi}password/change/`, {new_password1, new_password2})
+    .pipe(
+      tap(response => {
+        console.log(response)
+      }),
+      shareReplay(),
+    );
+  }
+
+
 
   logout() {
     localStorage.removeItem('token');
