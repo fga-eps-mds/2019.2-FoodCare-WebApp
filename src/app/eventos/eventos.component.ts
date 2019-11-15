@@ -17,8 +17,6 @@ export class EventosComponent implements OnInit {
 
   eventosFilter: any = {nome: ''};
   eventosOrder: string = 'data_final';
-  latitude: any;
-  longitude: any;
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
@@ -79,29 +77,22 @@ export class EventosComponent implements OnInit {
       return true;
     }
   }
+
   getLocalizacao() {
-
     navigator.geolocation.getCurrentPosition(success, error);
-
-    function success(position) {
-      this.latitude = position.coords.latitude;
-      this.longitude = position.coords.longitude;
+    function success(position: any) {
 
       alert('Localização ativada!')
+      localStorage.setItem("lt", position.coords.latitude)
+      localStorage.setItem("lg", position.coords.longitude)
 
       // "Salvar" no console os dados obtidos
-      console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
     }
     function error() {
       alert('Localização não autorizada')
     }
-    // this.latitude = latitude;
-    // this.longitude = longitude;
-  }
-
-  calculaDistancia(latitude: any, longitude: any){
-    var dist  = ( latitude - this.latitude)**2 + (longitude - this.longitude)**2
-    return Math.sqrt(dist)
+    console.log("ATUAL: " + localStorage.getItem("lt") + "Longitude: " + localStorage.getItem("lg"));
+    // console.log("GLOBAL: ", this.lat + " Longitude: ", this.lng);
   }
 
   distanciaEvento(lat1: number, lon1: number, lat2: number, lon2: number) {
