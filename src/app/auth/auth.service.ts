@@ -87,6 +87,16 @@ export class AuthService {
       shareReplay(),
     );
   }
+  
+  deletaDoador(doador: Doador) {
+    return this.http.delete<any>(`${this.authApi}user/`, doador)
+    .pipe(
+      tap(response => {
+        console.log(response)
+      }),
+      shareReplay(),
+    );
+  }
 
   atualizaSenhaDoador(new_password1: String, new_password2: String) {
     return this.http.post<any>(`${this.authApi}password/change/`, {new_password1, new_password2})

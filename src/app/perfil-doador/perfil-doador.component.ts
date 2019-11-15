@@ -11,6 +11,7 @@ import { Doador } from '../auth/doador';
 export class PerfilDoadorComponent implements OnInit {
 
   IsShow: boolean = false;
+  IsShow1: boolean = false;
   doador: Doador;
   senha1: String = '';
   senha2: String = '';
@@ -46,7 +47,19 @@ export class PerfilDoadorComponent implements OnInit {
     else {
       this.IsShow = false;
     }
+  
   }
+  
+  mostraDiv1 = () => {
+    console.log(this.doador)
+    if (this.IsShow1 == false) {
+      this.IsShow1 = true;
+    }
+    else {
+      this.IsShow1 = false;
+    }
+  }
+
   atualiza = () => {
     this.authService.atualizaDoador(this.doador)
     .subscribe(
@@ -54,6 +67,20 @@ export class PerfilDoadorComponent implements OnInit {
         console.log(response),
         alert("Logue com seu novo usuário"),
         this.router.navigate(['login'])
+      },
+      error => {
+        console.log(error)
+      }
+    );
+  }
+
+  deleta = () => {
+    this.authService.deletaDoador(this.doador)
+    .subscribe(
+      response => {
+        console.log(response),
+        alert("Usuário deletado!"),
+        this.router.navigate([''])
       },
       error => {
         console.log(error)

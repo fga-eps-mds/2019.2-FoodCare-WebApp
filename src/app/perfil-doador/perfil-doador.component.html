@@ -11,9 +11,13 @@
     nome: {{ doador.username }} <br>
     email: {{ doador.email }} <br>
     <button mat-raised-button (click)="mostraDiv()"><i class="material-icons">edit</i></button>
-
+    <button mat-raised-button (click)="mostraDiv1()"><i class="material-icons">clear</i></button>
 </div>
-
+<div *ngIf="IsShow1">
+    Tem certeza que deseja excluir sua conta?
+    <button mat-raised-button (click)="deleta()">Sim</button>
+    <button mat-raised-button (click)="mostraDiv1()">Não</button>
+</div>
 <div class="background" *ngIf="IsShow">
     <div class="box">
         <h1>Editar nome de usuário</h1>
