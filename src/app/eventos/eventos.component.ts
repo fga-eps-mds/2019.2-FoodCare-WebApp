@@ -86,7 +86,6 @@ export class EventosComponent implements OnInit {
       localStorage.setItem("lt", position.coords.latitude)
       localStorage.setItem("lg", position.coords.longitude)
 
-      // "Salvar" no console os dados obtidos
     }
     function error() {
       alert('Localização não autorizada')
@@ -105,5 +104,12 @@ export class EventosComponent implements OnInit {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
     return d.toFixed(2);  //km com duas casas decimais
+  }
+
+  getLatitude(){
+    return localStorage.getItem("lt");
+  }
+  getLongitude(){
+    return localStorage.getItem("lg");
   }
 }
