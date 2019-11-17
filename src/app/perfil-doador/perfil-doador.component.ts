@@ -75,7 +75,7 @@ export class PerfilDoadorComponent implements OnInit {
   }
 
   deleta = () => {
-    this.authService.deletaDoador(this.doador)
+    this.authService.deleteUser(this.doador)
     .subscribe(
       response => {
         console.log(response),

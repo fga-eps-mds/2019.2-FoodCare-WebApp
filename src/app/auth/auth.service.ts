@@ -15,6 +15,8 @@ import { Doador } from './doador';
 export class AuthService {
 
   private authApi = environment.apiURL + 'auth/';
+  private userApi = environment.apiURL + 'user/';
+
   // private userApi = environment.apiURL + 'usuario/';
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
@@ -77,7 +79,6 @@ export class AuthService {
     )
   }
 
-
   atualizaDoador(doador: Doador) {
     return this.http.put<any>(`${this.authApi}user/`, doador)
     .pipe(
@@ -87,15 +88,11 @@ export class AuthService {
       shareReplay(),
     );
   }
-  
-  deletaDoador(doador: Doador) {
-    return this.http.delete<any>(`${this.authApi}user/`, doador)
-    .pipe(
-      tap(response => {
-        console.log(response)
-      }),
-      shareReplay(),
-    );
+
+  deleteUser(doador: Doador): Observable<any> {
+    return this.http.delete(
+      this.userApi + doador.pk + '/',
+    )
   }
 
   atualizaSenhaDoador(new_password1: String, new_password2: String) {
