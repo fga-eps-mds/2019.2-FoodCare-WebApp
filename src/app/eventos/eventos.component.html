@@ -40,7 +40,9 @@
                     </div>
                     <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
                     <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
-                    <p>Distância: {{ distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude()) + " km"}} </p>
+                    <p (click)="geraLocalMaps(evento.latitude, evento.longitude)">
+                      Distância: {{ distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude()).toString() }} km
+                    </p>
                 </div>
             </mat-card-content>
         </mat-card>

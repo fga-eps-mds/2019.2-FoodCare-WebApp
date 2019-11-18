@@ -19,16 +19,16 @@ export class EventosDoadorComponent implements OnInit {
 
   isShow = false;
   innerWidth: any = window.innerWidth;
-  latitude: any;
-  longitude: any;
 
   constructor(
     private eventoService: EventoService,
     private authService: AuthService,
   ) {
     moment.locale('pt-BR');
+    this.getUsuario();
     this.getEventos();
     this.getCategorias();
+    this.getLocalizacao();
     this.evento = {
       nome: "",
       desc: "",
@@ -51,28 +51,30 @@ export class EventosDoadorComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.setUsuario();
-  }
+  ngOnInit() { }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
   }
 
   // Funcao para coletar o id do usuario logado
-  setUsuario = () => {
+  getUsuario = () => {
     return this.authService.usuarioLogado()
     .subscribe(
       data => {
         this.doador = data;
         console.log(data);
         console.log('doador', this.doador);
-        // this.confereEvento(data);
       },
       error => {
         console.log(error);
       }
     )
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   // Funcao para coletar todos os eventos criados
@@ -103,16 +105,16 @@ export class EventosDoadorComponent implements OnInit {
       data => this.getEventos(),
       error => {
         console.log(error);
+        this.getEventos();
       }
     )
   }
 
   // Funcao para criar evento
   createEvento = () => {
-    this.getLocalizacao();
     this.evento.id_doador = this.doador.pk;
-    this.selectedEvento.latitude = this.latitude,
-    this.selectedEvento.longitude = this.longitude,
+    this.evento.latitude = Number(localStorage.getItem("lt"));
+    this.evento.longitude = Number(localStorage.getItem("lg"));
     this.eventoService.createEvento(this.evento)
     .subscribe(
       data => {
@@ -184,24 +186,15 @@ export class EventosDoadorComponent implements OnInit {
 
   // Função para pegar a localização atual
   getLocalizacao() {
-    var latitude: any;
-    var longitude: any;
     navigator.geolocation.getCurrentPosition(success);
-
-    function success(position) {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-
-      alert('Localização ativada!')
-
-      // mostrar coordenadas dentro do alerta
-      alert('Latitude: ' + latitude + 'Longitude: ' + longitude);
-
-      // "Salvar" no console os dados obtidos
-      console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+    function success(position: any) {
+      localStorage.setItem("lt", position.coords.latitude)
+      localStorage.setItem("lg", position.coords.longitude)
     }
-
-    this.latitude = latitude;
-    this.longitude = longitude;
+    function error() {
+      console.log('Localização não autorizada')
+    }
+    console.log("Latitude: " + localStorage.getItem("lt"));
+    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 }

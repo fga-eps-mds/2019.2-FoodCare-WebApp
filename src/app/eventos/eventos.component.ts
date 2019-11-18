@@ -12,7 +12,6 @@ import { EventoService } from './evento.service';
 
 export class EventosComponent implements OnInit {
   eventos: any = [];
-
   categorias: any = [];
 
   eventosFilter: any = {nome: ''};
@@ -40,7 +39,8 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos = () => {
-    this.eventoService.getAllEventos().subscribe(
+    this.eventoService.getAllEventos()
+    .subscribe(
       data => {
         this.eventos = data;
       },
@@ -81,17 +81,14 @@ export class EventosComponent implements OnInit {
   getLocalizacao() {
     navigator.geolocation.getCurrentPosition(success, error);
     function success(position: any) {
-
-      alert('Localização ativada!')
       localStorage.setItem("lt", position.coords.latitude)
       localStorage.setItem("lg", position.coords.longitude)
-
     }
     function error() {
-      alert('Localização não autorizada')
+      console.log('Localização não autorizada')
     }
-    console.log("ATUAL: " + localStorage.getItem("lt") + "Longitude: " + localStorage.getItem("lg"));
-    // console.log("GLOBAL: ", this.lat + " Longitude: ", this.lng);
+    console.log("Latitude: " + localStorage.getItem("lt"));
+    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 
   distanciaEvento(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -103,13 +100,20 @@ export class EventosComponent implements OnInit {
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
+
     return d.toFixed(2);  //km com duas casas decimais
   }
 
+  geraLocalMaps(latitude: Number, longitude: Number) {
+    this.eventoService.abreMaps(latitude, longitude);
+  }
+
   getLatitude(){
-    return localStorage.getItem("lt");
+    let latitudeAtual = localStorage.getItem("lt");
+    return Number(latitudeAtual);
   }
   getLongitude(){
-    return localStorage.getItem("lg");
+    let longitudeAtual = localStorage.getItem("lg");
+    return Number(longitudeAtual);
   }
 }
