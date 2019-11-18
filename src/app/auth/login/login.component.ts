@@ -19,7 +19,10 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe(
-      success => this.router.navigate(['eventos-doador']),
+      success => {
+        console.log(success);
+        this.router.navigate(['eventos-doador']);
+      },
       error => this.error = error
     );
   }

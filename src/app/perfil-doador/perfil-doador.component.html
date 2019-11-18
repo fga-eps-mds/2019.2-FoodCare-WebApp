@@ -1,0 +1,46 @@
+<mat-toolbar class="toolbar-perfil">
+    <button mat-icon-button class="perfil" routerLink="/eventos-doador">
+        <i class="material-icons">
+            arrow_back
+        </i>
+    </button>
+    <h1>Perfil</h1>
+</mat-toolbar>
+<div *ngIf="!IsShow && doador">
+    <h1>DADOS :</h1>
+    nome: {{ doador.username }} <br>
+    email: {{ doador.email }} <br>
+    <button mat-raised-button (click)="mostraDiv()"><i class="material-icons">edit</i></button>
+    <button mat-raised-button (click)="mostraDiv1()"><i class="material-icons">clear</i></button>
+</div>
+<div *ngIf="IsShow1">
+    Tem certeza que deseja excluir sua conta?
+    <button mat-raised-button (click)="deleta()">Sim</button>
+    <button mat-raised-button (click)="mostraDiv1()">Não</button>
+</div>
+<div class="background" *ngIf="IsShow">
+    <div class="box">
+        <h1>Editar nome de usuário</h1>
+        <mat-form-field>
+            <input matInput placeholder="Username" [(ngModel)]="doador.username" id="email" class="form-control" type="email">
+        </mat-form-field>
+        <button mat-raised-button class="buttonAtualiza" (click)="atualiza()">
+            Atualizar
+        </button>
+    </div>
+    <div class="box">
+      <h1>Editar senha</h1>
+      <mat-form-field>
+          <input matInput placeholder="Senha" [(ngModel)]="senha1" id="senha1" class="form-control" type="password">
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="Confirmar senha" [(ngModel)]="senha2" id="senha2" class="form-control" type="password">
+      </mat-form-field>
+      <button mat-raised-button class="buttonAtualiza" (click)="atualizaSenha()">
+          Atualizar
+      </button>
+  </div>
+  <button mat-raised-button class="buttonAtualiza" (click)="mostraDiv()">
+      cancelar
+  </button>
+</div>
