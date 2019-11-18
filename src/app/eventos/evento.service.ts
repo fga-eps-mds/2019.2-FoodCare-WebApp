@@ -26,17 +26,15 @@ export class EventoService {
       { headers: this.httpHeaders }
     )
   }
-  updateEvento(evento): Observable<any> {
-    const body = { nome: evento.nome, desc: evento.desc, data_inicio: evento.data_inicio, data_final: evento.data_final };
-    return this.http.put(
-      this.apiURL + 'evento/' + evento.id + '/', body,
+  updateEvento(id, evento): Observable<any> {
+    return this.http.put<any>(
+      this.apiURL + 'evento/' + id + '/', evento,
       { headers: this.httpHeaders }
     )
   }
   createEvento(evento): Observable<any> {
-    const body = { nome: evento.nome, desc: evento.desc, id_doador: evento.id_doador, data_inicio: evento.data_inicio, data_final: evento.data_final };
-    return this.http.post(
-      this.apiURL + 'evento/', body,
+    return this.http.post<any>(
+      this.apiURL + 'evento/', evento,
       { headers: this.httpHeaders }
     )
   }
@@ -58,10 +56,7 @@ export class EventoService {
       { headers: this.httpHeaders }
     )
   }
-  getCategoria(): Observable<any> {
-    return this.http.get(
-      this.apiURL + 'categoria/',
-      { headers: this.httpHeaders }
-    )
+  getCategorias(): Observable<any> {
+    return this.http.get<any>(this.apiURL + 'categoria/')
   }
 }

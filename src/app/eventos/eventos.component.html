@@ -13,7 +13,7 @@
 	<mat-label>Filtrar por</mat-label>
         <mat-select [(ngModel)]="eventosFilter.id_categoria">
             <mat-option value=''>Todas</mat-option>
-            <mat-option *ngFor="let item of categoria" value='{{item.id}}'>{{item.nome}}</mat-option>
+            <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
         </mat-select>
     </mat-form-field>
 <div>

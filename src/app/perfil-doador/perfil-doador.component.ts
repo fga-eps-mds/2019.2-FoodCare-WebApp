@@ -47,9 +47,9 @@ export class PerfilDoadorComponent implements OnInit {
     else {
       this.IsShow = false;
     }
-  
+
   }
-  
+
   mostraDiv1 = () => {
     console.log(this.doador)
     if (this.IsShow1 == false) {

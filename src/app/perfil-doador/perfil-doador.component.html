@@ -6,7 +6,7 @@
     </button>
     <h1>Perfil</h1>
 </mat-toolbar>
-<div *ngIf="!IsShow">
+<div *ngIf="!IsShow && doador">
     <h1>DADOS :</h1>
     nome: {{ doador.username }} <br>
     email: {{ doador.email }} <br>

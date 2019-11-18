@@ -13,24 +13,24 @@ import { EventoService } from './evento.service';
 export class EventosComponent implements OnInit {
   eventos: any = [];
 
-  categoria: any = [];
-  
+  categorias: any = [];
+
   eventosFilter: any = {nome: ''};
   eventosOrder: string = 'data_final';
 
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.getEventos();
-    this.setCategoria();
+    this.getCategoria();
   }
 
   ngOnInit() { }
 
   // Funcao para coletar todos as categorias criados
-  setCategoria = () => {
-    this.eventoService.getCategoria().subscribe(
+  getCategoria = () => {
+    this.eventoService.getCategorias().subscribe(
       data => {
-        this.categoria = data;
+        this.categorias = data;
       },
       error => {
         console.log(error);
