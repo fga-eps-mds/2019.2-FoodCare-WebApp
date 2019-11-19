@@ -90,14 +90,35 @@ a:link {
     text-align: center;
 }
 
-.button-item1 {
-    margin: 5%;
+.btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    margin: 45px 0 0 0;
 }
 
-.buttons-item1 {
-    margin: 3%;
-    width: 310px;
+.btn-home {
+    font-family: "Barlow", sans-serif;
+    background: #406040;
+    color: #fff;
+    width: 320px;
     height: 50px;
+    margin: 10px 24px;
+    text-decoration: none;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    transition: 100ms;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    font-weight: normal;
+    font-size: 1.3rem;
+    line-height: 1.875rem;
 }
 
 .icon-item {
