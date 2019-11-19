@@ -12,7 +12,6 @@ import { EventoService } from './evento.service';
 
 export class EventosComponent implements OnInit {
   eventos: any = [];
-
   categorias: any = [];
 
   eventosFilter: any = {nome: ''};
@@ -22,6 +21,7 @@ export class EventosComponent implements OnInit {
     moment.locale('pt-BR');
     this.getEventos();
     this.getCategoria();
+    this.getLocalizacao();
   }
 
   ngOnInit() { }
@@ -39,7 +39,8 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos = () => {
-    this.eventoService.getAllEventos().subscribe(
+    this.eventoService.getAllEventos()
+    .subscribe(
       data => {
         this.eventos = data;
       },
@@ -75,5 +76,44 @@ export class EventosComponent implements OnInit {
     } else {
       return true;
     }
+  }
+
+  getLocalizacao() {
+    navigator.geolocation.getCurrentPosition(success, error);
+    function success(position: any) {
+      localStorage.setItem("lt", position.coords.latitude)
+      localStorage.setItem("lg", position.coords.longitude)
+    }
+    function error() {
+      console.log('Localização não autorizada')
+    }
+    console.log("Latitude: " + localStorage.getItem("lt"));
+    console.log("Longitude: " + localStorage.getItem("lg"));
+  }
+
+  distanciaEvento(lat1: number, lon1: number, lat2: number, lon2: number) {
+    var R = 6378.137;
+    var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+    var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c;
+
+    return d.toFixed(2);  //km com duas casas decimais
+  }
+
+  geraLocalMaps(latitude: Number, longitude: Number) {
+    this.eventoService.abreMaps(latitude, longitude);
+  }
+
+  getLatitude(){
+    let latitudeAtual = localStorage.getItem("lt");
+    return Number(latitudeAtual);
+  }
+  getLongitude(){
+    let longitudeAtual = localStorage.getItem("lg");
+    return Number(longitudeAtual);
   }
 }

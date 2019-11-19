@@ -25,12 +25,15 @@ export class EventosDoadorComponent implements OnInit {
     private authService: AuthService,
   ) {
     moment.locale('pt-BR');
+    this.getUsuario();
     this.getEventos();
     this.getCategorias();
+    this.getLocalizacao();
     this.evento = {
       nome: "",
       desc: "",
-      local: "",
+      latitude: null,
+      longitude: null,
       data_inicio: null,
       data_final: null,
       id_doador: null,
@@ -39,7 +42,8 @@ export class EventosDoadorComponent implements OnInit {
     this.selectedEvento = {
       nome: "",
       desc: "",
-      local: "",
+      latitude: null,
+      longitude: null,
       data_inicio: null,
       data_final: null,
       id_doador: null,
@@ -47,25 +51,30 @@ export class EventosDoadorComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.setUsuario();
-  }
+  ngOnInit() { }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
   }
 
   // Funcao para coletar o id do usuario logado
-  setUsuario = () => {
+  getUsuario = () => {
     return this.authService.usuarioLogado()
     .subscribe(
       data => {
         this.doador = data;
+        console.log(data);
+        console.log('doador', this.doador);
       },
       error => {
         console.log(error);
       }
     )
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   // Funcao para coletar todos os eventos criados
@@ -96,6 +105,7 @@ export class EventosDoadorComponent implements OnInit {
       data => this.getEventos(),
       error => {
         console.log(error);
+        this.getEventos();
       }
     )
   }
@@ -103,6 +113,8 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para criar evento
   createEvento = () => {
     this.evento.id_doador = this.doador.pk;
+    this.evento.latitude = Number(localStorage.getItem("lt"));
+    this.evento.longitude = Number(localStorage.getItem("lg"));
     this.eventoService.createEvento(this.evento)
     .subscribe(
       data => {
@@ -170,5 +182,19 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para rolar ate o topo
   scrollToTop() {
     document.getElementById("inicio").scrollIntoView(true);
+  }
+
+  // Função para pegar a localização atual
+  getLocalizacao() {
+    navigator.geolocation.getCurrentPosition(success);
+    function success(position: any) {
+      localStorage.setItem("lt", position.coords.latitude)
+      localStorage.setItem("lg", position.coords.longitude)
+    }
+    function error() {
+      console.log('Localização não autorizada')
+    }
+    console.log("Latitude: " + localStorage.getItem("lt"));
+    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 }

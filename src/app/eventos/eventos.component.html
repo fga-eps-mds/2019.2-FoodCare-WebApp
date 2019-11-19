@@ -23,11 +23,11 @@
         <mat-select [(value)]="eventosOrder">
           <mat-option value="data_final">Tempo restante</mat-option>
           <mat-option value="nome">Nome</mat-option>
-          <!-- <mat-option value="distancia">Mais perto</mat-option> -->
+          <mat-option value="distancia">Proximidade</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
-
+<output></output>
 <div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
     <div *ngIf="mostraEvento(evento.data_final)">
         <mat-card>
@@ -40,6 +40,9 @@
                     </div>
                     <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
                     <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
+                    <p (click)="geraLocalMaps(evento.latitude, evento.longitude)">
+                      Distância: {{ distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude()).toString() }} km
+                    </p>
                 </div>
             </mat-card-content>
         </mat-card>

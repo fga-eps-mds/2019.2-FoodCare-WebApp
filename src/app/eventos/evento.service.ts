@@ -44,6 +44,10 @@ export class EventoService {
       { headers: this.httpHeaders }
     )
   }
+  abreMaps(latitude, longitude) {
+    let mapsURL = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude;
+    window.open(mapsURL, "_blank");
+  }
   usuarioLogado(): Observable<any> {
     return this.http.get(
       this.apiURL + 'auth/user/',

@@ -12,11 +12,12 @@ import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'eventos', component: EventosComponent },
   { path: 'eventos-doador', component: EventosDoadorComponent, canActivate: [AuthGuard] },
-  { path: 'perfil-doador', component: PerfilDoadorComponent}
+  { path: 'perfil-doador', component: PerfilDoadorComponent},
 ];
 
 @NgModule({
