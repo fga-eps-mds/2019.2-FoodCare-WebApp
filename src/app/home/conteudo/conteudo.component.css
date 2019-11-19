@@ -47,6 +47,43 @@ a:link {
     color: white;
 }
 
+
+.btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    margin: 45px 0 0 0;
+}
+
+.btn-home {
+    font-family: "Barlow", sans-serif;
+    background: #406040;
+    color: #fff;
+    width: 320px;
+    height: 50px;
+    margin: 10px 24px;
+    text-decoration: none;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    transition: 100ms;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    font-weight: normal;
+    font-size: 1.3rem;
+    line-height: 1.875rem;
+}
+
+.btn-large {
+    width: 100%;
+    margin: 0;
+}
+
 .button-login {
     text-decoration: none;
     color: white;
@@ -88,37 +125,6 @@ a:link {
     padding: 5px 15px;
     font-size: 1.4em;
     text-align: center;
-}
-
-.btn-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 20px;
-    margin: 45px 0 0 0;
-}
-
-.btn-home {
-    font-family: "Barlow", sans-serif;
-    background: #406040;
-    color: #fff;
-    width: 320px;
-    height: 50px;
-    margin: 10px 24px;
-    text-decoration: none;
-    border: none;
-    padding: 0 20px;
-    border-radius: 4px;
-    transition: 100ms;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    font-weight: normal;
-    font-size: 1.3rem;
-    line-height: 1.875rem;
 }
 
 .icon-item {
