@@ -3,12 +3,12 @@
         <div class="box">
             <h2 class="title"> Acesso </h2>
             <mat-form-field>
-                <input matInput placeholder="email" #usuario id="usuario" class="form-control">
+                <input matInput placeholder="username" #username id="username" class="form-control">
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="senha" #senha id="senha" class="form-control" type="password">
             </mat-form-field>
-            <button mat-raised-button (click)='login(usuario.value, senha.value)' class="button">Login</button>
+            <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
             <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
         </div>
     </div>

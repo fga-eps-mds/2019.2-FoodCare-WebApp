@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 
 import { EventoService } from '../evento.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-eventos-doador',
@@ -10,40 +11,61 @@ import { EventoService } from '../evento.service';
   styleUrls: ['./eventos-doador.component.css'],
 })
 export class EventosDoadorComponent implements OnInit {
-  doador: any = '';
-  eventos = [];
-  categorias = [];
+  doador: any;
+  evento: any;
+  eventos: any;
+  categorias: any;
   selectedEvento: any;
+
   isShow = false;
+  innerWidth: any = window.innerWidth;
 
-  constructor(private eventoService: EventoService) {
+  constructor(
+    private eventoService: EventoService,
+    private authService: AuthService,
+  ) {
     moment.locale('pt-BR');
-    this.setEventos();
-    this.setCategoria();
-
+    this.getUsuario();
+    this.getEventos();
+    this.getCategorias();
+    this.getLocalizacao();
+    this.evento = {
+      nome: "",
+      desc: "",
+      latitude: null,
+      longitude: null,
+      data_inicio: null,
+      data_final: null,
+      id_doador: null,
+      id_categoria: null
+    }
     this.selectedEvento = {
-      id: -1,
-      nome: '',
-      desc: '',
-      data_inicio: '',
-      data_final: '',
-      id_doador: 1,
-      local: '',
-      id_categoria: -1
+      nome: "",
+      desc: "",
+      latitude: null,
+      longitude: null,
+      data_inicio: null,
+      data_final: null,
+      id_doador: null,
+      id_categoria: null
     }
   }
 
-  ngOnInit() {
-    this.setUsuario();
-    console.log(this.doador);
+  ngOnInit() { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
   }
 
   // Funcao para coletar o id do usuario logado
-  setUsuario = () => {
-    this.eventoService.usuarioLogado().subscribe(
+  getUsuario = () => {
+    return this.authService.usuarioLogado()
+    .subscribe(
       data => {
         this.doador = data;
-        console.log(data.pk);
+        console.log(data);
+        console.log('doador', this.doador);
       },
       error => {
         console.log(error);
@@ -51,22 +73,16 @@ export class EventosDoadorComponent implements OnInit {
     )
   }
 
-  // Funcao para coletar todos as categorias criados
-  setCategoria = () => {
-    this.eventoService.getCategoria().subscribe(
-      data => {
-        this.categorias = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+  logout() {
+    this.authService.logout();
   }
 
   // Funcao para coletar todos os eventos criados
-  setEventos = () => {
-    this.eventoService.getAllEventos().subscribe(
+  getEventos = () => {
+    this.eventoService.getAllEventos()
+    .subscribe(
       data => {
+        console.log(data);
         this.eventos = data;
       },
       error => {
@@ -76,46 +92,34 @@ export class EventosDoadorComponent implements OnInit {
   }
 
   // Funcao que ao ser clicada define o selectedEvento
-  eventoClicked = (evento) => {
-    this.eventoService.getOneEvento(evento.id).subscribe(
-      data => {
-        this.selectedEvento = {
-          id: data.id,
-          nome: data.nome,
-          desc: data.desc,
-          data_inicio: this.getDateForEdit(data.data_inicio),
-          data_final: this.getDateForEdit(data.data_final),
-          local: data.local,
-          id_doador: this.doador,
-          id_categoria: data.id_categoria
-        };
-        console.log(this.selectedEvento);
-        console.log('teste3');
-      },
-      error => {
-        console.log(error);
-      }
-    )
+  eventoSelecionado = (evento) => {
+    this.selectedEvento = evento;
+    this.selectedEvento.data_inicio = this.getDateForEdit(this.selectedEvento.data_inicio);
+    this.selectedEvento.data_final = this.getDateForEdit(this.selectedEvento.data_final);
   }
 
   // Funcao para editar evento
   updateEvento = () => {
-    this.eventoService.updateEvento(this.selectedEvento).subscribe(
-      data => {
-        this.setEventos();
-      },
+    this.eventoService.updateEvento(this.selectedEvento.id, this.selectedEvento)
+    .subscribe(
+      data => this.getEventos(),
       error => {
         console.log(error);
+        this.getEventos();
       }
     )
   }
 
   // Funcao para criar evento
   createEvento = () => {
-    this.eventoService.createEvento(this.selectedEvento).subscribe(
+    this.evento.id_doador = this.doador.pk;
+    this.evento.latitude = Number(localStorage.getItem("lt"));
+    this.evento.longitude = Number(localStorage.getItem("lg"));
+    this.eventoService.createEvento(this.evento)
+    .subscribe(
       data => {
-        this.eventos.push(data);
         this.toggleDisplay();
+        this.getEventos();
       },
       error => {
         console.log(error);
@@ -126,8 +130,18 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para deletar evento
   deleteEvento = () => {
     this.eventoService.deleteEvento(this.selectedEvento.id).subscribe(
+      data => this.getEventos(),
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  getCategorias = () => {
+    this.eventoService.getCategorias()
+    .subscribe(
       data => {
-        this.setEventos();
+        this.categorias = data;
       },
       error => {
         console.log(error);
@@ -147,12 +161,11 @@ export class EventosDoadorComponent implements OnInit {
 
   // Funcao para retornar data do evento
   getDateForEdit(date) {
-    return moment(date).format("YYYY-MM-DDTkk:mm");
+    return moment(date).format("YYYY-MM-DDThh:mm");
   }
 
   // Funcao para decidir a visibilidade de uma div
   mostraDiv(id: string) {
-    console.log(id);
     if (document.getElementById(id).style.display == "none") {
       document.getElementById(id).style.display = "block";
     } else {
@@ -170,5 +183,18 @@ export class EventosDoadorComponent implements OnInit {
   scrollToTop() {
     document.getElementById("inicio").scrollIntoView(true);
   }
-}
 
+  // Função para pegar a localização atual
+  getLocalizacao() {
+    navigator.geolocation.getCurrentPosition(success);
+    function success(position: any) {
+      localStorage.setItem("lt", position.coords.latitude)
+      localStorage.setItem("lg", position.coords.longitude)
+    }
+    function error() {
+      console.log('Localização não autorizada')
+    }
+    console.log("Latitude: " + localStorage.getItem("lt"));
+    console.log("Longitude: " + localStorage.getItem("lg"));
+  }
+}

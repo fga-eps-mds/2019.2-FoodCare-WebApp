@@ -39,7 +39,17 @@
     transform: translateX(-25%);
     background-color: #5b8f6f;
 }
-
+.perfil{
+    position: absolute;
+    right: 60px;
+    color: white;
+}
+.logout{
+    position: absolute;
+    right: 5px;
+    font-size: 6px;
+    color: white;
+}
 .edit {
     display: flex;
     justify-content: space-around;
