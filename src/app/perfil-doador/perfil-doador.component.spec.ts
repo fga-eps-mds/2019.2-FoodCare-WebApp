@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -8,32 +8,31 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { EventosDoadorComponent } from './eventos-doador.component';
+import { PerfilDoadorComponent } from './perfil-doador.component';
 
-describe('EventosDoadorComponent', () => {
-  let component: EventosDoadorComponent;
-  let fixture: ComponentFixture<EventosDoadorComponent>;
+describe('PerfilDoadorComponent', () => {
+  let component: PerfilDoadorComponent;
+  let fixture: ComponentFixture<PerfilDoadorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [ PerfilDoadorComponent ],
       imports: [
         HttpClientTestingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatToolbarModule,
-        MatInputModule,
-        MatFormFieldModule,
+        RouterTestingModule,
         MatCardModule,
+        MatInputModule,
         MatSelectModule,
+        MatToolbarModule,
+        MatFormFieldModule
       ],
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [EventosDoadorComponent]
+      schemas: [NO_ERRORS_SCHEMA]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventosDoadorComponent);
+    fixture = TestBed.createComponent(PerfilDoadorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

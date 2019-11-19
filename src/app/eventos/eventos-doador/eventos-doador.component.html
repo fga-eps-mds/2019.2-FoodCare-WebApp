@@ -1,5 +1,15 @@
 <mat-toolbar class="toolbar-events" id="inicio">
   <h1 class="title-toolbar">Eventos do Doador</h1>
+    <button mat-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth > 670 && doador">
+      {{ doador.username }}
+      <i class="material-icons">person_outline</i>
+    </button>
+    <button mat-icon-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth <= 670">
+      <i class="material-icons">person_outline</i>
+    </button>
+    <button mat-button class="logout" (click)="logout()" routerLink="">
+      <i class="material-icons">exit_to_app</i>
+    </button>
 </mat-toolbar>
 
 <!-- Criar evento-->
@@ -7,44 +17,52 @@
   <div class="end-form">
     <div class="nome">
       <mat-form-field>
-        <input matInput [(ngModel)]="selectedEvento.nome" placeholder="Nome" required>
+        <input matInput [(ngModel)]="evento.nome" placeholder="Nome" required>
       </mat-form-field>
     </div>
     <div class="categoria">
       <mat-form-field>
-        <mat-select [(ngModel)]="selectedEvento.id_categoria" placeholder="Categoria">
-            <mat-option  *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
+        <mat-label>Categoria</mat-label>
+        <mat-select [(ngModel)]="evento.id_categoria">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+            {{ categoria.nome }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de início" [(ngModel)]="selectedEvento.data_inicio" required>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="Data e hora de início"
+          [(ngModel)]="evento.data_inicio"
+          required
+        />
       </mat-form-field>
     </div>
     <div class="date">
       <mat-form-field>
-        <input matInput type="datetime-local" placeholder="Data e hora de términio" [(ngModel)]="selectedEvento.data_final" required>
+        <input
+          matInput
+          type="datetime-local"
+          placeholder="Data e hora de términio"
+          [(ngModel)]="evento.data_final"
+          required
+        >
       </mat-form-field>
     </div>
 
     <div class="desc">
       <mat-form-field>
-        <textarea [(ngModel)]="selectedEvento.desc" matInput placeholder="Descrição" required></textarea>
+        <textarea [(ngModel)]="evento.desc" matInput placeholder="Descrição" required></textarea>
       </mat-form-field>
-    </div>
-
-    <div class="local">
-        <mat-form-field>
-          <input matInput [(ngModel)]="selectedEvento.local" placeholder="Local" required>
-        </mat-form-field>
     </div>
 
 
     <div class="button-concluir">
       <button mat-raised-button (click)="createEvento()">Concluir</button>
     </div>
-
   </div>
 </div>
 
@@ -61,28 +79,44 @@
       <div class="end-form_edit">
         <div class="nome_edit">
           <mat-form-field>
-            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
+            <input
+              matInput
+              placeholder="Nome"
+              [(ngModel)]="selectedEvento.nome"
+              required
+            >
           </mat-form-field>
         </div>
-
         <div class="categoria">
           <mat-form-field>
-            <mat-select [(ngModel)]="selectedEvento.id_categoria" placeholder="Categoria">
-                <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
+            <mat-label>Categoria</mat-label>
+            <mat-select [(ngModel)]="selectedEvento.id_categoria">
+              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                {{ categoria.nome }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-
         <div class="date_edit">
           <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de início"
-              [(ngModel)]="selectedEvento.data_inicio" required>
+            <input
+              matInput
+              type="datetime-local"
+              placeholder="Data e hora de início"
+              [(ngModel)]="selectedEvento.data_inicio"
+              required
+            >
           </mat-form-field>
         </div>
         <div class="date_edit">
           <mat-form-field>
-            <input matInput type="datetime-local" placeholder="Data e hora de términio"
-              [(ngModel)]="selectedEvento.data_final" required>
+            <input
+              matInput
+              type="datetime-local"
+              placeholder="Data e hora de términio"
+              [(ngModel)]="selectedEvento.data_final"
+              required
+            >
           </mat-form-field>
         </div>
         <div class="desc_edit">
@@ -90,14 +124,6 @@
             <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc" required></textarea>
           </mat-form-field>
         </div>
-
-
-            <div class="local_edit">
-              <mat-form-field>
-                <input matInput placeholder="Local" [(ngModel)]="selectedEvento.local" required>
-              </mat-form-field>
-            </div>
-
         <div class="button-concluir">
           <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
         </div>
@@ -107,7 +133,7 @@
       </div>
     </div>
   </mat-card-content>
-  <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoClicked(item)">
+  <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
     <i class="material-icons">edit</i>
   </button>
 </mat-card>
