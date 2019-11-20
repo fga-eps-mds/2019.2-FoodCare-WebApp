@@ -1,14 +1,13 @@
 <mat-toolbar class="toolbar-events" id="inicio">
     <a href="/" class="logo">FoodCare</a>
-    <h1 class="title-toolbar">Eventos</h1>
 </mat-toolbar>
 
-<div>
-    <mat-form-field class="example-full-width">
+<div class="form">
+    <mat-form-field class="form-search">
         <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
     </mat-form-field>
 </div>
-<div>
+<div class="form">
     <mat-form-field>
 	<mat-label>Filtrar por</mat-label>
         <mat-select [(ngModel)]="eventosFilter.id_categoria">
@@ -16,8 +15,8 @@
             <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
         </mat-select>
     </mat-form-field>
-<div>
-<div>
+</div>
+<div class="form">
     <mat-form-field>
         <mat-label>Ordenar por</mat-label>
         <mat-select [(value)]="eventosOrder">

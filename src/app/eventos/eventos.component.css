@@ -50,3 +50,10 @@
     transform: translateX(-30%);
     background-color: #5b8f6f;
 }
+.form {
+    width: 100%;
+    text-align: center;
+}
+mat-form-field {
+    width: 60%;
+}
