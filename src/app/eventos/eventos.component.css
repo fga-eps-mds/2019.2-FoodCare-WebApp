@@ -53,12 +53,10 @@
 .form {
     width: 100%;
     text-align: center;
-    display: flex;
 }
-
-.form2 {
-    width: 100%;
-    text-align: center;
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 mat-form-field {
     width: 40%;

@@ -2,7 +2,7 @@
     <a href="/" class="logo">FoodCare</a>
 </mat-toolbar>
 
-<div class="form2">
+<div class="form">
     <mat-form-field class="form-search">
         <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
     </mat-form-field>
@@ -10,18 +10,15 @@
 <div>
     <h2 class="titles">Eventos</h2>
 </div>
-<div style="text-align: left; margin-left: 20px;" class="form">
-    <div class="form"> 
-        <mat-form-field>
+<div style="margin-left: 20px;" class="filter-wrapper">
+        <mat-form-field class="filter">
             <mat-label>Filtrar por</mat-label>
             <mat-select [(ngModel)]="eventosFilter.id_categoria">
                 <mat-option value=''>Todas</mat-option>
                 <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
-    <div class="form" style="text-align: right; margin-right: 20px;">
-        <mat-form-field>
+        <mat-form-field class="order">
             <mat-label>Ordenar por</mat-label>
             <mat-select [(value)]="eventosOrder">
                 <mat-option value="data_final">Tempo restante</mat-option>
@@ -29,7 +26,6 @@
                 <mat-option value="distancia">Proximidade</mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
 </div>
 <output></output>
 <div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
