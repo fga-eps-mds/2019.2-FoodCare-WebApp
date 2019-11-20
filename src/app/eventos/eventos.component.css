@@ -53,7 +53,19 @@
 .form {
     width: 100%;
     text-align: center;
+    display: flex;
+}
+
+.form2 {
+    width: 100%;
+    text-align: center;
 }
 mat-form-field {
-    width: 60%;
+    width: 40%;
+}
+.titles {
+    font-family: "Barlow", sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 20px;
 }
