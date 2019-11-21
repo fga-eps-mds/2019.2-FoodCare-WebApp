@@ -49,4 +49,12 @@ describe('ConteudoComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+
+  it('Deve chamar sendEmail() e apresentar error no console', ()=>{
+    spy = spyOn(console, 'error');
+    component.sendEmail(null, null, null);
+    fixture.detectChanges();
+    expect(console.error);
+  });
+
 });

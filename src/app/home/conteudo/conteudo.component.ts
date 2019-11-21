@@ -25,8 +25,7 @@ export class ConteudoComponent implements OnInit {
       this.apiRoot.concat('email/'),
       { nome: nome, email: email, msg: msg }
     ).subscribe(
-      success => console.log('Deu bom'),
-      error => console.log(error)
+      error => console.error(error)
     );
   }
 }
