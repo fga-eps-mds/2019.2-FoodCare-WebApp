@@ -39,3 +39,8 @@
   margin: auto;
   padding-top: 10px;
 }
+
+.form {
+    display: flex;
+    flex-flow: column;
+}

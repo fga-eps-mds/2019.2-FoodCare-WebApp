@@ -48,9 +48,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['eventos-doador']);
       },
       error => {
+        this.submitted = true;
         this.error = error;
         console.log(error);
-        alert("Usuário não encontrado");
       }
     );
   }

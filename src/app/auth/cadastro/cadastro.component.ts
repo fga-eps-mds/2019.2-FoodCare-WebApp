@@ -35,9 +35,8 @@ export class CadastroComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    // this.onReset();
     console.log(data);
-    this.cadastrar(data.username,data.email,data.password,data.confirmPassword);
+    this.cadastrar(data.username, data.email, data.password, data.confirmPassword);
   }
 
   get f() { return this.registerForm.controls; }

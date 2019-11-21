@@ -15,7 +15,7 @@
                     [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
             <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
-                <div *ngIf="f.senha.errors.required">É necessário digitar uma senha</div>
+                <div *ngIf="f.senha.errors.required">Digite uma senha</div>
             </div>
 
         </form>
