@@ -2,12 +2,19 @@
     <div class="">
         <div class="box">
             <h2 class="title"> Acesso </h2>
+            <form class="form" [formGroup]="registerForm">
             <mat-form-field>
-                <input matInput placeholder="username" #username id="username" class="form-control">
+                <input placeholder="Usuario" matInput formControlName="usuario" type="text" #username class="form-control"
+                    [ngClass]="{ 'is-invalid': f.usuario.errors }" />
             </mat-form-field>
+            <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
+                <div *ngIf="f.usuario.errors.required">É necessário digitar um nome</div>
+            </div>
             <mat-form-field>
-                <input matInput placeholder="senha" #senha id="senha" class="form-control" type="password">
+                <input placeholder="Senha" matInput formControlName="senha" type="text" #senha class="form-control"
+                    [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
+        </form>
             <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
             <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
         </div>

@@ -32,7 +32,6 @@
                 <mat-form-field>
                     <input matInput type="password" placeholder="Confirmar Senha" formControlName="confirmPassword"
                         class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-
                 </mat-form-field>
                 <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.confirmPassword.errors.required">É necessário confirmar a senha</div>
