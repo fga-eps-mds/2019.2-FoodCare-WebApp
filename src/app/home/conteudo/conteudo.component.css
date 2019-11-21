@@ -9,6 +9,9 @@ a:link {
     text-decoration: none;
     color: white;
 }
+.is-invalid{
+    color: red;
+}
 
 .sidenav-container {
     height: 100%;

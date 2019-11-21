@@ -93,20 +93,31 @@
     <div class="text-item">
         <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato.</span>
     </div>
-    <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)"> -->
         <mat-form-field>
-            <input placeholder="Seu nome" name="nome" matInput type="text" ngModel>
+            <input placeholder="Seu nome" matInput type="text" formControlName="nome" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" />
         </mat-form-field>
-        <br>
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+            <div *ngIf="f.nome.errors.required">É necessário digitar um nome</div>
+        </div>
         <mat-form-field>
-            <input placeholder="Seu email" name='email' matInput type="text" ngModel>
+            <input placeholder="Seu email" matInput type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         </mat-form-field>
-        <br>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">É necessário digitar um email</div>
+            <div *ngIf="f.email.errors.email">É necessário digitar um email válido</div>
+        </div>
         <mat-form-field>
-            <textarea placeholder="Sua Mensagem" name="msg" matInput type="text" ngModel></textarea>
+            <input placeholder="Sua mensagem" matInput type="text" formControlName="mensagem" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.mensagem.errors }" />
         </mat-form-field>
-        <br>
-        <button class="btn-home btn-large" type="submit">Enviar</button>
+        <div *ngIf="submitted && f.mensagem.errors" class="invalid-feedback">
+            <div *ngIf="f.mensagem.errors.required">É necessário digitar uma mensagem</div>
+        </div>
+        <button mat-raised-button class="button-form" type="submit">Enviar</button>
     </form>
 </section>
 <br>

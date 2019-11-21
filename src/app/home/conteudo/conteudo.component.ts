@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { environment } from 'src/environments/environment';
 
@@ -10,14 +11,38 @@ import { environment } from 'src/environments/environment';
 })
 export class ConteudoComponent implements OnInit {
 
+  registerForm: FormGroup;
+  submitted = false;
+
   private apiRoot = environment.apiURL;
+  constructor(
+    private http: HttpClient,
+    private formBuilder: FormBuilder
+    ) { }
 
-  constructor(private http: HttpClient) { }
+  ngOnInit() {
+     this.registerForm = this.formBuilder.group({
+            nome: ['', Validators.required],
+            mensagem: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+        });
+  }
 
-  ngOnInit() { }
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+        return;
+    }
+    // console.log(data);
+    // this.sendEmail(data.nome, data.email, data.msg);
+    alert('email enviado!');
+  }
 
-  onSubmit(data) {
-    this.sendEmail(data.nome, data.email, data.msg);
+  get f() { return this.registerForm.controls; }
+
+  onReset() {
+      this.submitted = false;
+      this.registerForm.reset();
   }
 
   sendEmail(nome: string, email: string, msg: string) {
