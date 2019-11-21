@@ -93,7 +93,7 @@
     <div class="text-item">
         <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato.</span>
     </div>
-    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value);onReset()" >
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" >
         <!-- <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)"> -->
         <mat-form-field>
             <input placeholder="Seu nome" matInput type="text" formControlName="nome" class="form-control"

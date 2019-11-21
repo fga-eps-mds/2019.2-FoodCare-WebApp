@@ -34,6 +34,7 @@ export class ConteudoComponent implements OnInit {
     if (this.registerForm.invalid) {
         return;
     }
+    this.onReset();
     console.log(data);
     this.sendEmail(data.nome, data.email, data.msg);
     alert('email enviado!');
