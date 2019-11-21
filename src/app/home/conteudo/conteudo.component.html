@@ -93,7 +93,7 @@
     <div class="text-item">
         <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato.</span>
     </div>
-    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value);onReset()" >
         <!-- <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)"> -->
         <mat-form-field>
             <input placeholder="Seu nome" matInput type="text" formControlName="nome" class="form-control"
@@ -111,11 +111,11 @@
             <div *ngIf="f.email.errors.email">É necessário digitar um email válido</div>
         </div>
         <mat-form-field>
-            <input placeholder="Sua mensagem" matInput type="text" formControlName="mensagem" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.mensagem.errors }" />
+            <input placeholder="Sua mensagem" matInput type="text" formControlName="msg" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.msg.errors }" />
         </mat-form-field>
-        <div *ngIf="submitted && f.mensagem.errors" class="invalid-feedback">
-            <div *ngIf="f.mensagem.errors.required">É necessário digitar uma mensagem</div>
+        <div *ngIf="submitted && f.msg.errors" class="invalid-feedback">
+            <div *ngIf="f.msg.errors.required">É necessário digitar uma mensagem</div>
         </div>
         <button mat-raised-button class="button-form" type="submit">Enviar</button>
     </form>

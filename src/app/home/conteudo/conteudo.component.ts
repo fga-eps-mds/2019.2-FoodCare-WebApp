@@ -14,6 +14,7 @@ export class ConteudoComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
+
   private apiRoot = environment.apiURL;
   constructor(
     private http: HttpClient,
@@ -23,18 +24,18 @@ export class ConteudoComponent implements OnInit {
   ngOnInit() {
      this.registerForm = this.formBuilder.group({
             nome: ['', Validators.required],
-            mensagem: ['', Validators.required],
+            msg: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
         });
   }
 
-  onSubmit() {
+  onSubmit(data) {
     this.submitted = true;
     if (this.registerForm.invalid) {
         return;
     }
-    // console.log(data);
-    // this.sendEmail(data.nome, data.email, data.msg);
+    console.log(data);
+    this.sendEmail(data.nome, data.email, data.msg);
     alert('email enviado!');
   }
 
