@@ -1,23 +1,26 @@
 <MenuNav>
-    <div class="">
-        <div class="box">
-            <h2 class="title"> Acesso </h2>
-            <form class="form" [formGroup]="registerForm">
+    <div class="box">
+        <h2 class="title"> Acesso </h2>
+        <form class="form" [formGroup]="registerForm">
             <mat-form-field>
-                <input placeholder="Usuario" matInput formControlName="usuario" type="text" #username class="form-control"
-                    [ngClass]="{ 'is-invalid': f.usuario.errors }" />
+                <input placeholder="Usuario" matInput formControlName="usuario" type="text" #username
+                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" />
             </mat-form-field>
             <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
-                <div *ngIf="f.usuario.errors.required">É necessário digitar um nome</div>
+                <div *ngIf="f.usuario.errors.required">Digite um usuario</div>
             </div>
+
             <mat-form-field>
                 <input placeholder="Senha" matInput formControlName="senha" type="text" #senha class="form-control"
                     [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
+            <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+                <div *ngIf="f.senha.errors.required">É necessário digitar uma senha</div>
+            </div>
+
         </form>
-            <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
-            <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
-        </div>
+        <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
+        <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
     </div>
     <Rodape class="rodape"></Rodape>
 </MenuNav>

@@ -53,3 +53,8 @@
 .h2 {
     text-align: center;
 }
+
+.form {
+    display: flex;
+    flex-flow: column;
+}
