@@ -17,7 +17,6 @@ export class ConteudoComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit(data) {
-    console.log(data);
     this.sendEmail(data.nome, data.email, data.msg);
   }
 
