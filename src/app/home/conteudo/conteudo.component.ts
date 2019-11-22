@@ -37,7 +37,6 @@ export class ConteudoComponent implements OnInit {
     this.onReset();
     console.log(data);
     this.sendEmail(data.nome, data.email, data.msg);
-    alert('email enviado!');
   }
 
   get f() { return this.registerForm.controls; }
@@ -51,6 +50,12 @@ export class ConteudoComponent implements OnInit {
     return this.http.post(
       this.apiRoot.concat('email/'),
       { nome: nome, email: email, msg: msg }
+    ).subscribe(
+      success => {
+        console.log('Email enviado com sucesso!');
+        alert('Email enviado com sucesso!');
+      },
+      error => console.log(error)
     );
   }
 }
