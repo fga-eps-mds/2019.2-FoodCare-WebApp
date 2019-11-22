@@ -26,30 +26,41 @@ a:link {
     background: #5b8f6f;
 }
 
-.mat-toolbar {
-    position: sticky;
+.toolbar-home {
     top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
     z-index: 1;
-    background-color: #5b8f6f;
-}
-
-.menu {
-    color: white;
-}
-
-.menu-item {
-    color: white;
+    padding: 0 8vw;
+    background-color: #406040;
 }
 
 .logo {
-    margin: auto;
     font-family: Montserrat;
     font-weight: 800;
     font-size: 2em;
     text-decoration: none;
     color: white;
+    background-image: url(../../../assets/images/logo-white.png);
 }
 
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+
+.btn-login {
+    font-family: "Barlow", sans-serif;
+    background: transparent;
+    color: #fff;
+    border: 2px solid white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
 
 .btn-wrapper {
     display: flex;
@@ -76,34 +87,26 @@ a:link {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    cursor: default;
+    cursor: pointer;
     font-weight: 500;
     font-size: 1.3rem;
     line-height: 1.875rem;
 }
 
-.btn-large {
-    width: 100%;
-    margin: 0;
-}
-
-.button-login {
-    text-decoration: none;
-    color: white;
-}
-
 .item1 {
+    top: 0;
     display: flex;
     margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    background-color: #5b8f6f;
+    width: 100%;
+    background-image: url(src/assets/images/fundo-home-frutas.jpeg);
 }
 
 .title-item1 {
-    color: white;
+    color: #406040;
     font-size: 1.8em;
     margin: auto;
     padding-right: 15px;
@@ -111,7 +114,7 @@ a:link {
 }
 
 .text-item1 {
-    color: white;
+    color: #406040;
     padding: 5px 15px;
     font-size: 1.4em;
 }
@@ -179,5 +182,8 @@ footer {
     }
     .btn-home {
         width: 300px;
+    }
+    .btn-login {
+        display: none;
     }
 }
