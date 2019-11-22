@@ -11,7 +11,7 @@
             </div>
 
             <mat-form-field>
-                <input placeholder="Senha" matInput formControlName="senha" type="text" #senha class="form-control"
+                <input placeholder="Senha" matInput formControlName="senha" type="password" #senha class="form-control"
                     [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
             <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
