@@ -1,6 +1,9 @@
-<MenuNav>
-    <div class="box">
-        <h2 class="title"> Acesso </h2>
+<div class="background">
+    <mat-toolbar class="toolbar-login">
+        <img class="logo-img" src="/logo-white.png">
+    </mat-toolbar>
+    <div class="box-login">
+        <h2 class="title"> Login </h2>
         <form class="form" [formGroup]="registerForm">
             <mat-form-field>
                 <input placeholder="Usuario" matInput formControlName="usuario" type="text" #username
@@ -11,7 +14,8 @@
             </div>
 
             <mat-form-field>
-                <input placeholder="Senha" matInput formControlName="senha" type="password" #senha class="form-control"
+                <input placeholder="Senha" matInput formControlName="senha" type="password" #senha 
+                class="form-control"
                     [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
             <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
@@ -19,8 +23,7 @@
             </div>
 
         </form>
-        <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
-        <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
+        <button class="btn-login" mat-raised-button (click)='login(username.value, senha.value)' >Entrar</button>
+        <p class="text-cadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
     </div>
-    <Rodape class="rodape"></Rodape>
-</MenuNav>
+</div>

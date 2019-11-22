@@ -1,13 +1,39 @@
 .background {
-    background-color: #F1EBE4;
-    padding: 50px;
+    background-image: url(src/assets/images/fundo2-login.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
-.box {
-    width: 450px;
-    height: 350px;
+.toolbar-login {
+    top: 0;
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    background: transparent;
+}
+
+.logo {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 2em;
+    text-decoration: none;
+    background-image: url(../../../assets/images/logo-green.png);
+}
+
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+
+.box-login {
+    width: 400px;
+    height: 200px;
     border-radius: 10px;
-    background: #fff;
+    /* background: white; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,36 +44,37 @@
     text-align: center;
     font-family: 'Montserrat';
     font-style: normal;
+    font-weight: bold;
+    color: white;
 }
 
-.button {
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+.btn-login {
     color: white;
+    font-weight: bolder;
     background-color: #456c45;
-    padding: 3px;
+    cursor: pointer;
 }
 
 .link {
-    color: black;
+    color: white;
     text-decoration: none;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+}
+
+.text-cadastro {
+    margin: auto;
+    padding-top: 10px;
+    color: white;
+    font-size: medium;
     font-weight: bold;
 }
 
-.textoCadastro {
-    margin: auto;
-    padding-top: 10px;
-}
-
-.mat-form-field {
-    margin: 10px;
-}
-
-.rodape {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+mat-form-field {
+    padding: 1;
+    background-color: white(opacity=50%);
+    border-radius: 10px;
 }
 
 .h2 {
