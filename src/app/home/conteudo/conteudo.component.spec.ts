@@ -46,15 +46,8 @@ describe('ConteudoComponent', () => {
   it('Deve chamar sendEmail() atraves de onSubmit()', ()=>{
     spy = spyOn(component, 'sendEmail');
     component.onSubmit(data);
-    expect(spy).toHaveBeenCalled();
-  });
-
-
-  it('Deve chamar sendEmail()', ()=>{
-    spy = spyOn(component, 'sendEmail');
-    component.sendEmail(null, null, null);
     fixture.detectChanges();
-    expect(component.sendEmail).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
 });
