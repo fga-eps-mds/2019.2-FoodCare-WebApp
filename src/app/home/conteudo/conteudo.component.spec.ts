@@ -51,8 +51,10 @@ describe('ConteudoComponent', () => {
 
 
   it('Deve chamar sendEmail()', ()=>{
+    spy = spyOn(component, 'sendEmail');
     component.sendEmail(null, null, null);
     fixture.detectChanges();
+    expect(component.sendEmail).toHaveBeenCalled();
   });
 
 });
