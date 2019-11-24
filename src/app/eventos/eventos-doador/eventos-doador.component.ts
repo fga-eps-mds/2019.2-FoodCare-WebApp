@@ -64,11 +64,6 @@ export class EventosDoadorComponent implements OnInit {
     .subscribe(
       data => {
         this.doador = data;
-        console.log(data);
-        console.log('doador', this.doador);
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -82,11 +77,7 @@ export class EventosDoadorComponent implements OnInit {
     this.eventoService.getAllEventos()
     .subscribe(
       data => {
-        console.log(data);
         this.eventos = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -104,7 +95,6 @@ export class EventosDoadorComponent implements OnInit {
     .subscribe(
       data => this.getEventos(),
       error => {
-        console.log(error);
         this.getEventos();
       }
     )
@@ -120,9 +110,6 @@ export class EventosDoadorComponent implements OnInit {
       data => {
         this.toggleDisplay();
         this.getEventos();
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -130,10 +117,7 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para deletar evento
   deleteEvento = () => {
     this.eventoService.deleteEvento(this.selectedEvento.id).subscribe(
-      data => this.getEventos(),
-      error => {
-        console.log(error);
-      }
+      data => this.getEventos()
     )
   }
 
@@ -142,9 +126,6 @@ export class EventosDoadorComponent implements OnInit {
     .subscribe(
       data => {
         this.categorias = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -191,10 +172,5 @@ export class EventosDoadorComponent implements OnInit {
       localStorage.setItem("lt", position.coords.latitude)
       localStorage.setItem("lg", position.coords.longitude)
     }
-    function error() {
-      console.log('Localização não autorizada')
-    }
-    console.log("Latitude: " + localStorage.getItem("lt"));
-    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 }
