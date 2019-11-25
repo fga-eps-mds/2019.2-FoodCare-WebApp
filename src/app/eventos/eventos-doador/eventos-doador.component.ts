@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { EventoService } from '../evento.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -16,6 +18,9 @@ export class EventosDoadorComponent implements OnInit {
   eventos: any;
   categorias: any;
   selectedEvento: any;
+  errors: any;
+  registerForm: FormGroup;
+  submitted = false;
 
   eventosFilter: any = {id_doador: null};
 
@@ -25,6 +30,7 @@ export class EventosDoadorComponent implements OnInit {
   constructor(
     private eventoService: EventoService,
     private authService: AuthService,
+    private formBuilder: FormBuilder,
   ) {
     moment.locale('pt-BR');
     this.getUsuario();
@@ -53,12 +59,30 @@ export class EventosDoadorComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    var date = new Date();
+    this.registerForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      categoria: ['', Validators.required],
+      data_inicio: ['', Validators.required],
+      data_final: ['', Validators.required],
+      desc: ['',Validators.required],
+    });
+  }
+
+  onSubmit(data) {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    console.log(data);
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.innerWidth = window.innerWidth;
   }
+  get f() { return this.registerForm.controls; }
 
   // Funcao para coletar o id do usuario logado
   getUsuario = () => {

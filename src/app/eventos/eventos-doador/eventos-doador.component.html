@@ -17,9 +17,90 @@
 </mat-toolbar>
 
 <!-- Criar evento-->
-<div *ngIf="isShow">
-    <div class="end-form">
-        <div class="nome">
+<mat-dialog-title *ngIf="isShow">
+  <div class="end-form">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <mat-form-field>
+        <input matInput formControlName="nome" placeholder="Nome" required>
+      </mat-form-field>
+      <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+        <div *ngIf="f.nome.errors.required">Digite um nome para evento</div>
+      </div>
+      <div class="categoria">
+        <mat-form-field>
+          <mat-label>Categoria</mat-label>
+          <mat-select formControlName="categoria">
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="submitted && f.categoria.errors" class="invalid-feedback">
+          <div *ngIf="f.categoria.errors.required">Digite um categoria para evento</div>
+        </div>
+      </div>
+      <div class="date">
+        <mat-form-field>
+          <input matInput type="datetime-local" placeholder="Data e hora de início" formControlName="data_inicio"
+            required />
+        </mat-form-field>
+      </div>
+      <div *ngIf="submitted && f.data_inicio.errors" class="invalid-feedback">
+        <div *ngIf="f.data_inicio.errors.required">Digite uma data de inicio para evento</div>
+      </div>
+      <div class="date">
+        <mat-form-field>
+          <input matInput type="datetime-local" placeholder="Data e hora de términio" formControlName="data_final"
+            required>
+        </mat-form-field>
+
+      </div>
+      <div *ngIf="submitted && f.data_final.errors" class="invalid-feedback">
+        <div *ngIf="f.data_final.errors.required">Digite uma data de fim para evento</div>
+      </div>
+
+      <div class="desc">
+        <mat-form-field>
+          <textarea formControlName="desc" matInput placeholder="Descrição" required></textarea>
+        </mat-form-field>
+        <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+          <div *ngIf="f.desc.errors.required">Digite uma descrição para evento</div>
+        </div>
+
+      </div>
+
+      <div class="button-concluir">
+        <button mat-raised-button type="submit">Concluir</button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-title>
+
+<!-- Card de eventos-->
+<div class="div-conteiner">
+  <mat-card *ngFor="let item of eventos">
+    <div class="div-geral">
+      <div class="div-img">
+        <img class="img-categoria" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Photo of a Shiba Inu">
+      </div>
+      <div class="div-infos">
+        <div class="div-editar">
+          <h2>{{ item.nome }}</h2>
+          <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
+            <i class="material-icons">edit</i>
+          </button>
+        </div>
+        <div class="div-datas">
+          <p>{{ getFormatedDate(item.data_inicio) }} </p>
+          <p>{{ getFormatedDate(item.data_final) }}</p>
+        </div>
+      </div>
+
+      <!-- Quando clicar em Edit -->
+      <div class="edit-info" style="display: none;" id={{item.id}}>
+        <div class="end-form_edit">
+          <div class="nome_edit">
             <mat-form-field>
                 <input matInput [(ngModel)]="evento.nome" placeholder="Nome" required>
             </mat-form-field>
@@ -126,12 +207,12 @@
             </div>
         </div>
 
-        <mat-card-content>
-            <h3>Descrição:
-                <p> {{item.desc}}</p>
-            </h3>
-        </mat-card-content>
-    </mat-card>
+    <mat-card-content>
+      <h3>Descrição:
+        <p> {{item.desc}}</p>
+      </h3>
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <!-- Botoes ao final na pagina-->
