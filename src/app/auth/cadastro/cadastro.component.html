@@ -1,11 +1,11 @@
-<mat-toolbar class="toolbar-cadastro">
-    <button mat-icon-button class="home" routerLink="">
-        <i class="material-icons">home</i>
-    </button>
-    <img class="logo-img" src="/logo-white.png">
-
-</mat-toolbar>
 <div class="background">
+    <mat-toolbar class="toolbar-cadastro">
+        <button mat-icon-button class="home" routerLink="">
+            <i class="material-icons">home</i>
+        </button>
+        <img class="logo-img" src="/logo-white.png">
+
+    </mat-toolbar>
     <div class="box">
         <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
             <h2 class="title"> Cadastrar </h2>

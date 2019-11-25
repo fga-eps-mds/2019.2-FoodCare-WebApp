@@ -21,16 +21,13 @@
     color: white;
     cursor: pointer;
 }
-.background {
-    padding: 50px;
-}
-
 .box {
     width: 400px;
-    height: 500px;
+    height: 450px;
     border-radius: 10px;
+    padding: 8px;
     background: #fff;
-    margin: auto;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
 }
@@ -59,8 +56,8 @@
 }
 
 .textoLogin {
-  margin: auto;
-  padding-top: 10px;
+  margin: 5px auto;
+  /* padding-top: 10px; */
 }
 
 .form {

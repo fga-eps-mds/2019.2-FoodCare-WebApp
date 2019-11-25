@@ -35,13 +35,14 @@
 
 .box-login {
     width: 400px;
-    height: 200px;
+    height: 300px;
     border-radius: 10px;
-    /* background: white; */
+    padding: 8px;
+    background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px auto;
+    margin: 8px auto;
 }
 
 .title {
@@ -55,8 +56,10 @@
 .btn-login {
     color: white;
     font-weight: bolder;
+    width: 150px;
     background-color: #456c45;
     cursor: pointer;
+    margin: 5px auto;
 }
 
 .link {
@@ -68,11 +71,11 @@
 }
 
 .text-cadastro {
-    margin: auto;
-    padding-top: 10px;
+    margin: 5px auto;
+    /* padding-top: 10px; */
     color: black;
     font-size: medium;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /* mat-form-field {
