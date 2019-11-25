@@ -2,7 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { TemplateRef } from '@angular/core';
 
 import { EventoService } from '../evento.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -31,6 +32,7 @@ export class EventosDoadorComponent implements OnInit {
     private eventoService: EventoService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private dialog: MatDialog,
   ) {
     moment.locale('pt-BR');
     this.getUsuario();
@@ -99,7 +101,9 @@ export class EventosDoadorComponent implements OnInit {
       }
     )
   }
-
+  openDialog = (templateRef: TemplateRef<any>) => {
+      this.dialog.open(templateRef);
+  }
   logout() {
     this.authService.logout();
   }
