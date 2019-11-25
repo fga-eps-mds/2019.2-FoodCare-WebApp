@@ -1,16 +1,19 @@
 <mat-toolbar class="toolbar-eventos-doador">
-    <div>
-        <button mat-icon-button class="home" routerLink="/home">
-            <i class="material-icons">home</i>
-        </button>
-        <img class="logo-img" src="/logo-white.png">
-    </div>
-    <div>
-        <button mat-button routerLink="/perfil-doador">
-            <i class="material-icons">person_outline</i>
-            {{doador.username}}
-        </button>
-    </div>
+  <div>
+    <button mat-icon-button class="home" routerLink="">
+      <i class="material-icons logout">home</i>
+    </button>
+    <img class="logo-img" src="/logo-white.png">
+  </div>
+  <div>
+    <button mat-button routerLink="/perfil-doador">
+      <i class="material-icons">person_outline</i>
+      {{doador.username}}
+    </button>
+    <button mat-icon-button (click)="logout()" routerLink="/home">
+      <i class="material-icons logout">exit_to_app</i>
+    </button>
+  </div>
 </mat-toolbar>
 
 <!-- Criar evento-->
