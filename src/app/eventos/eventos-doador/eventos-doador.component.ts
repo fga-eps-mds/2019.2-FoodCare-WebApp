@@ -17,6 +17,8 @@ export class EventosDoadorComponent implements OnInit {
   categorias: any;
   selectedEvento: any;
 
+  eventosFilter: any = {id_doador: null};
+
   isShow = false;
   innerWidth: any = window.innerWidth;
 
@@ -64,6 +66,12 @@ export class EventosDoadorComponent implements OnInit {
     .subscribe(
       data => {
         this.doador = data;
+        console.log(data);
+        this.eventosFilter = {id_doador: data.pk}
+        console.log('doador', this.doador);
+      },
+      error => {
+        console.log(error);
       }
     )
   }

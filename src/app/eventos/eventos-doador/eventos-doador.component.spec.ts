@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { EventosDoadorComponent } from './eventos-doador.component';
 
@@ -25,6 +26,7 @@ describe('EventosDoadorComponent', () => {
         MatFormFieldModule,
         MatCardModule,
         MatSelectModule,
+        FilterPipeModule,
       ],
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [EventosDoadorComponent]
