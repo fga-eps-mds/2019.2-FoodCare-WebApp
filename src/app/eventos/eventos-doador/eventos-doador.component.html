@@ -67,7 +67,8 @@
 </div>
 
 <!-- Card de eventos-->
-<mat-card *ngFor="let item of eventos">
+<mat-card *ngFor="let item of eventos | filterBy: eventosFilter">
+  <div  *ngIf="item.id_doador==doador.pk">
   <mat-card-content>
     <h2>{{ item.nome }}</h2>
     <div class="data-items">
@@ -136,6 +137,7 @@
   <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
     <i class="material-icons">edit</i>
   </button>
+  </div>
 </mat-card>
 
 <!-- Butoes ao final na pagina-->
