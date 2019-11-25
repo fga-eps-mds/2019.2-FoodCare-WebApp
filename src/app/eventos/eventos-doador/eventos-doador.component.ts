@@ -18,7 +18,7 @@ export class EventosDoadorComponent implements OnInit {
   eventos: any;
   categorias: any;
   selectedEvento: any;
-  errors: any;
+  error: any;
   registerForm: FormGroup;
   submitted = false;
 
