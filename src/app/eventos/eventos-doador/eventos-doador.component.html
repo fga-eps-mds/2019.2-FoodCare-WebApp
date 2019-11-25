@@ -68,7 +68,7 @@
 
 <!-- Card de eventos-->
 <mat-card *ngFor="let item of eventos">
-  <div  *ngIf="item.id_doador!=doador.pk">
+  <div  *ngIf="item.id_doador==doador.pk">
   <mat-card-content>
     <h2>{{ item.nome }}</h2>
     <div class="data-items">
