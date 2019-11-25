@@ -1,148 +1,137 @@
-<mat-toolbar class="toolbar-events" id="inicio">
-  <h1 class="title-toolbar">Eventos do Doador</h1>
-    <button mat-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth > 670 && doador">
-      {{ doador.username }}
-      <i class="material-icons">person_outline</i>
-    </button>
-    <button mat-icon-button class="perfil" routerLink="/perfil-doador" *ngIf="innerWidth <= 670">
-      <i class="material-icons">person_outline</i>
-    </button>
-    <button mat-button class="logout" (click)="logout()" routerLink="">
-      <i class="material-icons">exit_to_app</i>
-    </button>
+<mat-toolbar class="toolbar-eventos-doador">
+    <div>
+        <button mat-icon-button class="home" routerLink="/home">
+            <i class="material-icons">home</i>
+        </button>
+        <img class="logo-img" src="/logo-white.png">
+    </div>
+    <div>
+        <button mat-button routerLink="/perfil-doador">
+            <i class="material-icons">person_outline</i>
+            {{doador.username}}
+        </button>
+    </div>
 </mat-toolbar>
 
 <!-- Criar evento-->
 <div *ngIf="isShow">
-  <div class="end-form">
-    <div class="nome">
-      <mat-form-field>
-        <input matInput [(ngModel)]="evento.nome" placeholder="Nome" required>
-      </mat-form-field>
-    </div>
-    <div class="categoria">
-      <mat-form-field>
-        <mat-label>Categoria</mat-label>
-        <mat-select [(ngModel)]="evento.id_categoria">
-          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-            {{ categoria.nome }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="date">
-      <mat-form-field>
-        <input
-          matInput
-          type="datetime-local"
-          placeholder="Data e hora de início"
-          [(ngModel)]="evento.data_inicio"
-          required
-        />
-      </mat-form-field>
-    </div>
-    <div class="date">
-      <mat-form-field>
-        <input
-          matInput
-          type="datetime-local"
-          placeholder="Data e hora de términio"
-          [(ngModel)]="evento.data_final"
-          required
-        >
-      </mat-form-field>
-    </div>
+    <div class="end-form">
+        <div class="nome">
+            <mat-form-field>
+                <input matInput [(ngModel)]="evento.nome" placeholder="Nome" required>
+            </mat-form-field>
+        </div>
+        <div class="categoria">
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <mat-select [(ngModel)]="evento.id_categoria">
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                        {{ categoria.nome }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="date">
+            <mat-form-field>
+                <input matInput type="datetime-local" placeholder="Data e hora de início"
+                    [(ngModel)]="evento.data_inicio" required />
+            </mat-form-field>
+        </div>
+        <div class="date">
+            <mat-form-field>
+                <input matInput type="datetime-local" placeholder="Data e hora de términio"
+                    [(ngModel)]="evento.data_final" required>
+            </mat-form-field>
+        </div>
 
-    <div class="desc">
-      <mat-form-field>
-        <textarea [(ngModel)]="evento.desc" matInput placeholder="Descrição" required></textarea>
-      </mat-form-field>
-    </div>
+        <div class="desc">
+            <mat-form-field>
+                <textarea [(ngModel)]="evento.desc" matInput placeholder="Descrição" required></textarea>
+            </mat-form-field>
+        </div>
 
-
-    <div class="button-concluir">
-      <button mat-raised-button (click)="createEvento()">Concluir</button>
+        <div class="button-concluir">
+            <button mat-raised-button (click)="createEvento()">Concluir</button>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- Card de eventos-->
-<mat-card *ngFor="let item of eventos | filterBy: eventosFilter">
-  <div  *ngIf="item.id_doador==doador.pk">
-  <mat-card-content>
-    <h2>{{ item.nome }}</h2>
-    <div class="data-items">
-      <p>{{ getFormatedDate(item.data_inicio) }} </p>
-      <p>{{ getFormatedDate(item.data_final) }}</p>
-    </div>
-    <!-- Editar evento-->
-    <div class="edit-info" style="display: none;" id={{item.id}}>
-      <div class="end-form_edit">
-        <div class="nome_edit">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Nome"
-              [(ngModel)]="selectedEvento.nome"
-              required
-            >
-          </mat-form-field>
-        </div>
-        <div class="categoria">
-          <mat-form-field>
-            <mat-label>Categoria</mat-label>
-            <mat-select [(ngModel)]="selectedEvento.id_categoria">
-              <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-                {{ categoria.nome }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="date_edit">
-          <mat-form-field>
-            <input
-              matInput
-              type="datetime-local"
-              placeholder="Data e hora de início"
-              [(ngModel)]="selectedEvento.data_inicio"
-              required
-            >
-          </mat-form-field>
-        </div>
-        <div class="date_edit">
-          <mat-form-field>
-            <input
-              matInput
-              type="datetime-local"
-              placeholder="Data e hora de términio"
-              [(ngModel)]="selectedEvento.data_final"
-              required
-            >
-          </mat-form-field>
-        </div>
-        <div class="desc_edit">
-          <mat-form-field>
-            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc" required></textarea>
-          </mat-form-field>
-        </div>
-        <div class="button-concluir">
-          <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
-        </div>
-        <div class="button-excluir">
-          <button mat-raised-button (click)="deleteEvento()">Excluir</button>
-        </div>
-      </div>
-    </div>
-  </mat-card-content>
-  <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
-    <i class="material-icons">edit</i>
-  </button>
-  </div>
-</mat-card>
+<div class="div-conteiner">
+    <mat-card *ngFor="let item of eventos | filterBy: eventosFilter">
+        <div class="div-geral">
+            <div class="div-img">
+                <img class="img-categoria" mat-card-image
+                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            </div>
+            <div class="div-infos">
+                <div class="div-editar">
+                    <h2>{{ item.nome }}</h2>
+                    <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
+                        <i class="material-icons">edit</i>
+                    </button>
+                </div>
+                <div class="div-datas">
+                    <p>{{ getFormatedDate(item.data_inicio) }} </p>
+                    <p>{{ getFormatedDate(item.data_final) }}</p>
+                </div>
+            </div>
 
-<!-- Butoes ao final na pagina-->
-<button mat-icon-button class="button-add-evento" (click)="toggleDisplay(); scrollToTop()">
-  <a style="color: white">
+            <!-- Quando clicar em Edit -->
+            <div class="edit-info" style="display: none;" id={{item.id}}>
+                <div class="end-form_edit">
+                    <div class="nome_edit">
+                        <mat-form-field>
+                            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="categoria">
+                        <mat-form-field>
+                            <mat-label>Categoria</mat-label>
+                            <mat-select [(ngModel)]="selectedEvento.id_categoria">
+                                <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                                    {{ categoria.nome }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="date_edit">
+                        <mat-form-field>
+                            <input matInput type="datetime-local" placeholder="Data e hora de início"
+                                [(ngModel)]="selectedEvento.data_inicio" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="date_edit">
+                        <mat-form-field>
+                            <input matInput type="datetime-local" placeholder="Data e hora de términio"
+                                [(ngModel)]="selectedEvento.data_final" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="desc_edit">
+                        <mat-form-field>
+                            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc"
+                                required></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="button-concluir">
+                        <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
+                    </div>
+                    <div class="button-excluir">
+                        <button mat-raised-button (click)="deleteEvento()">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <mat-card-content>
+            <h3>Descrição:
+                <p> {{item.desc}}</p>
+            </h3>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- Botoes ao final na pagina-->
+<button mat-icon-button class="button-add-evento" style="color: white" (click)="toggleDisplay(); scrollToTop()">
     <i class="material-icons">add</i>
-  </a>
 </button>

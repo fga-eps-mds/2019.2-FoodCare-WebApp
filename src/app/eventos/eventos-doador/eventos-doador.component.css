@@ -1,7 +1,25 @@
-.toolbar-events {
-    background-color: #5b8f6f;
+.toolbar-eventos-doador {
+    top: 0;
+    position: sticky;
     display: flex;
-    justify-content: center;
+    z-index: 1;
+    padding: 0 8vw;
+    background-color: #406040;
+    justify-content: space-between;
+    color: white;
+}
+.img-categoria {
+    max-width: 200px;
+    max-height: 200px;
+}
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+.home{
+    color: white;
+    position: absolute;
+    left: 10px;
 }
 
 .title-toolbar {
@@ -39,33 +57,51 @@
     transform: translateX(-25%);
     background-color: #5b8f6f;
 }
-.perfil{
-    position: absolute;
-    right: 60px;
-    color: white;
-}
+
 .logout{
     position: absolute;
     right: 5px;
     font-size: 6px;
     color: white;
 }
-.edit {
+/* .edit {
+    display: flex;
+    justify-content: space-around;
+} */
+
+.div-conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.mat-card {
+    width: 620px;
+    margin: 15px;
+    display: grid;
+}
+
+.img-categoria {
+    border-radius: 10px;
+}
+
+.div-img {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.div-geral {
     display: flex;
     justify-content: space-around;
 }
 
-.mat-card {
-    margin: 15px;
+.div-editar {
     display: flex;
-    flex: 1;
-    justify-content: space-between;
 }
 
 .mat-card-content {
     display: flex;
-    justify-content: space-between;
-    flex: 1;
+    /* justify-content: space-between; */
+    /* flex: 1; */
 }
 
 .lista {
