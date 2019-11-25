@@ -1,33 +1,48 @@
-.toolbar-events {
-    background-color: #5b8f6f;
+.toolbar-eventos {
+    top: 0;
+    position: sticky;
     display: flex;
-    justify-content: center;
+    /* justify-content: space-between; */
+    z-index: 1;
+    padding: 0 8vw;
+    background-color: #406040;
 }
-
-.logo {
-  margin: auto;
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 2em;
-  text-decoration: none;
-  color: white;
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+.home {
+    color: white;
 }
 
 .title-toolbar {
     color: white;
 }
-
-.mat-card {
-    margin: 15px;
+.div-conteiner {
     display: flex;
-    flex: 1;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
-
+.mat-card {
+    width: 400px;
+    margin: 15px;
+    /* display: flex; */
+}
+.div-geral {
+    display: flex;
+    flex-direction: column;
+}
+.img-categoria {
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+}
+.div-img-info {
+    display: flex;
+    justify-content: space-around;
+}
 .mat-card-content {
     display: flex;
-    justify-content: space-between;
-    flex: 1;
 }
 
 .data-items {

@@ -1,5 +1,9 @@
-<mat-toolbar class="toolbar-events" id="inicio">
-    <a href="/" class="logo">FoodCare</a>
+<mat-toolbar class="toolbar-eventos">
+    <button mat-icon-button class="home" routerLink="">
+        <i class="material-icons">home</i>
+    </button>
+    <img class="logo-img" src="/logo-white.png">
+
 </mat-toolbar>
 
 <div class="form">
@@ -11,42 +15,46 @@
     <h2 class="titles">Eventos</h2>
 </div>
 <div style="margin-left: 20px;" class="filter-wrapper">
-        <mat-form-field class="filter">
-            <mat-label>Filtrar por</mat-label>
-            <mat-select [(ngModel)]="eventosFilter.id_categoria">
-                <mat-option value=''>Todas</mat-option>
-                <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="order">
-            <mat-label>Ordenar por</mat-label>
-            <mat-select [(value)]="eventosOrder">
-                <mat-option value="data_final">Tempo restante</mat-option>
-                <mat-option value="nome">Nome</mat-option>
-                <mat-option value="distancia">Proximidade</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field class="filter">
+        <mat-label>Filtrar por</mat-label>
+        <mat-select [(ngModel)]="eventosFilter.id_categoria">
+            <mat-option value=''>Todas</mat-option>
+            <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="order">
+        <mat-label>Ordenar por</mat-label>
+        <mat-select [(value)]="eventosOrder">
+            <mat-option value="data_final">Tempo restante</mat-option>
+            <mat-option value="nome">Nome</mat-option>
+            <mat-option value="distancia">Proximidade</mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
 <output></output>
 <div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
-    <div *ngIf="mostraEvento(evento.data_final)">
-        <mat-card>
-            <mat-card-content>
-                <h2>{{ evento.nome }}</h2>
-                <div class="data-items">
-                    <p>Descrição: {{ evento.desc }}</p>
-                    <div *ngIf="mostraTempoRestante(evento.data_final)">
-                        <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
+
+    <mat-card *ngFor="let item of eventos">
+        <div class="div-geral">
+            <div class="div-img-info">
+                <img class="img-categoria" mat-card-image
+                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <div class="div-infos">
+                    <h2>{{ item.nome }}</h2>
+                    <div class="div-datas">
+                        <div *ngIf="mostraTempoRestante(evento.data_final)">
+                            <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
+                        </div>
+                        <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
+                        <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
                     </div>
-                    <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
-                    <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
-                    <p (click)="geraLocalMaps(evento.latitude, evento.longitude)">
-                        Distância:
-                        {{ distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude()).toString() }}
-                        km
-                    </p>
                 </div>
+            </div>
+            <mat-card-content>
+                <h3>Descrição:
+                    <p> {{item.desc}}</p>
+                </h3>
             </mat-card-content>
-        </mat-card>
-    </div>
+        </div>
+    </mat-card>
 </div>
