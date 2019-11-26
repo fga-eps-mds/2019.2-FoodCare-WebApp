@@ -74,12 +74,8 @@
     <mat-card *ngFor="let item of eventos">
         <div class="div-geral">
             <div class="div-img">
-                <img 
-                    mat-card-image 
-                    class="img-categoria"
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" 
-                    alt="Photo of a Shiba Inu"
-                >
+                <img mat-card-image class="img-categoria"
+                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
             </div>
             <div class="div-infos">
                 <div class="div-editar">
@@ -95,47 +91,55 @@
             </div>
         </div>
         <mat-card-content>
-            <h3>Descrição: <p>{{item.desc}}</p></h3>
+            <h3>Descrição: <p>{{item.desc}}</p>
+            </h3>
         </mat-card-content>
 
         <!-- Editar evento -->
-        <!-- <ng-template #editDialog>
-            <div class="edit-info" id={{item.id}}>
-                <div class="end-form_edit">
-                    <div class="nome_edit">
-                        <mat-form-field>
-                            <input matInput [(ngModel)]="evento.nome" placeholder="Nome" required>
-                        </mat-form-field>
-                    </div>
-                    <div class="categoria">
-                        <mat-form-field>
-                            <mat-label>Categoria</mat-label>
-                            <mat-select [(ngModel)]="evento.id_categoria">
-                                <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-                                    {{ categoria.nome }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="date">
-                        <mat-form-field>
-                            <input matInput type="datetime-local" placeholder="Data e hora de início"
-                                [(ngModel)]="evento.data_inicio" required />
-                        </mat-form-field>
-                    </div>
-                    <div class="date">
-                        <mat-form-field>
-                            <input matInput type="datetime-local" placeholder="Data e hora de términio"
-                                [(ngModel)]="evento.data_final" required>
-                        </mat-form-field>
-                    </div>
-                    <div class="desc">
-                        <mat-form-field>
-                            <textarea [(ngModel)]="evento.desc" matInput placeholder="Descrição" required></textarea>
-                        </mat-form-field>
-                    </div>
+        <ng-template #editDialog>
+            <div class="end-form_edit">
+                <div class="nome_edit">
+                    <mat-form-field>
+                        <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
+                    </mat-form-field>
                 </div>
-        </ng-template> -->
+                <div class="categoria">
+                    <mat-form-field>
+                        <mat-label>Categoria</mat-label>
+                        <mat-select [(ngModel)]="selectedEvento.id_categoria">
+                            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                                {{ categoria.nome }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="date_edit">
+                    <mat-form-field>
+                        <input matInput type="datetime-local" placeholder="Data e hora de início"
+                            [(ngModel)]="selectedEvento.data_inicio" required>
+                    </mat-form-field>
+                </div>
+                <div class="date_edit">
+                    <mat-form-field>
+                        <input matInput type="datetime-local" placeholder="Data e hora de términio"
+                            [(ngModel)]="selectedEvento.data_final" required>
+                    </mat-form-field>
+                </div>
+                <div class="desc_edit">
+                    <mat-form-field>
+                        <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc"
+                            required></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="button-concluir">
+                    <button mat-raised-button (click)="updateEvento()">Concluir</button>
+                </div>
+                <div class="button-excluir">
+                    <button mat-raised-button (click)="deleteEvento()">Excluir</button>
+                </div>
+            </div>
+
+        </ng-template>
     </mat-card>
 </div>
 
