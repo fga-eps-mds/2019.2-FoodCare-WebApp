@@ -15,6 +15,8 @@
     </button>
   </div>
 </mat-toolbar>
+
+<!-- Criar evento-->
 <ng-template #myDialog>
   <div>
     <div class="end-form">
@@ -76,7 +78,8 @@
   </div>
 
 </ng-template>
-<!-- Criar evento-->
+
+
 
 <!-- Card de eventos-->
 <div class="div-conteiner">
@@ -89,7 +92,7 @@
       <div class="div-infos">
         <div class="div-editar">
           <h2>{{ item.nome }}</h2>
-          <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
+          <button mat-icon-button class="edit" (click)="openDialog(editDialog); eventoSelecionado(item)">
             <i class="material-icons">edit</i>
           </button>
         </div>
@@ -99,8 +102,16 @@
         </div>
       </div>
 
-      <!-- Quando clicar em Edit -->
-      <div class="edit-info" style="display: none;" id={{item.id}}>
+    </div>
+    <mat-card-content>
+      <h3>Descrição:
+        <p> {{item.desc}}</p>
+      </h3>
+    </mat-card-content>
+
+    <!-- Editar evento -->
+    <ng-template #editDialog>
+      <div class="edit-info" id={{item.id}}>
         <div class="end-form_edit">
           <div class="nome_edit">
             <mat-form-field>
@@ -135,85 +146,8 @@
                 <textarea [(ngModel)]="evento.desc" matInput placeholder="Descrição" required></textarea>
             </mat-form-field>
         </div>
-
-        <div class="button-concluir">
-            <button mat-raised-button (click)="createEvento()">Concluir</button>
-        </div>
-    </div>
-</div>
-
-<!-- Card de eventos-->
-<div class="div-conteiner">
-    <mat-card *ngFor="let item of eventos | filterBy: eventosFilter">
-        <div class="div-geral">
-            <div class="div-img">
-                <img class="img-categoria" mat-card-image
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            </div>
-            <div class="div-infos">
-                <div class="div-editar">
-                    <h2>{{ item.nome }}</h2>
-                    <button mat-icon-button class="edit" (click)="mostraDiv(item.id); eventoSelecionado(item)">
-                        <i class="material-icons">edit</i>
-                    </button>
-                </div>
-                <div class="div-datas">
-                    <p>{{ getFormatedDate(item.data_inicio) }} </p>
-                    <p>{{ getFormatedDate(item.data_final) }}</p>
-                </div>
-            </div>
-
-            <!-- Quando clicar em Edit -->
-            <div class="edit-info" style="display: none;" id={{item.id}}>
-                <div class="end-form_edit">
-                    <div class="nome_edit">
-                        <mat-form-field>
-                            <input matInput placeholder="Nome" [(ngModel)]="selectedEvento.nome" required>
-                        </mat-form-field>
-                    </div>
-                    <div class="categoria">
-                        <mat-form-field>
-                            <mat-label>Categoria</mat-label>
-                            <mat-select [(ngModel)]="selectedEvento.id_categoria">
-                                <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-                                    {{ categoria.nome }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="date_edit">
-                        <mat-form-field>
-                            <input matInput type="datetime-local" placeholder="Data e hora de início"
-                                [(ngModel)]="selectedEvento.data_inicio" required>
-                        </mat-form-field>
-                    </div>
-                    <div class="date_edit">
-                        <mat-form-field>
-                            <input matInput type="datetime-local" placeholder="Data e hora de términio"
-                                [(ngModel)]="selectedEvento.data_final" required>
-                        </mat-form-field>
-                    </div>
-                    <div class="desc_edit">
-                        <mat-form-field>
-                            <textarea matInput placeholder="Descrição" [(ngModel)]="selectedEvento.desc"
-                                required></textarea>
-                        </mat-form-field>
-                    </div>
-                    <div class="button-concluir">
-                        <button mat-raised-button (click)="mostraDiv(item.id); updateEvento()">Concluir</button>
-                    </div>
-                    <div class="button-excluir">
-                        <button mat-raised-button (click)="deleteEvento()">Excluir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <mat-card-content>
-      <h3>Descrição:
-        <p> {{item.desc}}</p>
-      </h3>
-    </mat-card-content>
+      </div>
+    </ng-template>
   </mat-card>
 </div>
 
