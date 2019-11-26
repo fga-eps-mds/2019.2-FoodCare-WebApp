@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="button-concluir">
-                    <button mat-raised-button type="submit">Concluir</button>
+                    <button mat-raised-button type="submit" (click)="createEvento(registerForm.value)">Concluir</button>
                 </div>
             </form>
         </div>
@@ -144,6 +144,6 @@
 </div>
 
 <!-- Botoes ao final na pagina-->
-<button mat-icon-button class="button-add-evento" style="color: white" (click)="openDialog(myDialog); scrollToTop()">
+<button mat-icon-button class="button-add-evento" style="color: white" (click)="openDialog(myDialog)">
     <i class="material-icons">add</i>
 </button>

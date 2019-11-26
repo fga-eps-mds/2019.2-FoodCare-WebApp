@@ -133,14 +133,22 @@ export class EventosDoadorComponent implements OnInit {
   }
 
   // Funcao para criar evento
-  createEvento = () => {
-    this.evento.id_doador = this.doador.pk;
-    this.evento.latitude = Number(localStorage.getItem("lt"));
-    this.evento.longitude = Number(localStorage.getItem("lg"));
+  createEvento = (data) => {
+    console.log(data);
+    this.evento = {
+      nome: data.nome,
+      desc: data.desc,
+      latitude: Number(localStorage.getItem("lt")),
+      longitude: Number(localStorage.getItem("lg")),
+      data_inicio: data.data_inicio,
+      data_final: data.data_final,
+      id_doador: this.doador.pk,
+      id_categoria: data.categoria
+    }
     this.eventoService.createEvento(this.evento)
     .subscribe(
       data => {
-        this.toggleDisplay();
+        // this.toggleDisplay();
         this.getEventos();
       }
     )
