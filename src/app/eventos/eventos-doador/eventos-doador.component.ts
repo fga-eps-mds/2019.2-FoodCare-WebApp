@@ -24,6 +24,7 @@ export class EventosDoadorComponent implements OnInit {
   submitted = false;
 
   eventosFilter: any = {id_doador: null};
+  categoriaFilter: any = {id_categoria: null};
   
   constructor(
     private eventoService: EventoService,
@@ -66,14 +67,18 @@ export class EventosDoadorComponent implements OnInit {
       data_final: ['', Validators.required],
       desc: ['',Validators.required],
     });
+    
   }
 
   onSubmit(data) {
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
+      
+    }else{
+      console.log(data);
+      this.closeDialog();
     }
-    console.log(data);
   }
   get f() { return this.registerForm.controls; }
 
@@ -92,10 +97,19 @@ export class EventosDoadorComponent implements OnInit {
       }
     )
   }
-
-  openDialog = (templateRef: TemplateRef<any>) => {
-      this.dialog.open(templateRef);
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
   }
+  openDialog = (templateRef: TemplateRef<any>) => {
+    this.dialog.open(templateRef);
+    console.log('Aberto')
+}
+openDialog2 = (templateRef: TemplateRef<any>) => {
+  this.dialog.open(templateRef);
+  console.log('Aberto2')
+}
+
   closeDialog = () => {
     this.dialog.closeAll();
   }
