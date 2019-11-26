@@ -12,7 +12,7 @@
 </mat-toolbar>
 
 <!-- Criar evento-->
-<ng-template #myDialog>
+<ng-template #createDialog>
     <div>
         <div class="end-form">
             <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
@@ -61,8 +61,10 @@
                         <div *ngIf="f.desc.errors.required">Digite uma descrição para evento</div>
                     </div>
                 </div>
-                <div class="button-concluir">
-                    <button mat-raised-button type="submit" (click)="createEvento(registerForm.value)">Concluir</button>
+                <div class="button-criacao">
+                    <button class="btn-cancel" mat-raised-button type="cancel" (click)="closeDialog()">Cancelar</button>
+                    <button class="btn-submit" mat-raised-button type="submit"
+                        (click)="createEvento(registerForm.value); closeDialog()">Salvar</button>
                 </div>
             </form>
         </div>
@@ -131,11 +133,11 @@
                             required></textarea>
                     </mat-form-field>
                 </div>
-                <div class="button-concluir">
-                    <button mat-raised-button (click)="updateEvento(); closeDialog()">Concluir</button>
-                </div>
-                <div class="button-excluir">
-                    <button mat-raised-button (click)="deleteEvento(); closeDialog()">Excluir</button>
+                <div class="button-criacao">
+                    <button class="btn-cancel" mat-raised-button
+                        (click)="deleteEvento(); closeDialog()">Excluir</button>
+                    <button class="btn-submit" mat-raised-button
+                        (click)="updateEvento(); closeDialog()">Salvar</button>
                 </div>
             </div>
 
@@ -144,6 +146,6 @@
 </div>
 
 <!-- Botoes ao final na pagina-->
-<button mat-icon-button class="button-add-evento" style="color: white" (click)="openDialog(myDialog)">
+<button mat-icon-button class="button-add-evento" style="color: white" (click)="openDialog(createDialog)">
     <i class="material-icons">add</i>
 </button>

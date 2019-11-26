@@ -64,10 +64,6 @@
     font-size: 30px;
     color: white;
 }
-/* .edit {
-    display: flex;
-    justify-content: space-around;
-} */
 
 .div-conteiner {
     display: flex;
@@ -100,8 +96,6 @@
 
 .mat-card-content {
     display: flex;
-    /* justify-content: space-between; */
-    /* flex: 1; */
 }
 
 .lista {
@@ -118,10 +112,12 @@
     padding: 15px;
 }
 
+ mat-form-field{
+    width: 300px;    
+}
 .end-form {
     display: flex;
     flex-direction: column;
-    padding: 15px;
     flex: 1;
 }
 
@@ -138,8 +134,30 @@
     margin: auto;
 }
 
-.button-concluir {
-    margin: auto;
+.button-criacao {
+    border: none;
+    position: relative;
+    padding: 0 20px;
+    border-radius: 4px;
+    transition: 100ms;
+    display: inline-flex;
+    font-size: smaller;
+    display: flex;
+    margin: 10px 24px;
+}
+
+.btn-cancel {
+    background-color: rgba(248, 60, 60, 0.925);
+    font-size: x-small;
+    color: white;
+    font-weight: lighter;
+}
+
+.btn-submit {
+    color: white;
+    font-size: x-small;
+    font-weight: lighter;
+    background-color: rgb(53, 192, 53);
 }
 
 .categoria {
