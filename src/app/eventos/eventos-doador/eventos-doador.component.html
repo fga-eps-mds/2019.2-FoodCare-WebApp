@@ -71,7 +71,7 @@
 
 <!-- Card de eventos-->
 <div class="div-conteiner">
-    <mat-card *ngFor="let item of eventos">
+    <mat-card *ngFor="let item of eventos | filterBy: eventosFilter ">
         <div class="div-geral">
             <div class="div-img">
                 <img mat-card-image class="img-categoria"
