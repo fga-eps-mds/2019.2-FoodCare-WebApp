@@ -1,9 +1,10 @@
-<mat-toolbar class="toolbar-home">
-    <img class="logo-img" src="/logo-white.png">
+<mat-toolbar class="toolbar">
+    <img class="logo-img clickable" src="/logo-white.png" onclick="location.href='/'">
     <button class="btn-login" onclick="location.href='/login'">
         Login
     </button>
 </mat-toolbar>
+
 <section class="item1">
     <div class="title-item1">
         <h1>Ajude a acabar com a fome do Brasil!</h1>
@@ -126,4 +127,5 @@
         <button mat-raised-button class="button-form" type="submit">Enviar</button>
     </form>
 </section>
-<br>
+
+<app-footer></app-footer>

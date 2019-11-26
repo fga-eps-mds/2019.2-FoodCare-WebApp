@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,11 +22,12 @@ describe('EventosDoadorComponent', () => {
         HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule,
-        MatToolbarModule,
-        MatInputModule,
-        MatFormFieldModule,
         MatCardModule,
+        MatInputModule,
+        MatDialogModule,
         MatSelectModule,
+        MatToolbarModule,
+        MatFormFieldModule,
         FilterPipeModule,
       ],
       schemas: [NO_ERRORS_SCHEMA],

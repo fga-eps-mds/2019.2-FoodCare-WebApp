@@ -5,11 +5,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'Conteudo',
-  templateUrl: './conteudo.component.html',
-  styleUrls: ['./conteudo.component.css']
+  selector: 'Home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class ConteudoComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;

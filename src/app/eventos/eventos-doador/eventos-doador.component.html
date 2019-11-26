@@ -5,10 +5,10 @@
     </button>
     <img class="logo-img" src="/logo-white.png">
   </div>
-  <div>
+  <div *ngIf="doador">
     <button mat-button routerLink="/perfil-doador">
       <i class="material-icons">person_outline</i>
-      {{doador.username}}
+      {{ doador.username }}
     </button>
     <button mat-icon-button (click)="logout()" routerLink="/home">
       <i class="material-icons logout">exit_to_app</i>

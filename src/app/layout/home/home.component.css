@@ -1,13 +1,5 @@
-#logo {
-    color: #fff;
-}
-
-#logo>a:visited,
-a:hover,
-a:active,
-a:link {
-    text-decoration: none;
-    color: white;
+.is-invalid {
+    color: red;
 }
 
 .sidenav-container {
@@ -23,47 +15,63 @@ a:link {
     background: #5b8f6f;
 }
 
-.mat-toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: #5b8f6f;
+.btn-login {
+    font-family: "Barlow", sans-serif;
+    background: transparent;
+    color: #fff;
+    border: 2px solid white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1.3rem;
+    cursor: pointer;
 }
 
-.menu {
-    color: white;
+.btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    margin: 32px 0;
 }
 
-.menu-item {
-    color: white;
-}
-
-.logo {
-    margin: auto;
-    font-family: Montserrat;
-    font-weight: 800;
-    font-size: 2em;
+.btn-home {
+    font-family: "Barlow", sans-serif;
+    background: #406040;
+    color: #fff;
+    width: 320px;
+    height: 50px;
+    margin: 10px 24px;
     text-decoration: none;
-    color: white;
-}
-
-.button-login {
-    text-decoration: none;
-    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    transition: 100ms;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.875rem;
 }
 
 .item1 {
+    top: 0;
     display: flex;
     margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    background-color: #5b8f6f;
+    width: 100%;
+    background-image: url(src/assets/images/fundo-home-frutas.jpeg);
 }
 
 .title-item1 {
-    color: white;
+    color: #406040;
     font-size: 1.8em;
     margin: auto;
     padding-right: 15px;
@@ -71,7 +79,7 @@ a:link {
 }
 
 .text-item1 {
-    color: white;
+    color: #406040;
     padding: 5px 15px;
     font-size: 1.4em;
 }
@@ -82,22 +90,13 @@ a:link {
     text-align: center;
     padding-right: 15px;
     padding-left: 15px;
+    margin-bottom: 64px;
 }
 
 .text-item {
     padding: 5px 15px;
     font-size: 1.4em;
     text-align: center;
-}
-
-.button-item1 {
-    margin: 5%;
-}
-
-.buttons-item1 {
-    margin: 3%;
-    width: 310px;
-    height: 50px;
 }
 
 .icon-item {
@@ -115,7 +114,6 @@ a:link {
     justify-content: space-around;
     flex-wrap: wrap;
     text-align: center;
-    margin-top: 5%;
 }
 
 .item3-section {
@@ -140,4 +138,17 @@ footer {
     color: white;
     background-color: #456c45;
     margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-wrapper {
+        padding: 0;
+        margin: 32px 0;
+    }
+    .btn-home {
+        width: 300px;
+    }
+    .btn-login {
+        display: none;
+    }
 }

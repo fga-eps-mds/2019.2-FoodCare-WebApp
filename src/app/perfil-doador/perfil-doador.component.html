@@ -5,14 +5,14 @@
         </button>
         <img class="logo-img" src="/logo-white.png">
     </div>
-    <div>
+    <div *ngIf="doador">
         <span>
             <i class="material-icons">person_outline</i>
             {{doador.username}}
         </span>
     </div>
 </mat-toolbar>
-<div class="centro">
+<div class="centro" *ngIf="doador">
     <div class="background-dados">
         <div>
             <i class="material-icons-two-tone icon-perfil">account_circle</i>

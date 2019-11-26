@@ -1,7 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -27,37 +24,60 @@ h2 {
     font-weight: 500;
 }
 
+.toolbar {
+    top: 0;
+    position: sticky;
+    padding: 0 8vw !important;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    background-color: #406040;
+}
+
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
 .mat-button-wrapper {
-    font-family: "Montserrat";
+    font-family: "Montserrat", 'Helvetica Neue', sans-serif;
     font-weight: 800;
     font-size: 1.6em;
 }
 
 .mat-form-field {
-    font-family: "Barlow","Helvetica Neue",sans-serif;
+    font-family: Barlow, 'Helvetica Neue', sans-serif;
 }
 
-@media only screen and (max-width: 768px) {
+/* Tablets */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* css */
+}
+
+/* Smartphones */
+
+@media only screen and (max-width: 767px) {
     body {
         font-size: 14px;
     }
-
     h1, h2, h3 {
         font-family: "Montserrat", Helvetica, sans-serif;
     }
-
     h1 {
         line-height: 2rem;
         font-size: 2rem;
         font-weight: 600;
     }
-
     h2 {
         line-height: 1.4rem;
         font-size: 1.2rem;
         font-weight: 500;
     }
-
     .text-item1 {
         font-size: 1em !important;
     }

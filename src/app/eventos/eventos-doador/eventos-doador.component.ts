@@ -1,9 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
-import { MatDialog } from '@angular/material/dialog';
-import { TemplateRef } from '@angular/core';
 
 import { EventoService } from '../evento.service';
 import { AuthService } from 'src/app/auth/auth.service';

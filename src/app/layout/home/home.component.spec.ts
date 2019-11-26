@@ -1,17 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { ConteudoComponent } from './conteudo.component';
+import { HomeComponent } from './home.component';
 
-describe('ConteudoComponent', () => {
-  let component: ConteudoComponent;
-  let fixture: ComponentFixture<ConteudoComponent>;
-  let data: any;
-  let spy: any;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,13 +22,14 @@ describe('ConteudoComponent', () => {
         MatFormFieldModule,
         MatInputModule,
       ],
-      declarations: [ConteudoComponent]
+      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [HomeComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConteudoComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     data = {
