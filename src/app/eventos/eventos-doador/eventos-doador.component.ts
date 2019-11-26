@@ -24,10 +24,7 @@ export class EventosDoadorComponent implements OnInit {
   submitted = false;
 
   eventosFilter: any = {id_doador: null};
-
-  isShow = false;
-  innerWidth: any = window.innerWidth;
-
+  
   constructor(
     private eventoService: EventoService,
     private authService: AuthService,
@@ -62,7 +59,6 @@ export class EventosDoadorComponent implements OnInit {
   }
 
   ngOnInit() { 
-    var date = new Date();
     this.registerForm = this.formBuilder.group({
       nome: ['', Validators.required],
       categoria: ['', Validators.required],
@@ -78,11 +74,6 @@ export class EventosDoadorComponent implements OnInit {
       return;
     }
     console.log(data);
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.innerWidth = window.innerWidth;
   }
   get f() { return this.registerForm.controls; }
 
@@ -104,6 +95,9 @@ export class EventosDoadorComponent implements OnInit {
 
   openDialog = (templateRef: TemplateRef<any>) => {
       this.dialog.open(templateRef);
+  }
+  closeDialog = () => {
+    this.dialog.closeAll();
   }
   
   logout() {
@@ -168,11 +162,6 @@ export class EventosDoadorComponent implements OnInit {
     )
   }
 
-  // Funcao para definir visibilidade
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
-
   // Funcao para formatar a data apresentada
   getFormatedDate(date) {
     return moment(date).format('LLL');
@@ -181,26 +170,6 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para retornar data do evento
   getDateForEdit(date) {
     return moment(date).format("YYYY-MM-DDThh:mm");
-  }
-
-  // Funcao para decidir a visibilidade de uma div
-  mostraDiv(id: string) {
-    if (document.getElementById(id).style.display == "none") {
-      document.getElementById(id).style.display = "block";
-    } else {
-      /* se conteúdo está a mostra, esconde o conteúdo  */
-      document.getElementById(id).style.display = "none";
-    }
-  }
-
-  // Funcao para dar refresh na pagina
-  refresh() {
-    window.location.reload();
-  }
-
-  // Funcao para rolar ate o topo
-  scrollToTop() {
-    document.getElementById("inicio").scrollIntoView(true);
   }
 
   // Função para pegar a localização atual

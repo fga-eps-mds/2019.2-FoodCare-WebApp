@@ -132,10 +132,10 @@
                     </mat-form-field>
                 </div>
                 <div class="button-concluir">
-                    <button mat-raised-button (click)="updateEvento()">Concluir</button>
+                    <button mat-raised-button (click)="updateEvento(); closeDialog()">Concluir</button>
                 </div>
                 <div class="button-excluir">
-                    <button mat-raised-button (click)="deleteEvento()">Excluir</button>
+                    <button mat-raised-button (click)="deleteEvento(); closeDialog()">Excluir</button>
                 </div>
             </div>
 
