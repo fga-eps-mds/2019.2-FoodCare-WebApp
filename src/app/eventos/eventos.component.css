@@ -1,16 +1,15 @@
-.toolbar-eventos {
-    top: 0;
-    position: sticky;
-    display: flex;
-    /* justify-content: space-between; */
-    z-index: 1;
-    padding: 0 8vw;
-    background-color: #406040;
+section {
+    position: relative;
+    display: block;
 }
-.logo-img {
-    width: 180px;
-    padding-bottom: 4px;
+
+.content {
+    max-width: 1140px;
+    width: 100%;
+    padding: 0 12px;
+    margin: 0 auto;
 }
+
 .home {
     color: white;
 }

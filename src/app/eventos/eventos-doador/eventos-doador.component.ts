@@ -101,9 +101,11 @@ export class EventosDoadorComponent implements OnInit {
       }
     )
   }
+
   openDialog = (templateRef: TemplateRef<any>) => {
       this.dialog.open(templateRef);
   }
+  
   logout() {
     this.authService.logout();
   }
