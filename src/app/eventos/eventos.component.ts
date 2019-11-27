@@ -31,9 +31,6 @@ export class EventosComponent implements OnInit {
     this.eventoService.getCategorias().subscribe(
       data => {
         this.categorias = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -43,9 +40,6 @@ export class EventosComponent implements OnInit {
     .subscribe(
       data => {
         this.eventos = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -79,16 +73,11 @@ export class EventosComponent implements OnInit {
   }
 
   getLocalizacao() {
-    navigator.geolocation.getCurrentPosition(success, error);
+    navigator.geolocation.getCurrentPosition(success);
     function success(position: any) {
       localStorage.setItem("lt", position.coords.latitude)
       localStorage.setItem("lg", position.coords.longitude)
     }
-    function error() {
-      console.log('Localização não autorizada')
-    }
-    console.log("Latitude: " + localStorage.getItem("lt"));
-    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 
   distanciaEvento(lat1: number, lon1: number, lat2: number, lon2: number) {

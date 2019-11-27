@@ -11,6 +11,8 @@ import { HomeComponent } from './home.component';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let data;
+  let spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,9 +35,9 @@ describe('HomeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     data = {
-      nome: "",
-      email: "",
-      msg: ''
+      nome: 'Testador anônimo',
+      email: 'teste@teste.com',
+      msg: 'Esse é um email teste.'
     }
   });
 
@@ -43,16 +45,8 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deve chamar sendEmail() atraves de onSubmit()', ()=>{
-    spy = spyOn(component, 'sendEmail');
-    component.onSubmit(data);
-    expect(spy).toHaveBeenCalled();
-  });
-
-
   it('Deve chamar sendEmail()', ()=>{
-    component.sendEmail(null, null, null);
+    component.sendEmail(data.nome, data.email, data.msg);
     fixture.detectChanges();
   });
-
 });

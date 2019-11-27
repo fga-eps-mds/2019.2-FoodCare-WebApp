@@ -35,7 +35,6 @@ export class CadastroComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(data);
     this.cadastrar(data.username, data.email, data.password, data.confirmPassword);
   }
 
@@ -50,8 +49,7 @@ export class CadastroComponent implements OnInit {
     this.authService.cadastrar(username, email, password1, password2).subscribe(
       success => {
         alert("Cadastro efetuado com sucesso");
-        this.router.navigate(['eventos-doador']),
-          console.log('nome')
+        this.router.navigate(['eventos-doador'])
       },
       error => this.error = error
     );

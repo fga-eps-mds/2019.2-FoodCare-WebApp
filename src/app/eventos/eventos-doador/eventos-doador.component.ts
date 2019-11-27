@@ -76,7 +76,6 @@ export class EventosDoadorComponent implements OnInit {
       return;
 
     } else {
-      console.log(data);
       if (mode == 'create') {
         this.createEvento(data);
       } else if (mode == 'update') {
@@ -94,12 +93,7 @@ export class EventosDoadorComponent implements OnInit {
       .subscribe(
         data => {
           this.doador = data;
-          console.log(data);
           this.eventosFilter = { id_doador: data.pk }
-          console.log('doador', this.doador);
-        },
-        error => {
-          console.log(error);
         }
       )
   }
@@ -109,7 +103,6 @@ export class EventosDoadorComponent implements OnInit {
   }
   openDialog = (templateRef: TemplateRef<any>) => {
     this.dialog.open(templateRef);
-    console.log('Aberto')
   }
 
 
@@ -126,11 +119,7 @@ export class EventosDoadorComponent implements OnInit {
     this.eventoService.getAllEventos()
       .subscribe(
         data => {
-          console.log(data);
           this.eventos = data;
-        },
-        error => {
-          console.log(error);
         }
       )
   }
@@ -151,7 +140,6 @@ export class EventosDoadorComponent implements OnInit {
       .subscribe(
         data => this.getEventos(),
         error => {
-          console.log(error);
           this.getEventos();
         }
       )
@@ -174,9 +162,6 @@ export class EventosDoadorComponent implements OnInit {
         data => {
           // this.toggleDisplay();
           this.getEventos();
-        },
-        error => {
-          console.log(error);
         }
       )
   }
@@ -197,9 +182,6 @@ export class EventosDoadorComponent implements OnInit {
       .subscribe(
         data => {
           this.categorias = data;
-        },
-        error => {
-          console.log(error);
         }
       )
   }

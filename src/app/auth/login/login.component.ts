@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(data);
     this.login(data.usuario, data.senha);
   }
   onReset() {
@@ -44,13 +43,11 @@ export class LoginComponent implements OnInit {
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe(
       success => {
-        console.log(success);
         this.router.navigate(['eventos-doador']);
       },
       error => {
         this.submitted = true;
         this.error = error;
-        console.log(error);
       }
     );
   }
