@@ -23,9 +23,9 @@ export class EventosDoadorComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  eventosFilter: any = {id_doador: null};
-  categoriaFilter: any = {id_categoria: null};
-  
+  eventosFilter: any = { id_doador: null };
+  categoriaFilter: any = { id_categoria: null };
+
   constructor(
     private eventoService: EventoService,
     private authService: AuthService,
@@ -59,24 +59,30 @@ export class EventosDoadorComponent implements OnInit {
     }
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.registerForm = this.formBuilder.group({
       nome: ['', Validators.required],
       categoria: ['', Validators.required],
       data_inicio: ['', Validators.required],
       data_final: ['', Validators.required],
-      desc: ['',Validators.required],
+      desc: ['', Validators.required],
     });
-    
+
   }
 
-  onSubmit(data) {
+  onSubmit(data, mode) {
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
-      
-    }else{
+
+    } else {
       console.log(data);
+      if (mode == 'create') {
+        this.createEvento(data);
+      } else if (mode == 'update') {
+        this.updateEvento();
+        this.refresh();
+      }
       this.closeDialog();
     }
   }
@@ -85,17 +91,17 @@ export class EventosDoadorComponent implements OnInit {
   // Funcao para coletar o id do usuario logado
   getUsuario = () => {
     return this.authService.usuarioLogado()
-    .subscribe(
-      data => {
-        this.doador = data;
-        console.log(data);
-        this.eventosFilter = {id_doador: data.pk}
-        console.log('doador', this.doador);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+      .subscribe(
+        data => {
+          this.doador = data;
+          console.log(data);
+          this.eventosFilter = { id_doador: data.pk }
+          console.log('doador', this.doador);
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
   onReset() {
     this.submitted = false;
@@ -104,16 +110,13 @@ export class EventosDoadorComponent implements OnInit {
   openDialog = (templateRef: TemplateRef<any>) => {
     this.dialog.open(templateRef);
     console.log('Aberto')
-}
-openDialog2 = (templateRef: TemplateRef<any>) => {
-  this.dialog.open(templateRef);
-  console.log('Aberto2')
-}
+  }
+
 
   closeDialog = () => {
     this.dialog.closeAll();
   }
-  
+
   logout() {
     this.authService.logout();
   }
@@ -121,11 +124,18 @@ openDialog2 = (templateRef: TemplateRef<any>) => {
   // Funcao para coletar todos os eventos criados
   getEventos = () => {
     this.eventoService.getAllEventos()
-    .subscribe(
-      data => {
-        this.eventos = data;
-      }
-    )
+      .subscribe(
+        data => {
+          console.log(data);
+          this.eventos = data;
+        },
+        error => {
+          console.log(error);
+        }
+      )
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
   // Funcao que ao ser clicada define o selectedEvento
@@ -138,17 +148,17 @@ openDialog2 = (templateRef: TemplateRef<any>) => {
   // Funcao para editar evento
   updateEvento = () => {
     this.eventoService.updateEvento(this.selectedEvento.id, this.selectedEvento)
-    .subscribe(
-      data => this.getEventos(),
-      error => {
-        this.getEventos();
-      }
-    )
+      .subscribe(
+        data => this.getEventos(),
+        error => {
+          console.log(error);
+          this.getEventos();
+        }
+      )
   }
 
   // Funcao para criar evento
   createEvento = (data) => {
-    console.log(data);
     this.evento = {
       nome: data.nome,
       desc: data.desc,
@@ -160,28 +170,38 @@ openDialog2 = (templateRef: TemplateRef<any>) => {
       id_categoria: data.categoria
     }
     this.eventoService.createEvento(this.evento)
-    .subscribe(
-      data => {
-        // this.toggleDisplay();
-        this.getEventos();
-      }
-    )
+      .subscribe(
+        data => {
+          // this.toggleDisplay();
+          this.getEventos();
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
 
   // Funcao para deletar evento
   deleteEvento = () => {
     this.eventoService.deleteEvento(this.selectedEvento.id).subscribe(
-      data => this.getEventos()
-    )
+    success => {
+        alert("Evento excluído com sucesso");
+        this.getEventos()
+    },
+      error => this.error = error
+    );
   }
 
   getCategorias = () => {
     this.eventoService.getCategorias()
-    .subscribe(
-      data => {
-        this.categorias = data;
-      }
-    )
+      .subscribe(
+        data => {
+          this.categorias = data;
+        },
+        error => {
+          console.log(error);
+        }
+      )
   }
 
   // Funcao para formatar a data apresentada

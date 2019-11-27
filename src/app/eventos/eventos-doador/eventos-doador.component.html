@@ -15,7 +15,7 @@
 <ng-template #createDialog>
     <div>
         <div class="end-form">
-            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value,'create')">
                 <mat-form-field>
                     <input matInput formControlName="nome" placeholder="Nome" required>
                 </mat-form-field>
@@ -63,8 +63,7 @@
                 </div>
                 <div class="button-criacao">
                     <button class="btn-cancel" mat-raised-button type="cancel" (click)="closeDialog()">Cancelar</button>
-                    <button class="btn-submit" mat-raised-button type="submit"
-                        (click)="createEvento(registerForm.value)">Salvar</button>
+                    <button class="btn-submit" mat-raised-button type="submit">Salvar</button>
                 </div>
             </form>
         </div>
@@ -96,17 +95,16 @@
             <h3>Descrição:
                 <p>{{item.desc}}</p>
             </h3>
+            <button mat-icon-button (click)="openDialog(alertExclusao)">
+                <i class="material-icons">restore_from_trash</i>
+            </button>
         </mat-card-content>
 
         <!-- Confirmação de exclusão -->
         <ng-template #alertExclusao>
-            <div>
-                <p>Deseja excluir este evento?</p>
-            </div>
-            <div>
-                <button class="btn-cancel" mat-raised-button (click)="deletaEvento(); closeDialog()">Excluir</button>
-                <button mat-raised-button (click)="closeDialog()">Cancelar</button>
-            </div>            
+            <p>Deseja excluir evento?</p>
+            <button mat-raised-button (click)="eventoSelecionado(item);deleteEvento();closeDialog()">Sim</button>
+            <button mat-raised-button (click)="closeDialog()">Não</button>
         </ng-template>
 
         <!-- Editar evento -->
@@ -115,7 +113,7 @@
                 <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
                     <div class="nome_edit">
                         <mat-form-field>
-                            <input matInput formControlName="nome" placeholder="Nome" [(ngModel)]="selectedEvento.nome"
+                            <input matInput formControlName="nome" placeholder="Nome" [ngModel]="selectedEvento.nome"
                                 required>
                         </mat-form-field>
                         <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
@@ -125,7 +123,7 @@
                     <div class="categoria">
                         <mat-form-field>
                             <mat-label>Categoria</mat-label>
-                            <mat-select formControlName="categoria" [(ngModel)]="selectedEvento.id_categoria">
+                            <mat-select formControlName="categoria" [ngModel]="selectedEvento.id_categoria">
                                 <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
                                     {{ categoria.nome }}
                                 </mat-option>
@@ -138,7 +136,7 @@
                     <div class="date_edit">
                         <mat-form-field>
                             <input matInput formControlName="data_inicio" type="datetime-local"
-                                placeholder="Data e hora de início" [(ngModel)]="selectedEvento.data_inicio" required>
+                                placeholder="Data e hora de início" [ngModel]="selectedEvento.data_inicio" required>
                         </mat-form-field>
                         <div *ngIf="submitted && f.data_inicio.errors" class="invalid-feedback">
                             <div *ngIf="f.data_inicio.errors.required">Digite uma data de inicio para evento</div>
@@ -147,7 +145,7 @@
                     <div class="date_edit">
                         <mat-form-field>
                             <input matInput formControlName="data_final" type="datetime-local"
-                                placeholder="Data e hora de términio" [(ngModel)]="selectedEvento.data_final" required>
+                                placeholder="Data e hora de términio" [ngModel]="selectedEvento.data_final" required>
                         </mat-form-field>
                         <div *ngIf="submitted && f.data_final.errors" class="invalid-feedback">
                             <div *ngIf="f.data_final.errors.required">Digite uma data de fim para evento</div>
@@ -156,23 +154,21 @@
                     <div class="desc_edit">
                         <mat-form-field>
                             <textarea matInput formControlName="desc" placeholder="Descrição"
-                                [(ngModel)]="selectedEvento.desc" required></textarea>
+                                [ngModel]="selectedEvento.desc" required></textarea>
                         </mat-form-field>
                         <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
                             <div *ngIf="f.desc.errors.required">Digite uma descrição para evento</div>
                         </div>
                     </div>
                     <div class="button-criacao">
-                        <button mat-icon-button (click)="openDialog2(alertExclusao)">
-                            <i class="material-icons">restore_from_trash</i>
-                        </button>
                         <button class="btn-cancel" mat-raised-button (click)="closeDialog()">Cancelar</button>
                         <button class="btn-submit" mat-raised-button
-                            (click)="updateEvento(); closeDialog(); onSubmit(this.registerForm)">Salvar</button>
+                            (click)="onSubmit(this.registerForm,'update')">Salvar</button>
                     </div>
                 </form>
             </div>
         </ng-template>
+        
     </mat-card>
 </div>
 
