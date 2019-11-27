@@ -32,15 +32,11 @@ export class PerfilDoadorComponent implements OnInit {
     .subscribe(
       data=> {
         this.doador = data;
-      },
-      error => {
-        console.log(error)
       }
     );
   }
 
   mostraDiv = () => {
-    console.log(this.doador)
     if (this.IsShow == false) {
       this.IsShow = true;
     }
@@ -51,7 +47,6 @@ export class PerfilDoadorComponent implements OnInit {
   }
 
   mostraDiv1 = () => {
-    console.log(this.doador)
     if (this.IsShow1 == false) {
       this.IsShow1 = true;
     }
@@ -64,12 +59,8 @@ export class PerfilDoadorComponent implements OnInit {
     this.authService.atualizaDoador(this.doador)
     .subscribe(
       response => {
-        console.log(response),
         alert("Logue com seu novo usuário"),
         this.router.navigate(['login'])
-      },
-      error => {
-        console.log(error)
       }
     );
   }
@@ -78,12 +69,8 @@ export class PerfilDoadorComponent implements OnInit {
     this.authService.deleteUser(this.doador)
     .subscribe(
       response => {
-        console.log(response),
         alert("Usuário deletado!"),
         this.router.navigate([''])
-      },
-      error => {
-        console.log(error)
       }
     );
   }
@@ -92,12 +79,8 @@ export class PerfilDoadorComponent implements OnInit {
     this.authService.atualizaSenhaDoador(this.senha1, this.senha2)
     .subscribe(
       response => {
-        console.log(response),
         alert("Logue com sua nova senha"),
         this.router.navigate(['login'])
-      },
-      error => {
-        console.log(error)
       }
     );
   }
