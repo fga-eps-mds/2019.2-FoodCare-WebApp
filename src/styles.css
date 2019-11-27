@@ -5,11 +5,15 @@ html, body {
 body {
     margin: 0;
     font-size: 16px;
-    font-family: "Barlow", Roboto, "Helvetica Neue", sans-serif;
+    font-family: Barlow, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
-h1, h2, h3 {
-    font-family: "Montserrat", Helvetica, sans-serif;
+h1 {
+    font-family: Montserrat, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: Barlow, 'Helvetica Neue', Arial, sans-serif !important;
 }
 
 h1 {
@@ -22,6 +26,48 @@ h2 {
     line-height: 2rem;
     font-size: 1.4rem;
     font-weight: 500;
+}
+
+h3 {
+    line-height: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+h4 {
+    line-height: 2rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+h5 {
+    /* line-height: 2rem; */
+    /* font-size: 1.4rem; */
+    /* font-weight: 500; */
+}
+
+h6 {
+    /* line-height: 2rem; */
+    /* font-size: 1.4rem; */
+    /* font-weight: 500; */
+}
+
+span {
+    font-family: Barlow, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+.flex {
+    display: flex !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -6px;
 }
 
 .toolbar {

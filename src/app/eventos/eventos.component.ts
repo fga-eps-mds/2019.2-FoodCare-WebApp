@@ -20,14 +20,14 @@ export class EventosComponent implements OnInit {
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.getEventos();
-    this.getCategoria();
+    this.getCategorias();
     this.getLocalizacao();
   }
 
   ngOnInit() { }
 
   // Funcao para coletar todos as categorias criados
-  getCategoria = () => {
+  getCategorias = () => {
     this.eventoService.getCategorias().subscribe(
       data => {
         this.categorias = data;

@@ -1,83 +1,86 @@
 section {
-    position: relative;
     display: block;
+    position: relative;
 }
 
 .content {
-    max-width: 1140px;
     width: 100%;
-    padding: 0 12px;
-    margin: 0 auto;
+    margin: 0px auto;
+    padding: 0px 16px;
+    max-width: 1240px;
 }
 
-.home {
-    color: white;
+.search-field {
+    flex: 2;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.title-toolbar {
-    color: white;
-}
-.div-conteiner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.mat-card {
-    width: 400px;
-    margin: 15px;
-    /* display: flex; */
-}
-.div-geral {
-    display: flex;
-    flex-direction: column;
-}
-.img-categoria {
-    border-radius: 10px;
-    height: 100px;
-    width: 100px;
-}
-.div-img-info {
-    display: flex;
-    justify-content: space-around;
-}
-.mat-card-content {
-    display: flex;
+.filter-field {
+    flex: 1;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.data-items {
-    margin-right: auto;
-    margin-left: auto;
+.order-field {
+    flex: 1;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.button-meus-eventos {
-    position: fixed;
-    left: 60%;
-    bottom: 15px;
-    transform: translateX(-60%);
-    background-color: #5b8f6f;
-}
-
-.button-eventos {
-    position: fixed;
-    left: 30%;
-    bottom: 15px;
-    transform: translateX(-30%);
-    background-color: #5b8f6f;
-}
-.form {
+.event-list-card {
+    position: relative;
     width: 100%;
-    text-align: center;
+    flex: 0 0 32.29%;
+    padding: 0px 6px;
+    max-width: 32.29%;
+    margin-bottom: 16px;
 }
-.filter-wrapper {
-    display: flex;
-    justify-content: space-between;
+
+.event-card {
+    min-height: 88px;
+    padding: 20px;
 }
-mat-form-field {
-    width: 40%;
+
+.img-event-card {
+    height: 88px;
+    width: 88px;
 }
-.titles {
-    font-family: "Barlow", sans-serif;
-    font-size: 20px;
-    text-align: left;
-    margin-left: 20px;
+
+.event-info {
+    flex: 1;
+    display: grid;
+    margin: 0 16px;
+}
+
+.event-title {
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .content {
+        max-width: 860px;
+    }
+    .event-list-card {
+        flex: 0 0 48.5%;
+        padding: 0px 6px;
+        margin-bottom: 16px;
+        max-width: 48.5%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        max-width: 420px;
+    }
+    .search-field {
+        flex: 1;
+    }
+    .event-list-card {
+        flex: 1;
+        max-width: 100%;
+    }
 }
