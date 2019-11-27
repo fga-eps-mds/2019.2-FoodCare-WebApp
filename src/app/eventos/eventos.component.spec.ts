@@ -15,6 +15,7 @@ import { EventosComponent } from './eventos.component';
 describe('EventosComponent', () => {
   let component: EventosComponent;
   let fixture: ComponentFixture<EventosComponent>;
+  let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -45,4 +46,17 @@ describe('EventosComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Deve chamar getLongitude() ', () => {
+    spy = spyOn(component, 'getLongitude');
+    component.getLongitude();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('Deve chamar getLatitude() ', () => {
+    spy = spyOn(component, 'getLatitude');
+    component.getLatitude();
+    expect(spy).toHaveBeenCalled();
+  });
+
 });

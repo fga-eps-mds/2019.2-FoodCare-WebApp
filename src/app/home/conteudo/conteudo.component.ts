@@ -17,7 +17,6 @@ export class ConteudoComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit(data) {
-    console.log(data);
     this.sendEmail(data.nome, data.email, data.msg);
   }
 
@@ -25,9 +24,6 @@ export class ConteudoComponent implements OnInit {
     return this.http.post(
       this.apiRoot.concat('email/'),
       { nome: nome, email: email, msg: msg }
-    ).subscribe(
-      success => console.log('Deu bom'),
-      error => console.log(error)
     );
   }
 }

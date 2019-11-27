@@ -10,6 +10,8 @@ import { ConteudoComponent } from './conteudo.component';
 describe('ConteudoComponent', () => {
   let component: ConteudoComponent;
   let fixture: ComponentFixture<ConteudoComponent>;
+  let data: any;
+  let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,9 +32,27 @@ describe('ConteudoComponent', () => {
     fixture = TestBed.createComponent(ConteudoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    data = {
+      nome: "",
+      email: "",
+      msg: ''
+    }
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Deve chamar sendEmail() atraves de onSubmit()', ()=>{
+    spy = spyOn(component, 'sendEmail');
+    component.onSubmit(data);
+    expect(spy).toHaveBeenCalled();
+  });
+
+
+  it('Deve chamar sendEmail()', ()=>{
+    component.sendEmail(null, null, null);
+    fixture.detectChanges();
+  });
+
 });
