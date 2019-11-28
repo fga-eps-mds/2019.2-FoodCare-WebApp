@@ -23,7 +23,8 @@ export class EventosDoadorComponent implements OnInit {
     registerForm: FormGroup;
     submitted = false;
 
-    eventosFilter: any = { id_doador: null };
+    eventosFilter: any = {nome: ''};
+    eventosOrder: string = 'data_final';
     categoriaFilter: any = { id_categoria: null };
 
     constructor(
@@ -75,11 +76,12 @@ export class EventosDoadorComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         } else {
+            data.data_final = this.getDateForEdit(data.data_final)
+            data.data_inicio = this.getDateForEdit(data.data_inicio)
             if (mode == 'create') {
                 this.createEvento(data);
             } else if (mode == 'update') {
                 this.updateEvento(data);
-                // this.refresh();
             }
             this.closeDialog();
         }

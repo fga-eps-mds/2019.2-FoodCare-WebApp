@@ -1,71 +1,73 @@
 <mat-toolbar class="toolbar-perfil">
-    <div>
-        <button mat-icon-button class="perfil" routerLink="/eventos-doador">
-            <i class="material-icons">arrow_back</i>
-        </button>
-        <img class="logo-img" src="/logo-white.png">
-    </div>
-    <div *ngIf="doador">
-        <span>
-            <i class="material-icons">person_outline</i>
-            {{doador.username}}
-        </span>
-    </div>
+  <div>
+    <button mat-icon-button class="perfil" routerLink="/eventos-doador">
+      <i class="material-icons">arrow_back</i>
+    </button>
+    <img class="logo-img clickable" src="/logo-white.png" onclick="location.href='/'">
+  </div>
+  <div *ngIf="doador">
+    <button mat-button routerLink="/perfil-doador">
+      <i class="material-icons">person_outline</i>
+      <span>{{ doador.username }}</span>
+    </button>
+    <button mat-icon-button (click)="logout()" routerLink="/">
+      <i class="material-icons">exit_to_app</i>
+    </button>
+  </div>
 </mat-toolbar>
 <div class="centro" *ngIf="doador">
-    <div class="background-dados">
-        <div>
-            <i class="material-icons-two-tone icon-perfil">account_circle</i>
-        </div>
-        <div class="infos">
-            <p class="dado">nome: {{ doador.username }}</p>
-            <p class="dado">email: {{ doador.email }}</p>
-        </div>
-        <div>
-            <button class="btn-editar" mat-icon-button (click)="mostraDiv()">
-                <i class="material-icons">edit</i></button>
-            <button class="btn-cancelar-perfil btn-editar" mat-icon-button (click)="mostraDiv1()">
-                <i class="material-icons">cancel_presentation</i>
-            </button>
-        </div>
+  <div class="background-dados">
+    <div>
+      <i class="material-icons-two-tone icon-perfil">account_circle</i>
     </div>
+    <div class="infos">
+      <h2 class="dado">{{ doador.username }}</h2>
+      <p class="dado">{{ doador.email }}</p>
+    </div>
+    <div>
+      <button class="btn-editar" mat-icon-button (click)="mostraDiv()">
+        <i class="material-icons">edit</i></button>
+      <button class="btn-cancelar-perfil btn-editar" mat-icon-button (click)="mostraDiv1()">
+        <i class="material-icons">cancel_presentation</i>
+      </button>
+    </div>
+  </div>
 </div>
 <div class="excluir" *ngIf="IsShow1">
-    <h3> Tem certeza que deseja excluir sua conta?</h3>
-    <div>
-        <button mat-icon-button (click)="deleta()">
-            <i class="material-icons btn-excluir">check_circle</i>
-        </button>
-        <button mat-icon-button (click)="mostraDiv1()">
-            <i class="material-icons btn-cancelar">cancel</i>
-        </button>
-    </div>
+  <h3>Tem certeza que deseja excluir sua conta?</h3>
+  <div>
+    <button mat-icon-button (click)="deleta()">
+      <i class="material-icons btn-excluir">check_circle</i>
+    </button>
+    <button mat-icon-button (click)="mostraDiv1()">
+      <i class="material-icons btn-cancelar">cancel</i>
+    </button>
+  </div>
 </div>
 <div class="background" *ngIf="IsShow">
-    <div class="box">
-        <h2>Editar nome de usuário</h2>
-        <mat-form-field>
-            <input matInput placeholder="Username" [(ngModel)]="doador.username" id="email" class="form-control"
-                type="email">
-        </mat-form-field>
-        <button mat-raised-button class="btn-atualiza" (click)="atualiza()">
-            Atualizar
-        </button>
-    </div>
-    <div class="box">
-        <h2>Editar senha</h2>
-        <mat-form-field>
-            <input matInput placeholder="Senha" [(ngModel)]="senha1" id="senha1" class="form-control" type="password">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Confirmar senha" [(ngModel)]="senha2" id="senha2" class="form-control"
-                type="password">
-        </mat-form-field>
-        <button mat-raised-button class="btn-atualiza" (click)="atualizaSenha()">
-            Atualizar
-        </button>
-    </div>
-    <button mat-raised-button class="btn-atualiza btn-cancelar-edicao" (click)="mostraDiv()">
-        cancelar
+  <div class="box">
+    <h2>Editar nome de usuário</h2>
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="doador.username" id="email" class="form-control" type="email">
+    </mat-form-field>
+    <button mat-raised-button class="btn-atualiza" (click)="atualiza()">
+      Atualizar
     </button>
+  </div>
+  <div class="box">
+    <h2>Editar senha</h2>
+    <mat-form-field>
+      <input matInput placeholder="Senha" [(ngModel)]="senha1" id="senha1" class="form-control" type="password">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Confirmar senha" [(ngModel)]="senha2" id="senha2" class="form-control"
+        type="password">
+    </mat-form-field>
+    <button mat-raised-button class="btn-atualiza" (click)="atualizaSenha()">
+      Atualizar
+    </button>
+  </div>
+  <button mat-raised-button class="btn-atualiza btn-cancelar-edicao" (click)="mostraDiv()">
+    Cancelar
+  </button>
 </div>

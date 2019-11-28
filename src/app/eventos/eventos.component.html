@@ -1,5 +1,8 @@
 <mat-toolbar class="toolbar">
     <img class="logo-img clickable" src="/logo-white.png" routerLink="">
+    <button mat-raised-button class="btn-doador" onclick="location.href='/eventos-doador'">
+      Doe alimentos
+    </button>
 </mat-toolbar>
 <section>
     <div class="content">
@@ -20,7 +23,7 @@
             <mat-form-field class="order-field">
                 <mat-label>Ordenar por</mat-label>
                 <mat-select [(value)]="eventosOrder">
-                    <mat-option value="distancia">Proximidade</mat-option>
+                    <mat-option value="distanciaEvento(latitude, longitude, getLatitude(), getLongitude())">Proximidade</mat-option>
                     <mat-option value="data_final">Tempo restante</mat-option>
                     <mat-option value="nome">Título do evento</mat-option>
                 </mat-select>
@@ -33,9 +36,13 @@
                         <img class="img-event-card" src="assets/images/market-peppers.jpg" alt="Photo of peppers in market">
                         <div class="event-info">
                             <h3 class="event-title">{{evento.nome}}</h3>
-                            <span>{{evento.id_categoria}}</span>
-                            <span>{{evento.id_doador}}</span>
-                            <span>{{evento.latitude}} • Termina em {{getDiferencaData(evento.data_final)}}h</span>
+                            <span>Início: {{getFormatedDate(evento.data_inicio)}}</span>
+                            <span>Término: {{getFormatedDate(evento.data_final)}}</span>
+                            <span>
+                              {{distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude())}}km
+                              •
+                              <a (click)="geraLocalMaps(evento.latitude, evento.longitude)" style="cursor: pointer; color: #004060;">Ver no Google Maps</a>
+                            </span>
                         </div>
                     </mat-card-content>
                 </mat-card>

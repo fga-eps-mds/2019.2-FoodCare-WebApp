@@ -21,7 +21,7 @@ export class EventosComponent implements OnInit {
     moment.locale('pt-BR');
     this.getEventos();
     this.getCategorias();
-    this.getLocalizacao();
+    this.setLocalizacao();
   }
 
   ngOnInit() { }
@@ -45,34 +45,10 @@ export class EventosComponent implements OnInit {
   }
 
   getFormatedDate(date) {
-    return moment(date).format('LLL');
+    return moment(date).calendar();
   }
 
-  getDiferencaData(data_final) {
-    var date1 = Date.now();
-    var date2 = new Date(data_final);
-    var timeDiff = Math.abs(date2.getTime() - date1);
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600));
-    return diffDays;
-  }
-
-  mostraTempoRestante(data_final) {
-    if (this.getDiferencaData(data_final) >= 168) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  mostraEvento(data_final) {
-    if (this.getDiferencaData(data_final) == 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  getLocalizacao() {
+  setLocalizacao() {
     navigator.geolocation.getCurrentPosition(success);
     function success(position: any) {
       localStorage.setItem("lt", position.coords.latitude)

@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { AuthService, AuthInterceptor, AuthGuard } from './auth/auth.service';
 import { EventoService } from './eventos/evento.service';
@@ -69,6 +70,8 @@ import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
     AppRoutingModule,
     FilterPipeModule,
     OrderModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [
     AuthService,

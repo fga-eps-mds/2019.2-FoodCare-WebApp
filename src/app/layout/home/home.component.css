@@ -36,26 +36,13 @@
 }
 
 .btn-home {
-    font-family: "Barlow", sans-serif;
+    font-family: "Barlow", Arial, sans-serif;
     background: #406040;
-    color: #fff;
+    color: #ffffff;
     width: 320px;
-    height: 50px;
+    height: 52px;
     margin: 10px 24px;
-    text-decoration: none;
-    border: none;
-    padding: 0 20px;
-    border-radius: 4px;
-    transition: 100ms;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
     font-weight: 500;
-    font-size: 1.3rem;
-    line-height: 1.875rem;
 }
 
 .item1 {

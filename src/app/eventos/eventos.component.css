@@ -16,6 +16,12 @@ section {
     padding: 0px 6px;
 }
 
+.btn-doador {
+  font-family: "Barlow", sans-serif;
+  background: #ffffff;
+  color: #406040;
+}
+
 .filter-field {
     flex: 1;
     position: relative;
