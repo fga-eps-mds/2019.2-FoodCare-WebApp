@@ -6,7 +6,7 @@
 }
 .icon-home {
     position: absolute;
-    right: 200px;    
+    right: 200px;
     color: white;
     font-size: x-large;
 }
@@ -25,7 +25,6 @@
     font-weight: 800;
     font-size: 2em;
     text-decoration: none;
-    background-image: url(../../../assets/images/logo-white.png);
 }
 
 .logo-img {
