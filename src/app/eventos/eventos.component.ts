@@ -20,20 +20,17 @@ export class EventosComponent implements OnInit {
   constructor(private eventoService: EventoService) {
     moment.locale('pt-BR');
     this.getEventos();
-    this.getCategoria();
-    this.getLocalizacao();
+    this.getCategorias();
+    this.setLocalizacao();
   }
 
   ngOnInit() { }
 
   // Funcao para coletar todos as categorias criados
-  getCategoria = () => {
+  getCategorias = () => {
     this.eventoService.getCategorias().subscribe(
       data => {
         this.categorias = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
@@ -43,52 +40,20 @@ export class EventosComponent implements OnInit {
     .subscribe(
       data => {
         this.eventos = data;
-      },
-      error => {
-        console.log(error);
       }
     )
   }
 
   getFormatedDate(date) {
-    return moment(date).format('LLL');
+    return moment(date).calendar();
   }
 
-  getDiferencaData(data_final) {
-    var date1 = Date.now();
-    var date2 = new Date(data_final);
-    var timeDiff = Math.abs(date2.getTime() - date1);
-    var diffDays = Math.ceil(timeDiff / (1000 * 3600));
-    return diffDays;
-  }
-
-  mostraTempoRestante(data_final) {
-    if (this.getDiferencaData(data_final) >= 168) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  mostraEvento(data_final) {
-    if (this.getDiferencaData(data_final) == 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  getLocalizacao() {
-    navigator.geolocation.getCurrentPosition(success, error);
+  setLocalizacao() {
+    navigator.geolocation.getCurrentPosition(success);
     function success(position: any) {
       localStorage.setItem("lt", position.coords.latitude)
       localStorage.setItem("lg", position.coords.longitude)
     }
-    function error() {
-      console.log('Localização não autorizada')
-    }
-    console.log("Latitude: " + localStorage.getItem("lt"));
-    console.log("Longitude: " + localStorage.getItem("lg"));
   }
 
   distanciaEvento(lat1: number, lon1: number, lat2: number, lon2: number) {

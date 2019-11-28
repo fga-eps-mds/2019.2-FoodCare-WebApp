@@ -24,36 +24,132 @@ describe('EventoService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should post and get the correct data', () => {
-    let eventoTest = { nome: 'nome', desc: 'desc', id_doador: 'id', data_inicio: 'data', data_final: 'data' };
-    let eventoId;
-    eventoService.createEvento(eventoTest).subscribe(
-      (data: any) => {
-        expect(data.nome).toBe('nome');
-        eventoId = data.id;
-      }
-    );
-
-    eventoService.getOneEvento(eventoId).subscribe(data => {
-      expect(data.nome).toBe('Evento 1');
+  it('should get the correct event', () => {
+    eventoService.getOneEvento(1)
+    .subscribe((data: any) => {
+      expect(data.nome).toBe('Doação de Alimentos');
     });
 
-    const getReq = httpMock.expectOne(
-      apiURL + 'evento/' + eventoId + '/',
+    const req = httpMock.expectOne(
+      apiURL + 'evento/' + 1 + '/',
       'call to api'
     );
-    expect(getReq.request.method).toBe('GET');
+    expect(req.request.method).toBe('GET');
 
-    const postReq = httpMock.expectOne(
-      apiURL + 'evento/',
-      'post to api'
-    );
-    expect(postReq.request.method).toBe('POST');
-
-    postReq.flush({
-      nome: 'nome'
+    req.flush({
+      nome: 'Doação de Alimentos'
     });
 
     httpMock.verify();
+  });
+
+  it('should post the correct event', () => {
+    let eventoTest = { 
+      nome: 'Doação de Alimentos', 
+      desc: 'Frutas e Verduras que sobraram.', 
+      id_doador: '8', 
+      data_inicio: '12-12-2012 10:00:00', 
+      data_final: '12-12-2012 12:00:00' 
+    };
+    eventoService.createEvento(eventoTest)
+    .subscribe((data: any) => {
+      expect(data.nome).toBe('Doação de Alimentos');
+    });
+  
+    const req = httpMock.expectOne(
+      apiURL + 'evento/',
+      'post to api'
+    );
+    expect(req.request.method).toBe('POST');
+  
+    req.flush(eventoTest);
+  
+    httpMock.verify();
+  });
+
+  it('should put the correct event', () => {
+    let eventoTest = { 
+      desc: 'desc alterada',
+    };
+    eventoService.updateEvento(3, eventoTest)
+    .subscribe((data: any) => {
+      expect(data.desc).toBe('desc alterada');
+    });
+
+    const putReq = httpMock.expectOne(
+      apiURL + 'evento/' + 3 + '/',
+      'put to api'
+    );
+    expect(putReq.request.method).toBe('PUT');
+
+    putReq.flush(eventoTest);
+
+    httpMock.verify();
+  })
+
+  it('should delete the correct event', () => {
+    eventoService.deleteEvento(3)
+    .subscribe((data: any) => {
+      expect(data).toBe(3);
+    });
+  
+    const req = httpMock.expectOne(
+      apiURL + 'evento/' + 3 + '/',
+      'delete to api'
+    );
+    expect(req.request.method).toBe('DELETE');
+  
+    req.flush(3);
+  
+    httpMock.verify();
+  });
+  
+  it('should get the current user', () => {
+    eventoService.usuarioLogado()
+    .subscribe((data: any) => {
+      expect(data.username).toBe('doador');
+    });
+
+    const req = httpMock.expectOne(
+      apiURL + 'auth/user/',
+      'call to api'
+    );
+    expect(req.request.method).toBe('GET');
+
+    req.flush({
+      username: 'doador'
+    });
+
+    httpMock.verify();
+  });
+
+  it('should get the current responsible', () => {
+    eventoService.getResponsavel(1)
+    .subscribe((data: any) => {
+      expect(data.username).toBe('doador');
+    });
+
+    const req = httpMock.expectOne(
+      apiURL + 'user/' + 1 + '/',
+      'call to api'
+    );
+    expect(req.request.method).toBe('GET');
+
+    req.flush({
+      username: 'doador'
+    });
+
+    httpMock.verify();
+  });
+
+  it('should open a new tab with google maps', () => {
+    const coords = {latitude: -15.8, longitude: -48.8}
+    let mapsURL = 
+      'https://www.google.com/maps/search/?api=1&query=' + 
+      coords.latitude + ',' + coords.longitude;
+    
+    spyOn(window, 'open').and.callThrough();
+    eventoService.abreMaps(coords.latitude, coords.longitude);
+    expect(window.open).toHaveBeenCalledWith(mapsURL, '_blank');
   });
 });

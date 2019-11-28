@@ -1,50 +1,52 @@
-<mat-toolbar class="toolbar-events" id="inicio">
-    <a href="/" class="logo">FoodCare</a>
-    <h1 class="title-toolbar">Eventos</h1>
+<mat-toolbar class="toolbar">
+    <img class="logo-img clickable" src="/logo-white.png" routerLink="">
+    <button mat-raised-button class="btn-doador" onclick="location.href='/eventos-doador'">
+      Doe alimentos
+    </button>
 </mat-toolbar>
-
-<div>
-    <mat-form-field class="example-full-width">
-        <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
-    </mat-form-field>
-</div>
-<div>
-    <mat-form-field>
-	<mat-label>Filtrar por</mat-label>
-        <mat-select [(ngModel)]="eventosFilter.id_categoria">
-            <mat-option value=''>Todas</mat-option>
-            <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-<div>
-<div>
-    <mat-form-field>
-        <mat-label>Ordenar por</mat-label>
-        <mat-select [(value)]="eventosOrder">
-          <mat-option value="data_final">Tempo restante</mat-option>
-          <mat-option value="nome">Nome</mat-option>
-          <mat-option value="distancia">Proximidade</mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
-<output></output>
-<div *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
-    <div *ngIf="mostraEvento(evento.data_final)">
-        <mat-card>
-            <mat-card-content>
-                <h2>{{ evento.nome }}</h2>
-                <div class="data-items">
-                    <p>Descrição: {{ evento.desc }}</p>
-                    <div *ngIf="mostraTempoRestante(evento.data_final)">
-                        <p> Expira em: {{ getDiferencaData(evento.data_final) }} horas</p>
-                    </div>
-                    <p>Inicio: {{ getFormatedDate(evento.data_inicio) }}</p>
-                    <p>Fim: {{ getFormatedDate(evento.data_final) }}</p>
-                    <p (click)="geraLocalMaps(evento.latitude, evento.longitude)">
-                      Distância: {{ distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude()).toString() }} km
-                    </p>
-                </div>
-            </mat-card-content>
-        </mat-card>
+<section>
+    <div class="content">
+        <div>
+            <h2>Eventos</h2>
+        </div>
+        <div class="row">
+            <mat-form-field class="search-field">
+                <input matInput type="text" placeholder="Pesquise eventos" [(ngModel)]="eventosFilter.nome">
+            </mat-form-field>
+            <mat-form-field class="filter-field">
+                <mat-label>Filtrar por</mat-label>
+                <mat-select [(ngModel)]="eventosFilter.id_categoria">
+                    <mat-option value=''>Todas</mat-option>
+                    <mat-option *ngFor="let item of categorias" value='{{item.id}}'>{{item.nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="order-field">
+                <mat-label>Ordenar por</mat-label>
+                <mat-select [(value)]="eventosOrder">
+                    <mat-option value="distanciaEvento(latitude, longitude, getLatitude(), getLongitude())">Proximidade</mat-option>
+                    <mat-option value="data_final">Tempo restante</mat-option>
+                    <mat-option value="nome">Título do evento</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="event-list-card" *ngFor="let evento of eventos | filterBy: eventosFilter | orderBy: eventosOrder">
+                <mat-card class="event-card">
+                    <mat-card-content class="flex">
+                        <img class="img-event-card" src="assets/images/market-peppers.jpg" alt="Photo of peppers in market">
+                        <div class="event-info">
+                            <h3 class="event-title">{{evento.nome}}</h3>
+                            <span>Início: {{getFormatedDate(evento.data_inicio)}}</span>
+                            <span>Término: {{getFormatedDate(evento.data_final)}}</span>
+                            <span>
+                              {{distanciaEvento(evento.latitude, evento.longitude, getLatitude(), getLongitude())}}km
+                              •
+                              <a (click)="geraLocalMaps(evento.latitude, evento.longitude)" style="cursor: pointer; color: #004060;">Ver no Google Maps</a>
+                            </span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
     </div>
-</div>
+</section>

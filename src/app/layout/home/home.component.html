@@ -1,0 +1,130 @@
+<mat-toolbar class="toolbar">
+    <img class="logo-img clickable" src="/logo-white.png" onclick="location.href='/'">
+</mat-toolbar>
+
+<section class="item1">
+    <div class="title-item1">
+        <h1>Ajude a acabar com a fome do Brasil!</h1>
+    </div>
+    <div class="text-item1">
+        <h2>
+            Conectamos pessoas e empresas que têm sobra de alimentos, com pessoas
+            e ONGs que distribuem alimentos para pessoas carentes.
+        </h2>
+    </div>
+    <div class="btn-wrapper">
+        <button mat-raised-button class="btn-home" onclick="location.href='/eventos'">
+            Encontrar doações
+        </button>
+        <button mat-raised-button class="btn-home" onclick="location.href='/eventos-doador'">
+            Doar alimentos
+        </button>
+    </div>
+</section>
+
+<section class="item2">
+    <div class="title-item">
+        <h1>O que fazemos?</h1>
+    </div>
+    <div class="text-item">
+        <span>
+            Organize eventos do doação, ajude a acabar com a fome e aumente a visibilidade do seu
+            empreendimento ou ONG.
+        </span>
+        <br>
+        <span>
+            Pessoa física? Sem problemas, você também pode doar!!
+        </span>
+    </div>
+</section>
+
+<section class="item3">
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">local_dining</i>
+        </div>
+        <div class="title-item">
+            <h1>Doadores doam</h1>
+        </div>
+        <div class="text-item">
+            <span>
+                Empresas com sobras de alimentos criam um evento informando que têm
+                comida sobrando.
+            </span>
+        </div>
+    </div>
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">calendar_today</i>
+        </div>
+        <div class="title-item">
+            <h1>Eventos de doação</h1>
+        </div>
+        <div class="text-item">
+            <span>Os eventos de doação podem ser pesquisados ou visualizados em forma da lista.</span>
+        </div>
+    </div>
+    <div class="item3-section">
+        <div class="icon-item3">
+            <i class="material-icons icon-item">mobile_friendly</i>
+        </div>
+        <div class="title-item">
+            <h1>Receptores recebem</h1>
+        </div>
+        <div class="text-item">
+            <span>
+                Aqueles que precisam do alimento se dirigem ao local do evento
+                informado pelas empresas, e recebem o alimento.
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="item4">
+    <div class="title-item">
+        <h1>Sobre nós</h1>
+    </div>
+    <div class="text-item">
+        <span>
+            Conectamos empresas que têm sobra de alimentos com aqueles
+            que precisam de alimento.
+        </span>
+    </div>
+</section>
+
+<section class="item5">
+    <div class="title-item">
+        <h1>Entre em contato</h1>
+    </div>
+    <div class="text-item">
+        <span>Tire dúvidas, mande sugestões, fique à vontade para entrar em contato.</span>
+    </div>
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)" >
+        <!-- <form class="form" #contato="ngForm" (ngSubmit)="onSubmit(contato.value)"> -->
+        <mat-form-field>
+            <input placeholder="Seu nome" matInput type="text" formControlName="nome" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+            <div *ngIf="f.nome.errors.required">É necessário digitar um nome</div>
+        </div>
+        <mat-form-field>
+            <input placeholder="Seu email" matInput type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">É necessário digitar um email</div>
+            <div *ngIf="f.email.errors.email">É necessário digitar um email válido</div>
+        </div>
+        <mat-form-field>
+            <input placeholder="Sua mensagem" matInput type="text" formControlName="msg" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.msg.errors }" />
+        </mat-form-field>
+        <div *ngIf="submitted && f.msg.errors" class="invalid-feedback">
+            <div *ngIf="f.msg.errors.required">É necessário digitar uma mensagem</div>
+        </div>
+        <button mat-raised-button class="button-form" type="submit">Enviar</button>
+    </form>
+</section>
+
+<app-footer></app-footer>

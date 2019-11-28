@@ -63,4 +63,7 @@ export class EventoService {
   getCategorias(): Observable<any> {
     return this.http.get<any>(this.apiURL + 'categoria/')
   }
+  getCategoria(id): Observable<any> {
+    return this.http.get<any>(this.apiURL + 'categoria/' + id)
+  }
 }

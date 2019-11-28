@@ -1,55 +1,94 @@
 .background {
-    background-color: #F1EBE4;
-    padding: 50px;
+    background-image: url(src/assets/images/fundo-home-frutas.jpeg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+.icon-home {
+    position: absolute;
+    right: 200px;    
+    color: white;
+    font-size: x-large;
+}
+.toolbar-login {
+    top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    padding: 0 8vw;
+    background-color: #406040;
 }
 
-.box {
-    width: 450px;
-    height: 350px;
+.logo {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 2em;
+    text-decoration: none;
+    background-image: url(../../../assets/images/logo-white.png);
+}
+
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+
+.box-login {
+    width: 400px;
+    height: 300px;
     border-radius: 10px;
-    background: #fff;
+    padding: 8px;
+    background: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px auto;
+    margin: 8px auto;
 }
 
 .title {
     text-align: center;
     font-family: 'Montserrat';
     font-style: normal;
+    font-weight: bold;
+    color: black;
 }
 
-.button {
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+.btn-login {
     color: white;
+    font-weight: bolder;
+    width: 150px;
     background-color: #456c45;
-    padding: 3px;
+    cursor: pointer;
+    margin: 5px auto;
 }
 
 .link {
     color: black;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
 }
 
-.textoCadastro {
-    margin: auto;
-    padding-top: 10px;
+.text-cadastro {
+    margin: 5px auto;
+    /* padding-top: 10px; */
+    color: black;
+    font-size: medium;
+    /* font-weight: bold; */
 }
 
-.mat-form-field {
-    margin: 10px;
-}
-
-.rodape {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
+/* mat-form-field {
+    padding: 1;
+    background-color: white(opacity=50%);
+    border-radius: 10px;
+} */
 
 .h2 {
     text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
 }
