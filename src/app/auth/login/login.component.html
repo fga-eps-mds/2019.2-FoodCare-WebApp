@@ -9,7 +9,7 @@
         <h2 class="title"> Login </h2>
         <form class="form" [formGroup]="registerForm">
             <mat-form-field>
-                <input placeholder="Usuario" matInput formControlName="usuario" type="text" #username
+                <input placeholder="CPF ou CNPJ" matInput formControlName="usuario" type="text" #username
                     class="form-control" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" />
             </mat-form-field>
             <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">

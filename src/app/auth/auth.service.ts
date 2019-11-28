@@ -48,11 +48,11 @@ export class AuthService {
       shareReplay(),
     );
   }
-  cadastrar(username: string, email: string, password1: string, password2: string) {
+  cadastrar(username: string, first_name: string, email: string, password1: string, password2: string) {
     this.logout();
     return this.http.post(
       this.authApi.concat('signup/'),
-      { username, email, password1, password2 }
+      { username, first_name, email, password1, password2 }
     ).pipe(
       tap(response => {
         this.setSession(response)

@@ -21,7 +21,8 @@ export class CadastroComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.maxLength(14)]],
+      first_name: ['', [Validators.required, Validators.maxLength(22)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
@@ -35,7 +36,7 @@ export class CadastroComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    this.cadastrar(data.username, data.email, data.password, data.confirmPassword);
+    this.cadastrar(data.username, data.first_name, data.email, data.password, data.confirmPassword);
   }
 
   get f() { return this.registerForm.controls; }
@@ -45,8 +46,8 @@ export class CadastroComponent implements OnInit {
     this.registerForm.reset();
   }
 
-  cadastrar(username: string, email: string, password1: string, password2: string) {
-    this.authService.cadastrar(username, email, password1, password2).subscribe(
+  cadastrar(username: string, first_name: string, email: string, password1: string, password2: string) {
+    this.authService.cadastrar(username, first_name, email, password1, password2).subscribe(
       success => {
         alert("Cadastro efetuado com sucesso");
         this.router.navigate(['eventos-doador'])

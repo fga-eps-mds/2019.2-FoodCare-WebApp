@@ -75,8 +75,7 @@
     <mat-card *ngFor="let item of eventos | filterBy: eventosFilter ">
         <div class="div-geral">
             <div class="div-img">
-                <img mat-card-image class="img-categoria"
-                    src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <img mat-card-image class="img-categoria" src="assets/images/market-peppers.jpg" alt="Photo of peppers in market">
             </div>
             <div class="div-infos">
                 <div class="div-editar">
@@ -110,7 +109,7 @@
         <!-- Editar evento -->
         <ng-template #editDialog>
             <div class="end-form_edit">
-                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value, 'update')">
                     <div class="nome_edit">
                         <mat-form-field>
                             <input matInput formControlName="nome" placeholder="Nome" [ngModel]="selectedEvento.nome"
