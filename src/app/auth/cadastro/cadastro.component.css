@@ -1,13 +1,32 @@
 .background {
-    padding: 50px;
+    background-image: url(src/assets/images/fundo-home-frutas.jpeg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
-
+.toolbar-cadastro {
+    top: 0;
+    position: sticky;
+    display: flex;
+    /* justify-content: space-between; */
+    z-index: 1;
+    padding: 0 8vw;
+    background-color: #406040;
+}
+.logo-img {
+    width: 180px;
+    padding-bottom: 4px;
+}
+.home{
+    color: white;
+    cursor: pointer;
+}
 .box {
     width: 400px;
-    height: 500px;
     border-radius: 10px;
+    padding: 8px;
     background: #fff;
-    margin: auto;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
 }
@@ -36,6 +55,11 @@
 }
 
 .textoLogin {
-  margin: auto;
-  padding-top: 10px;
+  margin: 5px auto;
+  /* padding-top: 10px; */
+}
+
+.form {
+    display: flex;
+    flex-flow: column;
 }

@@ -1,52 +1,92 @@
-.toolbar-events {
-    background-color: #5b8f6f;
-    display: flex;
-    justify-content: center;
+section {
+    display: block;
+    position: relative;
 }
 
-.logo {
-  margin: auto;
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 2em;
-  text-decoration: none;
-  color: white;
+.content {
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px 16px;
+    max-width: 1240px;
 }
 
-.title-toolbar {
-    color: white;
+.search-field {
+    flex: 2;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.mat-card {
-    margin: 15px;
-    display: flex;
+.btn-doador {
+  font-family: "Barlow", sans-serif;
+  background: #ffffff;
+  color: #406040;
+}
+
+.filter-field {
     flex: 1;
-    justify-content: space-between;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.mat-card-content {
-    display: flex;
-    justify-content: space-between;
+.order-field {
     flex: 1;
+    position: relative;
+    padding: 0px 6px;
 }
 
-.data-items {
-    margin-right: auto;
-    margin-left: auto;
+.event-list-card {
+    position: relative;
+    width: 100%;
+    flex: 0 0 32.29%;
+    padding: 0px 6px;
+    max-width: 32.29%;
+    margin-bottom: 16px;
 }
 
-.button-meus-eventos {
-    position: fixed;
-    left: 60%;
-    bottom: 15px;
-    transform: translateX(-60%);
-    background-color: #5b8f6f;
+.event-card {
+    min-height: 88px;
+    padding: 20px;
 }
 
-.button-eventos {
-    position: fixed;
-    left: 30%;
-    bottom: 15px;
-    transform: translateX(-30%);
-    background-color: #5b8f6f;
+.img-event-card {
+    height: 88px;
+    width: 88px;
+}
+
+.event-info {
+    flex: 1;
+    display: grid;
+    margin: 0 16px;
+}
+
+.event-title {
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .content {
+        max-width: 860px;
+    }
+    .event-list-card {
+        flex: 0 0 48.5%;
+        padding: 0px 6px;
+        margin-bottom: 16px;
+        max-width: 48.5%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        max-width: 420px;
+    }
+    .search-field {
+        flex: 1;
+    }
+    .event-list-card {
+        flex: 1;
+        max-width: 100%;
+    }
 }

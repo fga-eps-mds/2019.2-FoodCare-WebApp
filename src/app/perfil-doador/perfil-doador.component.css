@@ -1,38 +1,124 @@
 .toolbar-perfil {
-    background-color: #5b8f6f;
-    display: flex;
-    justify-content: center;
-    color: white;
+  top: 0;
+  position: sticky;
+  display: flex;
+  z-index: 1;
+  padding: 0 8vw;
+  background-color: #406040;
+  justify-content: space-between;
+  color: white;
 }
+
+.background-dados {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.dado {
+  font-size: x-large;
+}
+
+.centro {
+  display: flex;
+  justify-content: center;
+}
+
+.icon-perfil {
+  font-size: 10rem;
+}
+
+.excluir {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.btn-excluir {
+  color: green;
+  font-size: 3rem;
+  margin: auto;
+}
+
+.btn-cancelar {
+  color: red;
+  font-size: 3rem;
+  margin: 20px;
+}
+
+.btn-editar {
+  margin: 20px;
+  display: flex;
+  padding: 6px 16px;
+  font-size: 1.3rem;
+}
+
+.btn-cancelar-perfil {
+  color: red;
+}
+
+.btn-perfil {
+  font-family: "Barlow", sans-serif;
+  background: transparent;
+  color: #fff;
+  border: 2px solid white;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.logo-img {
+  width: 180px;
+  padding-bottom: 4px;
+}
+
 .background {
-    padding: 50px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .box {
-    width: 400px;
-    height: 500px;
-    border-radius: 10px;
-    background: #fff;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+  width: 400px;
+  border-radius: 10px;
+  background: #fff;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
 }
 
 .title {
-    text-align: center;
-    font-family: 'Montserrat';
+  text-align: center;
+  font-family: 'Montserrat';
 }
 
 .mat-form-field {
-    margin: 5px;
+  margin: 5px;
 }
 
-.buttonAtualiza {
-    width: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    background-color: #456c45;
+.btn-atualiza {
+  font-size: smaller;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: #456c45;
+}
+
+.btn-cancelar-edicao {
+  background-color: red;
 }
 
 .link {
@@ -45,8 +131,14 @@
   margin: auto;
   padding-top: 10px;
 }
-.perfil{
-    color: white;
-    position: absolute;
-    left: 10px;
+
+.perfil {
+  color: white;
+  position: absolute;
+  left: 32px;
+  top: 8px;
+}
+
+.material-icons {
+  margin-right: 12px;
 }

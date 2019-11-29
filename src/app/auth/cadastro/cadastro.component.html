@@ -1,28 +1,51 @@
-<MenuNav>
-    <div class="background">
-        <div class="box">
-            <h2 class="title"> Cadastrar </h2>
-            <mat-form-field>
-                <input matInput placeholder="Usuário" #username id="username" class="form-control">
-            </mat-form-field>
-            <!-- <mat-form-field>
-                <input matInput placeholder="Nome" #name id="name" class="form-control">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="CNPJ" #cnpj id="cnpj" class="form-control">
-            </mat-form-field> -->
-            <mat-form-field>
-                <input matInput placeholder="Email" #email id="email" class="form-control" type="email">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Senha" #password id="password" class="form-control" type="password">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Confirmar Senha" #passwordConfirm id="passwordConfirm" class="form-control" type="password">
-            </mat-form-field>
-            <button mat-raised-button class="buttonCadastro" (click)='cadastrar(username.value, email.value, password.value, passwordConfirm.value)'>Cadastrar</button>
-            <p class="textoLogin">Já tem login? Clique <a class="link" href="/login">aqui.</a></p>
-        </div>
-    </div>
-    <Rodape></Rodape>
-</MenuNav>
+<div class="background">
+  <mat-toolbar class="toolbar-cadastro">
+    <img class="logo-img clickable" src="assets/images/logo-white.png" onclick="location.href='/'">
+  </mat-toolbar>
+  <div class="box">
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <h2 class="title"> Cadastrar </h2>
+      <mat-form-field>
+        <input placeholder="Nome do doador" matInput type="text" formControlName="first_name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="CPF ou CNPJ" matInput type="text" formControlName="username" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+      </mat-form-field>
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">É necessário digitar um nome de usuário</div>
+      </div>
+      <mat-form-field>
+        <input placeholder="Email" matInput type="text" formControlName="email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      </mat-form-field>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">É necessário digitar um email</div>
+        <div *ngIf="f.email.errors.email">É necessário digitar um email válido</div>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Senha" type="password" formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+      </mat-form-field>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">É necessário digitar uma senha</div>
+        <div *ngIf="f.password.errors.minlength">Senha deve ter pelo menos 6 digitos</div>
+      </div>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Confirmar Senha" formControlName="confirmPassword"
+          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+      </mat-form-field>
+      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+        <div *ngIf="f.confirmPassword.errors.required">É necessário confirmar a senha</div>
+        <div *ngIf="f.confirmPassword.errors.mustMatch">Senhas não batem</div>
+      </div>
+
+      <button mat-raised-button class="buttonCadastro" type="submit">Cadastrar</button>
+    </form>
+    <p class="textoLogin">Já tem login? Clique <a class="link" href="/login">aqui.</a></p>
+  </div>
+  <footer></footer>
+</div>

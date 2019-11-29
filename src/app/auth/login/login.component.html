@@ -1,16 +1,28 @@
-<MenuNav>
-    <div class="">
-        <div class="box">
-            <h2 class="title"> Acesso </h2>
+<div class="background">
+    <mat-toolbar class="toolbar-login">
+        <img class="logo-img clickable" src="assets/images/logo-white.png" onclick="location.href='/'">
+    </mat-toolbar>
+    <div class="box-login">
+        <h2 class="title"> Login </h2>
+        <form class="form" [formGroup]="registerForm">
             <mat-form-field>
-                <input matInput placeholder="username" #username id="username" class="form-control">
+                <input placeholder="CPF ou CNPJ" matInput formControlName="usuario" type="text" #username
+                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" />
             </mat-form-field>
+            <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
+                <div *ngIf="f.usuario.errors.required">Digite um usuario</div>
+            </div>
+
             <mat-form-field>
-                <input matInput placeholder="senha" #senha id="senha" class="form-control" type="password">
+                <input placeholder="Senha" matInput formControlName="senha" type="password" #senha class="form-control"
+                    [ngClass]="{ 'is-invalid': f.senha.errors }" />
             </mat-form-field>
-            <button mat-raised-button (click)='login(username.value, senha.value)' class="button">Login</button>
-            <p class="textoCadastro">Crie seu cadastro <a class="link" href="/cadastro">aqui.</a></p>
-        </div>
+            <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+                <div *ngIf="f.senha.errors.required">Digite uma senha</div>
+            </div>
+
+        </form>
+        <button class="btn-login" mat-raised-button (click)='login(username.value, senha.value)'>Entrar</button>
+        <p class="text-cadastro">Deseja cadastrar ? Clique <a class="link" href="/cadastro">aqui.</a></p>
     </div>
-    <Rodape class="rodape"></Rodape>
-</MenuNav>
+</div>

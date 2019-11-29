@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastroComponent } from './cadastro.component';
 
 describe('CadastroComponent', () => {
@@ -15,6 +15,8 @@ describe('CadastroComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })

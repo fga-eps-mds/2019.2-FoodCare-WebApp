@@ -21,15 +21,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { AuthService, AuthInterceptor, AuthGuard } from './auth/auth.service';
 import { EventoService } from './eventos/evento.service';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ConteudoComponent } from './home/conteudo/conteudo.component';
-import { RodapeComponent } from './layout/rodape/rodape.component';
-import { MenuNavComponent } from './layout/menu-nav/menu-nav.component';
+import { HomeComponent } from './layout/home/home.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CadastroComponent } from './auth/cadastro/cadastro.component';
 import { EventosComponent } from './eventos/eventos.component';
@@ -40,9 +39,7 @@ import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ConteudoComponent,
-    RodapeComponent,
-    MenuNavComponent,
+    FooterComponent,
     LoginComponent,
     CadastroComponent,
     EventosComponent,
@@ -73,6 +70,8 @@ import { PerfilDoadorComponent } from './perfil-doador/perfil-doador.component';
     AppRoutingModule,
     FilterPipeModule,
     OrderModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [
     AuthService,

@@ -36,17 +36,6 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  // getDoadorID() {
-  //   return localStorage.getItem('id_doador');
-  // }
-  // getDoador(id) {
-  //   return this.http.get(this.userApi.concat(id + '/'))
-  //     .subscribe(
-  //       data => console.log(data),
-  //       err => console.log(err)
-  //     );
-  // }
-
   login(username: string, password: string) {
     this.logout();
     return this.http.post(
@@ -59,14 +48,13 @@ export class AuthService {
       shareReplay(),
     );
   }
-  cadastrar(username: string, email: string, password1: string, password2: string) {
+  cadastrar(username: string, first_name: string, email: string, password1: string, password2: string) {
     this.logout();
     return this.http.post(
       this.authApi.concat('signup/'),
-      { username, email, password1, password2 }
+      { username, first_name, email, password1, password2 }
     ).pipe(
       tap(response => {
-        console.log(response),
         this.setSession(response)
       }),
       shareReplay(),
@@ -82,9 +70,6 @@ export class AuthService {
   atualizaDoador(doador: Doador) {
     return this.http.put<any>(`${this.authApi}user/`, doador)
     .pipe(
-      tap(response => {
-        console.log(response)
-      }),
       shareReplay(),
     );
   }
@@ -98,9 +83,6 @@ export class AuthService {
   atualizaSenhaDoador(new_password1: String, new_password2: String) {
     return this.http.post<any>(`${this.authApi}password/change/`, {new_password1, new_password2})
     .pipe(
-      tap(response => {
-        console.log(response)
-      }),
       shareReplay(),
     );
   }
@@ -110,7 +92,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('expires_at');
-    console.log('saindo');
   }
   refreshToken() {
     if (moment().isBetween(this.getExpiration().subtract(1, 'days'), this.getExpiration())) {
